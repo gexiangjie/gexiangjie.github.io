@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016/8 | gexiangjie</title>
+  <title>富文本点击类似于QQ点赞好友 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的个人博客!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="gexiangjie">
-<meta property="og:url" content="http://yoursite.com/archives/2016/08/index.html">
+  <meta name="description" content="Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="富文本点击类似于QQ点赞好友">
+<meta property="og:url" content="http://yoursite.com/2016/08/24/rich_text/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="这是我的个人博客!">
+<meta property="og:description" content="Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png">
+<meta property="og:updated_time" content="2017-08-31T09:27:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gexiangjie">
-<meta name="twitter:description" content="这是我的个人博客!">
+<meta name="twitter:title" content="富文本点击类似于QQ点赞好友">
+<meta name="twitter:description" content="Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
+<meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -156,36 +160,139 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-rich_text" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      富文本点击类似于QQ点赞好友
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/24/rich_text/" class="archive-article-date">
+
+        
+        <a href="/2016/08/24/rich_text/" class="archive-article-date">
   	<time datetime="2016-08-24T07:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-24</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/24/rich_text/">富文本点击类似于QQ点赞好友</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片<br><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png" alt=""></p>
+<a id="more"></a>
+<p>实现代码:</p>
+<pre><code>public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        TextView t1 = (TextView) findViewById(R.id.tv1);
 
-        <div class="article-info info-on-right">
-          
+        StringBuilder sb = new StringBuilder();
+            for (int i = 0; i &lt; 20; i++) {
+           sb.append(&quot;基友&quot; + i + &quot;、&quot;);
+           }
+
+        String friends = sb.substring(0, sb.lastIndexOf(&quot;、&quot;)).toString();
+        t1.setMovementMethod(LinkMovementMethod.getInstance());
+        t1.setText(addClickPart(friends), TextView.BufferType.SPANNABLE);
+}
+
+//    定义一个点击每个部分文字的处理方法
+    private SpannableStringBuilder addClickPart(String str) {
+        SpannableStringBuilder ssb = new SpannableStringBuilder(str);
+        String[] friends = str.split(&quot;、&quot;);
+        if (friends.length &gt; 0) {
+        for (int i = 0; i &lt; friends.length; i++) {
+            final String name = friends[i];
+            final int start = str.indexOf(name) ;
+            if(start != -1) {
+                ssb.setSpan(new ClickableSpan() {
+                    @Override
+                    public void onClick(View widget) {
+                        Toast.makeText(MainActivity.this, name,
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void updateDrawState(TextPaint ds) {
+                        super.updateDrawState(ds);
+                        //删除下划线，设置字体颜色为红色
+                        ds.setColor(Color.RED);
+                        ds.setUnderlineText(false);
+                    }
+                }, start, start + name.length(), 0);
+            }
+        }
+    }
+    return ssb.append(&quot;等&quot; + friends.length + &quot;个人觉得很赞&quot;);
+}
+}
+</code></pre><p>布局文件比较简单这里就不粘了,就是一个TextView.<br>效果如下:</p>
+<p>其中LinkMovementMethod的解释如下:<br>比如它的onKeyDown调用ClickableSpan的onClick<br>URLSpan实现了ClickableSpan<br>用户点击一个url的话，就会调用LinkMovementMethod::onKeyDown，继而调用URLSpan的onClick，<br>我们看看URLSpan::onClick的实现</p>
+<pre><code>@override
+public void onClick(View widget) {
+    Uri uri = Uri.parse(getURL());
+    Context context = widget.getContext();
+    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+    intent.putExtra(Browser.EXTRA_APPLICATION_ID, context.getPackageName());
+    context.startActivity(intent);
+}
+</code></pre><p>它实际上是启动了一个activity，可能是web/email或者其他的满足intent filter/url schema的activity.</p>
+<p>以下是本猿的教训:<br>啥话不说直接上代码想不到displayName的用处,只想着用来和输入的msgText来作对比想匹配,还搞了个正则表达式,遍历了两次功能虽然是实现了但是却是很麻烦,<br>自己想不到其实 final String name = stockList[i];是可以用listStock来替换的.脑子真的转的很慢.<br>//        Pattern p = Pattern.compile(“( \$)(.*?)(\$ )”);<br>//        Matcher matcher = p.matcher(ssb);<br>//        List list = new ArrayList();<br>//        int j = 0;<br>//        while (matcher.find()) {<br>//            searchStocks = listStock.get(j);<br>//            String sel = matcher.group();<br>//            if (searchStocks.getDisplayname().equals(sel)) {<br>//                list.add(matcher.group());<br>//                j++;<br>//            }<br>//        }</p>
+<p>//        String[] stockList = (String[]) list.toArray(new String[0]);<br>//        MyLog.e(“pipei  “ + Arrays.toString(stockList));<br>//<br>//        if (stockList.length &gt; 0) {<br>//            for (int i = 0; i &lt; stockList.length; i++) {<br>//<br>//                final String name = stockList[i];<br>//                final int start = str.indexOf(name);<br>//                ssb.setSpan(new ClickableSpan() {<br>//                    @Override<br>//                    public void onClick(View widget) {<br>//                        Toast.makeText(context, name,<br>//                                Toast.LENGTH_SHORT).show();<br>//                    }<br>//<br>//                    @Override<br>//                    public void updateDrawState(TextPaint ds) {<br>//                        super.updateDrawState(ds);<br>//                        ds.setUnderlineText(true);<br>//                    }<br>//                }, start, start + name.length(), 0);<br>//            }<br>//        }</p>
+<p>看我工程师老大直接就用了如下代码,一次遍历就搞定了,前提是displayName唯一.</p>
+<pre><code>SpannableStringBuilder ssb = new     SpannableStringBuilder(str);
+for(int i = 0; i &lt; listStock.size(); i++) {
+   StockElem.SearchStocks searchStocks = listStock.get(i);
+   final String disPlayName = searchStocks.getDisplayname();
+   final int start = str.indexOf(disPlayName);
+   if(start != -1) {
+      ssb.setSpan(new ClickableSpan() {
+          @Override
+          public void onClick(View widget) {
+              Toast.makeText(context, disPlayName,Toast.LENGTH_SHORT).show();
+          }
+
+          @Override
+          public void updateDrawState(TextPaint ds) {
+              super.updateDrawState(ds);
+              ds.setUnderlineText(true);
+             }
+          }, start, start + disPlayName.length(), 0);
+        }
+    }
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>不要怕我骄傲用你的钱砸我吧<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -197,133 +304,113 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/08/24/rich_text/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/24/oschnia_app_manager/" class="archive-article-date">
-  	<time datetime="2016-08-24T05:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-24</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/04/10/apk_simple/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          让你的apk减减肥
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/24/oschnia_app_manager/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">开源中国客户端Activity管理类</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/24/oschnia_app_manager/">开源中国客户端Activity管理类</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/23/edittext_concept/" class="archive-article-date">
-  	<time datetime="2016-08-23T02:18:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/23/edittext_concept/">EditText使用小结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Android 控件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/01/add_external_sdk/" class="archive-article-date">
-  	<time datetime="2016-08-01T02:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/01/add_external_sdk/">Android stdio 添加外部SDK为依赖库</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -346,8 +433,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
