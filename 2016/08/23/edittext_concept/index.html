@@ -6,25 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>让你的apk减减肥 | gexiangjie</title>
+  <title>EditText使用小结 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有时候我们在项目中有意无意的就会新建许多的类和接口,然后却没有使用,随着项目迭代的增加,时间增长,无用的文件就变得更多,而懒癌晚期的我们又不愿意逐个查看每个文件每个方法是否被调用…幸好谷歌大大拯救了我们,Android Stdio就内置了无用资源检查功能,甚至都能把你声明过却没有引用过的id都能检查出来,快来试一试减小你的apk 的大小吧.">
-<meta name="keywords" content="Android,Android Studio">
+  <meta name="description" content="##一.EditText 光标设置android:cursorVisible=”true”//显示 android:cursorVisible=”false”//隐藏 ##二.设置光标颜色android:textCursorDrawable 这个属性是用来控制光标颜色的 android:textCursorDrawable=”@null”，”@null”作用是让光标颜色和text color一样">
+<meta name="keywords" content="Android 控件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="让你的apk减减肥">
-<meta property="og:url" content="http://yoursite.com/2017/04/10/apk_simple/index.html">
+<meta property="og:title" content="EditText使用小结">
+<meta property="og:url" content="http://yoursite.com/2016/08/23/edittext_concept/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="有时候我们在项目中有意无意的就会新建许多的类和接口,然后却没有使用,随着项目迭代的增加,时间增长,无用的文件就变得更多,而懒癌晚期的我们又不愿意逐个查看每个文件每个方法是否被调用…幸好谷歌大大拯救了我们,Android Stdio就内置了无用资源检查功能,甚至都能把你声明过却没有引用过的id都能检查出来,快来试一试减小你的apk 的大小吧.">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-a5e767654fbba0cf?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-f0a5e02740637c79?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-512eb40203b4d89f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-a958d90c460782f2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-b0af76374c5bdba2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-31T05:12:25.000Z">
+<meta property="og:description" content="##一.EditText 光标设置android:cursorVisible=”true”//显示 android:cursorVisible=”false”//隐藏 ##二.设置光标颜色android:textCursorDrawable 这个属性是用来控制光标颜色的 android:textCursorDrawable=”@null”，”@null”作用是让光标颜色和text color一样">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E6%98%8E%E6%B9%96.jpg">
+<meta property="og:updated_time" content="2017-08-31T06:37:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="让你的apk减减肥">
-<meta name="twitter:description" content="有时候我们在项目中有意无意的就会新建许多的类和接口,然后却没有使用,随着项目迭代的增加,时间增长,无用的文件就变得更多,而懒癌晚期的我们又不愿意逐个查看每个文件每个方法是否被调用…幸好谷歌大大拯救了我们,Android Stdio就内置了无用资源检查功能,甚至都能把你声明过却没有引用过的id都能检查出来,快来试一试减小你的apk 的大小吧.">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4642697-a5e767654fbba0cf?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="EditText使用小结">
+<meta name="twitter:description" content="##一.EditText 光标设置android:cursorVisible=”true”//显示 android:cursorVisible=”false”//隐藏 ##二.设置光标颜色android:textCursorDrawable 这个属性是用来控制光标颜色的 android:textCursorDrawable=”@null”，”@null”作用是让光标颜色和text color一样">
+<meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E6%98%8E%E6%B9%96.jpg">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -164,36 +160,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-apk_simple" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-edittext_concept" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      让你的apk减减肥
+      EditText使用小结
     </h1>
   
 
         
-        <a href="/2017/04/10/apk_simple/" class="archive-article-date">
-  	<time datetime="2017-04-10T00:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
+        <a href="/2016/08/23/edittext_concept/" class="archive-article-date">
+  	<time datetime="2016-08-23T02:18:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>有时候我们在项目中有意无意的就会新建许多的类和接口,然后却没有使用,随着项目迭代的增加,时间增长,无用的文件就变得更多,而懒癌晚期的我们又不愿意逐个查看每个文件每个方法是否被调用…幸好谷歌大大拯救了我们,Android Stdio就内置了无用资源检查功能,甚至都能把你声明过却没有引用过的id都能检查出来,快来试一试减小你的apk 的大小吧.<a id="more"></a><br>首先找到AS工具栏的Analyze打击的样子是这样:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-a5e767654fbba0cf?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>第一个Inspect Code 是检查整个工程所以没有引用的文件,图片资源,id等等.</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-f0a5e02740637c79?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>点击ok的效果则会展示出所以无用的文件</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-512eb40203b4d89f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当然你也可以选择Run Inspect By name 然后通过输入以下关键字来检查代码,比如输入unused resource 就能检查出所以没有使用的图片和drawable文件,真是太方便了.快让你的apk也瘦瘦身吧.</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-a958d90c460782f2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-b0af76374c5bdba2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>csdn博客地址:<br><a href="http://blog.csdn.net/qq_35598366/article/details/64124894" target="_blank" rel="external">http://blog.csdn.net/qq_35598366/article/details/64124894</a></p>
-
+        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E6%98%8E%E6%B9%96.jpg" alt=""></p>
+<p>##一.EditText 光标设置<br>android:cursorVisible=”true”//显示</p>
+<p>android:cursorVisible=”false”//隐藏</p>
+<p>##二.设置光标颜色<br>android:textCursorDrawable 这个属性是用来控制光标颜色的</p>
+<p>android:textCursorDrawable=”@null”，”@null”作用是让光标颜色和text color一样,但是我直接用textCursorDrawable加上颜色值时,光标并不显示颜色,后来写了一个drawable文件来设置EditText光标的颜色和粗细,亲测有效,drawable文件:</p>
+<pre><code>&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:shape=&quot;rectangle&quot;&gt;
+&lt;size android:width=&quot;0.5dp&quot; /&gt;
+&lt;solid android:color=&quot;@color/red&quot;  /&gt;
+&lt;/shape&gt;
+</code></pre><p>在xml布局中引用:</p>
+<pre><code>android:textCursorDrawable=&quot;@drawable/color_cursor&quot;
+</code></pre><p>##三.EditText默认不显示光标，不可编辑，点击它，进入编辑状态，光标显示</p>
+<p>JAVA代码中设置EditText不可编辑，光标不可见：</p>
+<pre><code>et.setCursorVisible(false);
+</code></pre><p>设置EditText可编辑，光标可见：</p>
+<pre><code>et.setOnClickListener(new OnClickListener() {
+   @Override
+   public void onClick(View v) {
+      et.setCursorVisible(true);
+   }
+});
+</code></pre>
       
 
       
@@ -227,11 +235,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android Studio</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Android 控件</a>
         		</li>
       		
 		</ul>
@@ -287,7 +291,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/10/apk_simple/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/08/23/edittext_concept/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -301,9 +305,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/04/10/apk_simple/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          让你的apk减减肥
+        
+      </div>
+    </a>
   
-    <a href="/2016/08/23/edittext_concept/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">EditText使用小结</div>
+  
+    <a href="/2016/08/01/add_external_sdk/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android stdio 添加外部SDK为依赖库</div>
       <i class="icon-circle-right"></i>
     </a>
   
