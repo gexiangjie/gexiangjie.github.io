@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>gexiangjie</title>
+  <title>Android 版本更新解决方案 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的个人博客!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="gexiangjie">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="##前言最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dia">
+<meta name="keywords" content="Android 版本更新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 版本更新解决方案">
+<meta property="og:url" content="http://yoursite.com/2016/11/18/version_update/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="这是我的个人博客!">
+<meta property="og:description" content="##前言最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dia">
+<meta property="og:updated_time" content="2017-09-01T09:40:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gexiangjie">
-<meta name="twitter:description" content="这是我的个人博客!">
+<meta name="twitter:title" content="Android 版本更新解决方案">
+<meta name="twitter:description" content="##前言最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dia">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -156,177 +158,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-dagger2_translate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Dagger &amp; Android</p>
-<p>One of the primary advantages of Dagger 2 over most other dependency injection frameworks is that its strictly generated implementation (no reflection) means that it can be used in Android applications. However, there are still some considerations to be made when using Dagger within Android applications.</p>
-<p>Dagger2相对于大多数其他依赖注入框架的主要优点之一是其严格生成的实现（没有反射）意味着它可以在Android应用程序中使用。然而，在Android应用程序中使用Dagger时还需要考虑一些问题。</p>
-<p>Philosophy</p>
-<p>While code written for Android is Java source, it is often quite different in terms of style. Typically, such differences exist to accomodate the unique performance considerations of a mobile platform.</p>
-<p>But many of the patterns commonly applied to code intended for Android are contrary to those applied to other Java code. Even much of the advice in Effective Java is considered inappropriate for Android.</p>
-<p>In order to achieve the goals of both idiomatic and portable code, Dagger relies on ProGuard to post-process the compiled bytecode. This allows Dagger to emit source that looks and feels natural on both the server and Android, while using the different toolchains to produce bytecode that executes efficiently in both environements. Moreover, Dagger has an explicit goal to ensure that the Java source that it generates is consistently compatible with ProGuard optimizations.</p>
-<p>Of course, not all issues can be addressed in that manner, but it is the primary mechanism by which Android-specific compatbility will be provided.</p>
-<p>哲学<br>虽然Android代码是java语言编写的，但它往往是在风格上完全不同。通常情况下，这种差异的存在，是以适应一个移动平台的独特性能来考虑的。<br>但许多模式用于Android代码和其他Java代码有很大的不同。即使是&lt;<effective java="">&gt;中考虑到的建议对Android也是不合适的.<br>为了达到既地道又轻量代码的目标，Dagger2依靠混淆器来后处理编译的字节码。这让Dagger2发出源在使用不同的工具链生成在服务器端和Android端执行的字节码看来很自然.此外，Dagger还保证，它生成的java源与混淆器的优化始终兼容的一个明确的目标。<br>当然，不是所有的问题都可以这样解决，但这是具体提供Android的兼容性主要的机制。</effective></p>
-<p>Dagger2 assumes that users on Android will use ProGuard.<br>Dagger2假设用户Android已经使用了混淆。</p>
-<p>Recommended ProGuard Settings<br>推荐混淆设置<br>Watch this space for ProGuard settings that are relevant to applications using Dagger.<br>小心使用这个空间的混淆设置是和应用程序使用dagger2有关的.</p>
-<p>dagger.android</p>
-<p>One of the central difficulties of writing an Android application using Dagger is that many Android framework classes are instantiated by the OS itself, like Activity and Fragment, but Dagger works best if it can create all the injected objects. Instead, you have to perform members injection in a lifecycle method. This means many classes end up looking like:</p>
-<p>使用Dagger编写Android应用程序的主要困难之一是许多Android框架类由操作系统本身实例化，如Activity和Fragment，但如果Dagger能够创建所有注入的对象，那么Dagger会非常有效。相反，您必须在生命周期方法中执行成员注入。这意味着许多类最终看起来像：</p>
-<pre><code>public class FrombulationActivity extends Activity {
-  @Inject Frombulator frombulator;
-
-  @Override
- public void onCreate(Bundle savedInstanceState) {
-   super.onCreate(savedInstanceState);
-// DO THIS FIRST. Otherwise frombulator might be null!
-((SomeApplicationBaseType) getContext().getApplicationContext())
-    .getApplicationComponent()
-    .newActivityComponentBuilder()
-    .activity(this)
-    .build()
-    .inject(this);
-// ... now you can write the exciting code
-  }
-}
-</code></pre><p>This has a few problems:</p>
-<p>Copy-pasting code makes it hard to refactor later on. As more and more developers copy-paste that block, fewer will know what it actually does.</p>
-<p>More fundamentally, it requires the type requesting injection (FrombulationActivity) to know about its injector. Even if this is done through interfaces instead of concrete types, it breaks a core principle of dependency injection: a class shouldn’t know anything about how it is injected.</p>
-<p>The classes in dagger.android offer one approach to simplify this pattern.<br>这有一些问题：<br>复制粘贴代码，使得以后它很难重构。随着越来越多的开发者复制粘贴代码块，只有很少的人才会知道它实际上做什么。<br>更重要的是，它要求请求注射（frombulationactivity）了解其注射器。即使这是通过接口而不是具体类型完成的，它打破了依赖注入的一个核心原则：一个类不应该知道它是如何注入的。<br>在dagger.android提供简化这一模式的方法的类。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/01/dagger2_translate/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-apk_simple" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-version_update" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/10/apk_simple/">让你的apk减减肥</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/10/apk_simple/" class="archive-article-date">
-  	<time datetime="2017-04-10T00:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有时候我们在项目中有意无意的就会新建许多的类和接口,然后却没有使用,随着项目迭代的增加,时间增长,无用的文件就变得更多,而懒癌晚期的我们又不愿意逐个查看每个文件每个方法是否被调用…幸好谷歌大大拯救了我们,Android Stdio就内置了无用资源检查功能,甚至都能把你声明过却没有引用过的id都能检查出来,快来试一试减小你的apk 的大小吧.
-        
-          <a class="article-more-a" href="/2017/04/10/apk_simple/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android Studio</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/10/apk_simple/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-version_update" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/18/version_update/">Android 版本更新解决方案</a>
+    <h1 class="article-title" itemprop="name">
+      Android 版本更新解决方案
     </h1>
   
 
@@ -339,12 +178,385 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##前言<br>最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dialog会引起莫名的错误,所以所有的弹框全部采用的是dialogfragment.下面几种是我用过的方法.<br>
-        
-          <a class="article-more-a" href="/2016/11/18/version_update/#more">more >></a>
-        
+        <p>##前言<br>最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dialog会引起莫名的错误,所以所有的弹框全部采用的是dialogfragment.下面几种是我用过的方法.<br><a id="more"></a><br>   <em>方法一</em></p>
+<pre><code>public void downFile(final String url) {
+    pBar = new ProgressDialog(getContext());    //进度条，在下载的时候实时更新进度
+    pBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+    pBar.setCancelable(false);
+    pBar.setTitle(&quot;正在下载&quot;);
+    pBar.setMessage(&quot;请稍候...&quot;);
+    pBar.setProgress(0);
+    pBar.show();
+    //如果相等的话表示当前的sdcard挂载在手机上并且是可用的
+    if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+        new Thread() {
+            public void run() {
+                try {
+                    URL path = new URL(url);
+                    HttpURLConnection conn = (HttpURLConnection) path.openConnection();
+                    conn.setConnectTimeout(5000);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+HttpClient client = new DefaultHttpClient();
+                HttpGet get = new HttpGet(url);
+                HttpResponse response;
+                try {
+                    response = client.execute(get);
+                    HttpEntity entity = response.getEntity();
+                    int length = (int)          entity.getContentLength();   //获取文件大小
+                    pBar.setMax(length); //设置进度条的总长度                      
+                    InputStream is = entity.getContent();
+                    FileOutputStream fileOutputStream = null;
+                    if (is != null) {
+                        File file = new File(
+                                Environment.getExternalStorageDirectory(),
+                                &quot;huanshoulv.apk&quot;);
+                        fileOutputStream = new FileOutputStream(file);
+                        byte[] buf = new byte[1024];   //缓冲区，即一次读取1024个比特
+                        int ch = -1;
+                        int process = 0;
+                        while ((ch = is.read(buf)) != -1) {
+                            fileOutputStream.write(buf, 0, ch);
+                            process += ch;
+                            pBar.setProgress(process);       //更新进度
+                        }
+                    }
+                    fileOutputStream.flush();
+                    if (fileOutputStream != null) {
+                        fileOutputStream.close();
+                    }
+                    update();
+                } catch (ClientProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    } else {
+        return;
+    }
+}
+
+//安装文件
+void update() {
+    Intent intent = new Intent(Intent.ACTION_VIEW);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    intent.setDataAndType(Uri.fromFile(new File(Environment
+                    .getExternalStorageDirectory(), &quot;huanshoulv.apk&quot;)),
+            &quot;application/vnd.android.package-archive&quot;);
+    PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    builder.setContentTitle(&quot;下载完成&quot;).setContentText(&quot;点击安装&quot;).setContentIntent(pendingIntent);
+    nf = builder.build();
+    nm.notify(0, nf);
+    startActivity(intent);
+    android.os.Process.killProcess(android.os.Process.myPid());
+}
+</code></pre><p><em>方法二</em></p>
+<pre><code>public class MyDownloadAnsy extends AsyncTask&lt;String, Integer, Integer&gt; {
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        builder = new NotificationCompat.Builder(getContext()).setSmallIcon(R.mipmap.icon_wx).setContentInfo(&quot;下载中...&quot;).setContentTitle(&quot;正在下载&quot;);
+        nf = builder.build();
+    }
+
+    @Override
+    protected Integer doInBackground(String... params) {
+        HttpURLConnection con = null;
+        InputStream is = null;
+        OutputStream os = null;
+        try {
+            String path = params[0];
+            MyLog.e(&quot;path : &quot; + path);
+            URL url = new URL(path);
+            con = (HttpURLConnection) url.openConnection();
+            con.setConnectTimeout(5 * 1000);  //设置超时时间
+            if (con.getResponseCode() == 200) { //判断是否连接成功
+                int fileLength = con.getContentLength();
+                is = con.getInputStream();    //获取输入
+                os = new FileOutputStream(&quot;/sdcard/huanshoulv.apk&quot;);
+                byte[] buffer = new byte[1024 * 1024 * 10];
+                long total = 0;
+                int count;
+                int pro1 = 0;
+                int pro2 = 0;
+                while ((count = is.read(buffer)) != -1) {
+                    total += count;
+                    if (fileLength &gt; 0)
+                        pro1 = (int) (total * 100 / fileLength);  //传递进度（注意顺序）
+                    if (pro1 != pro2)
+                        publishProgress(pro2 = pro1);
+                    os.write(buffer, 0, count);
+                }
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (is != null) {
+                    is.close();
+                }
+                if (os != null) {
+                    os.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (con != null) {
+                con.disconnect();
+            }
+        }
+        return 1;
+    }
+
+    @Override
+    protected void onPostExecute(Integer result) {
+        super.onPostExecute(result);
+
+        if (result == 1) {
+            MessagePop.ToastMessage(getContext(), &quot;下载完成&quot;);
+        }
+    }
+
+    @Override
+    protected void onProgressUpdate(Integer... values) {
+        Log.d(&quot;===&quot;, &quot;&quot; + values[0]);
+        super.onProgressUpdate(values);
+        builder.setProgress(100, values[0], false);
+        nf = builder.build();
+        nm.notify(0, nf);
+        if (values[0] == 100) {    //下载完成后点击安装
+            Intent it = new Intent(Intent.ACTION_VIEW);
+            it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            it.setDataAndType(Uri.parse(&quot;file:///sdcard/huanshoulv.apk&quot;), &quot;application/vnd.android.package-archive&quot;);
+            PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, it, PendingIntent.FLAG_UPDATE_CURRENT);
+            builder.setContentTitle(&quot;下载完成&quot;).setContentText(&quot;点击安装&quot;).setContentIntent(pendingIntent);
+            nf = builder.build();
+            nm.notify(0, nf);
+        }
+    }
+}
+</code></pre><p><em>方法三</em></p>
+<p>上面的两种方式就是最简单文件下载然后监听安装，不过不同手机或许会出现不同的问题,还好谷歌给我们支持了,就是Android系统的DownloadManager ，个人觉得比较方便实用，它可以检测下载速度，显示下载进度，文件大小，断点下载等强大功能，下载过程中他会自动检测网络状态，网络断开时停止下载，连接上时自动接着下载，还可以设置成只有在wifi下面才进行下载，代码里面关键代码都写了注释，比较简单。    </p>
+<pre><code>private static DownloadManager manager;
+private static long downloadId;
+private static String DOWNLOAD_FILE_NAME = &quot;update.apk&quot;;
+
+    public static void versionUpdate(Context context, String url) {
+    manager = (DownloadManager) context.getSystemService(context.DOWNLOAD_SERVICE);
+    DownloadManager.Query query = new DownloadManager.Query();
+    query.setFilterById(downloadId);
+    query.setFilterByStatus(DownloadManager.STATUS_RUNNING);//正在下载
+    Cursor c = manager.query(query);
+    if (c.moveToNext()) {
+        //正在下载中，不得重新下载
+        MessagePop.ToastMessage(context, &quot;正在下载中，不得重新下载!&quot;);
+    } else {
+        //创建下载请求
+        DownloadManager.Request down = new DownloadManager.Request(Uri.parse(url));
+        //设置允许使用的网络类型，这里是移动网络和wifi都可以
+      down.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+        //显示在下载界面，即下载后的文件在系统下载管理里显示
+        down.setVisibleInDownloadsUi(true);
+        //设置下载标题
+        down.setTitle(&quot;版本更新&quot;);
+        down.setDescription(&quot;APP&quot;);
+        //显示Notification
+        down.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+        down.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        //设置下载后文件存放的位置
+        down.setDestinationInExternalFilesDir(context, null, DOWNLOAD_FILE_NAME);
+//            down.setDestinationInExternalPublicDir(&quot;/&quot; + getPackageName() + &quot;/&quot;, &quot;update.apk&quot;);
+        //将下载请求放入队列,返回值为downloadId
+        downloadId = manager.enqueue(down);
+    }
+}
+</code></pre><p>然后写一个dialogfragment来弹出对话框提示你是否升级,</p>
+<pre><code>public class DialogFragmentUpdate extends DialogFragment {
+private TextView tv_title;
+private TextView tv_content;
+private TextView tv_cancel;
+private TextView tv_confirm;
+private View view_line;
+
+public static DialogFragmentUpdate newInstance(AppInfo appInfo) {
+    DialogFragmentUpdate instance = new DialogFragmentUpdate();
+    Bundle args = new Bundle();
+    args.putSerializable(&quot;appInfo&quot;, appInfo);
+    instance.setArguments(args);
+    return instance;
+}
+
+@Nullable
+@Override
+public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+    getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    final Window dialogWindow = getDialog().getWindow();
+    WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+    dialogWindow.setGravity(Gravity.CENTER);
+    lp.width = DimensionUtil.dip2px(getContext(), 315);
+    lp.height = DimensionUtil.dip2px(getContext(), 350);
+    dialogWindow.setAttributes(lp);
+
+    View view = inflater.inflate(R.layout.dialogfragment_version_update, null);
+    view_line = view.findViewById(R.id.view_line);
+    view_line.setVisibility(View.VISIBLE);
+    tv_title = (TextView) view.findViewById(R.id.tv_title);
+    final AppInfo appInfo = (AppInfo) getArguments().getSerializable(&quot;appInfo&quot;);
+    tv_title.setText(&quot;最新版本:&quot; + appInfo.getVersion());
+    tv_content = (TextView) view.findViewById(R.id.tv_content);
+    tv_content.setText(appInfo.getDescription());
+    tv_cancel = (TextView) view.findViewById(R.id.tv_cancel);
+    tv_cancel.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            dismissAllowingStateLoss();
+        }
+    });
+    tv_confirm = (TextView) view.findViewById(R.id.tv_confirm);
+    tv_confirm.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ConnectivityManager connMgr = (ConnectivityManager) getContext()
+                    .getSystemService(getContext().CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connMgr
+                    .getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            boolean isWifiConn = networkInfo.isConnected();
+            networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+            boolean isMobileConn = networkInfo.isConnected();
+            if (isWifiConn) {//Wifi
+                VersionUtil.versionUpdate(getContext(), appInfo.getUrl());
+                MessagePop.ToastMessage(getContext(), getString(R.string.loading_status));
+                dismissAllowingStateLoss();
+            } else if (isMobileConn) {//流量
+                //将当前的Fragment清除,并放入回退栈
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.remove(DialogFragmentUpdate.this);
+                ft.addToBackStack(null);
+                DialogFragmentPrompt prompt = DialogFragmentPrompt.newInstance(appInfo);
+                prompt.show(getFragmentManager(), &quot;prompt&quot;);
+            } else {//无网络
+                MessagePop.ToastMessage(getContext(), getString(R.string.connect_error));
+            }
+        }
+    });
+    return view;
+}
+
+@Override
+public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setCancelable(true);
+}
+}
+</code></pre><p>用到的实体类AppInfo.java</p>
+<pre><code>public class AppInfo implements Serializable {
+private int type;               //类型1-iOS 2-Android
+private String description;     //更新描述
+private String url;             //下载链接
+private String version;         //版本号
+private boolean needUpdate;     //标志位 是否需要更新
+private boolean force_update;   //强制更新
+
+public static AppInfo getAppInfo(JsonElement jsonElement) {
+    Gson gson = new Gson();
+    return gson.fromJson(jsonElement, AppInfo.class);
+}
+
+public int getType() {
+    return type;
+}
+
+public String getDescription() {
+    return description;
+}
+
+public String getUrl() {
+    return url;
+}
+
+public String getVersion() {
+    return version;
+}
+
+public boolean isNeedUpdate() {
+    return needUpdate;
+}
+
+public boolean isForce_update() {
+    return force_update;
+}
+}
+</code></pre><p>接下来就只是引用这个dialogfragment就好了.<br>另外,我们需要写一个Receiver用来监听文件是否下载完成,完成的话提示安装.</p>
+<pre><code>public class APKDownloadCompleteReceiver extends BroadcastReceiver {
+private DownloadManager manager;
+
+@Override
+public void onReceive(Context context, Intent intent) {
+    manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+    if (intent.getAction().equals(DownloadManager.ACTION_DOWNLOAD_COMPLETE)) {
+        //通过downloadId去查询下载的文件名
+        long downloadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+        Query query = new Query();
+        query.setFilterById(downloadId);
+        Cursor myDownload = manager.query(query);
+        if (myDownload.moveToFirst()) {
+            int fileNameIdx = myDownload.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME);
+            String fileName = myDownload.getString(fileNameIdx);
+            installAPK(fileName, context);
+        }
+    }
+}
+
+//安装APK
+private void installAPK(String filePath, Context context) {
+    Intent intent = new Intent();
+    intent.setAction(&quot;android.intent.action.VIEW&quot;);
+    intent.addCategory(&quot;android.intent.category.DEFAULT&quot;);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//广播里面操作需要加上这句，存在于一个独立的栈里
+    intent.setDataAndType(Uri.fromFile(new File(filePath)), &quot;application/vnd.android.package-archive&quot;);
+    context.startActivity(intent);
+}
+}
+</code></pre><p>在Mainfest.xml中配置文件Receiver</p>
+<pre><code>&lt;receiver android:name=&quot;.widget.receiver.APKDownloadCompleteReceiver&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.DOWNLOAD_COMPLETE&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre><p>最后这样就可以了,亲测有效,至于兼容性问题,这是谷歌大大提供的应该不会有问题.</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>不要怕我骄傲用你的钱砸我吧<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -364,16 +576,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/18/version_update/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/11/18/version_update/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/04/10/apk_simple/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          让你的apk减减肥
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/19/shape/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Drawable Shape 的使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -393,558 +673,12 @@
 
 
 
-
   
-    <article id="post-shape" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/19/shape/">Drawable Shape 的使用</a>
-    </h1>
   
 
-        
-        <a href="/2016/10/19/shape/" class="archive-article-date">
-  	<time datetime="2016-10-19T07:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>形状的Drawable文件,定义基本的几何图形,如(矩形,圆形,线条等),根元素是<shape..> 节点比较多，相关的节点如下：</shape..></p>
-<p>① \<shape>:</shape></p>
-<p>~ visible:设置是否可见</p>
-<p>~ shape:形状,可选:rectangle(矩形,包括正方形),oval(椭圆,包括圆),line(线段),ring(环形)</p>
-<p>~ innerRadiusRatio:当shape为ring才有效,表示环内半径所占半径的比率,如果设置了innerRadius, 他会被忽略</p>
-<p>~ innerRadius:当shape为ring才有效,表示环的内半径的尺寸</p>
-<p>~ thicknessRatio:当shape为ring才有效,表环厚度占半径的比率</p>
-<p>~ thickness:当shape为ring才有效,表示环的厚度,即外半径与内半径的差</p>
-<p>~ useLevel:当shape为ring才有效,表示是否允许根据level来显示环的一部分<br>
-        
-          <a class="article-more-a" href="/2016/10/19/shape/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Android 控件 drawable shape</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/19/shape/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dialogFragment" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/14/dialogFragment/">自定义dialog对话框  (类似与QQ,微信分享文章的对话框)</a>
-    </h1>
   
 
-        
-        <a href="/2016/10/14/dialogFragment/" class="archive-article-date">
-  	<time datetime="2016-10-14T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##一<br>项目有分享文章到直播间的功能,当点击分享的时候的弹出对话框,类似与微信中把文章分享给朋友的对话框,话不多说直接上图.</p>
-<p><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_dialogfragment_1.png" alt=""></p>
-<p>像这种不同于弹出框,Android系统提供的方法无法满足要求,那么就需要自己定义一个.<br>
-        
-          <a class="article-more-a" href="/2016/10/14/dialogFragment/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Android 控件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/14/dialogFragment/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-rich_text" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/24/rich_text/">富文本点击类似于QQ点赞好友</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/24/rich_text/" class="archive-article-date">
-  	<time datetime="2016-08-24T07:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##一<br>Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片<br><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png" alt=""></p>
-        
-          <a class="article-more-a" href="/2016/08/24/rich_text/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/24/rich_text/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-oschnia_app_manager" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/24/oschnia_app_manager/">开源中国客户端Activity管理类</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/24/oschnia_app_manager/" class="archive-article-date">
-  	<time datetime="2016-08-24T05:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/ic_user.jpeg" alt=""><br>开源中国客户端的activity压栈,出栈,获取,结束的管理类,可直接用在项目中.
-        
-          <a class="article-more-a" href="/2016/08/24/oschnia_app_manager/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/24/oschnia_app_manager/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-edittext_concept" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/23/edittext_concept/">EditText使用小结</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/23/edittext_concept/" class="archive-article-date">
-  	<time datetime="2016-08-23T02:18:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E6%98%8E%E6%B9%96.jpg" width="230" height="400"></p>
-<p>##一.EditText 光标设置<br>android:cursorVisible=”true”//显示</p>
-<p>android:cursorVisible=”false”//隐藏<br>
-        
-          <a class="article-more-a" href="/2016/08/23/edittext_concept/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Android 控件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/23/edittext_concept/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-add_external_sdk" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/01/add_external_sdk/">Android stdio 添加外部SDK为依赖库</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/01/add_external_sdk/" class="archive-article-date">
-  	<time datetime="2016-08-01T02:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>写此文只是为了开发中便利,不用每次Google,别无他意.<br>首先,将下载的第三方的SDK,解压成一个文件夹,然后将此文件夹放入你主工程的目录下,</p>
-<p><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_sdk_1.png" alt=""><br>
-        
-          <a class="article-more-a" href="/2016/08/01/add_external_sdk/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/01/add_external_sdk/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-rv_scroll_to_item" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/14/rv_scroll_to_item/">RecycleView 中的 item 移动到当前视图的顶部</a>
-    </h1>
-  
-
-        
-        <a href="/2016/07/14/rv_scroll_to_item/" class="archive-article-date">
-  	<time datetime="2016-07-14T12:48:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/IMG_20130802_193717.jpg" alt=""></p>
-<p>当 RecyclerView 点击的时候 item 会根据你设置的 position 通过scrollToPosition（position）自动跳转到相应的位置，但是由于每一个 item 的高度都是在变化的，所以不能保证相应的 item 一直都能位于窗口的顶部，这时候就可以通过scrollToPositionWithOffset（position，offset）来设置一下点击的时候相应item距离顶部的偏移量。
-        
-          <a class="article-more-a" href="/2016/07/14/rv_scroll_to_item/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">RecyclerView</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/07/14/rv_scroll_to_item/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -967,8 +701,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

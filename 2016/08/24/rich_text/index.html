@@ -8,18 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>富文本点击类似于QQ点赞好友 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
+  <meta name="description" content="##一Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="富文本点击类似于QQ点赞好友">
 <meta property="og:url" content="http://yoursite.com/2016/08/24/rich_text/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
+<meta property="og:description" content="##一Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png">
-<meta property="og:updated_time" content="2017-08-31T09:27:39.000Z">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_2.png">
+<meta property="og:updated_time" content="2017-09-01T09:08:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="富文本点击类似于QQ点赞好友">
-<meta name="twitter:description" content="Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
+<meta name="twitter:description" content="##一Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
 <meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
@@ -180,7 +181,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片<br><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png" alt=""></p>
+        <p>##一<br>Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片<br><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png" alt=""></p>
 <a id="more"></a>
 <p>实现代码:</p>
 <pre><code>public class MainActivity extends AppCompatActivity {
@@ -230,7 +231,7 @@
     return ssb.append(&quot;等&quot; + friends.length + &quot;个人觉得很赞&quot;);
 }
 }
-</code></pre><p>布局文件比较简单这里就不粘了,就是一个TextView.<br>效果如下:</p>
+</code></pre><p>布局文件比较简单这里就不粘了,就是一个TextView.<br>效果如下:<br><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_2.png" alt=""></p>
 <p>其中LinkMovementMethod的解释如下:<br>比如它的onKeyDown调用ClickableSpan的onClick<br>URLSpan实现了ClickableSpan<br>用户点击一个url的话，就会调用LinkMovementMethod::onKeyDown，继而调用URLSpan的onClick，<br>我们看看URLSpan::onClick的实现</p>
 <pre><code>@override
 public void onClick(View widget) {
@@ -241,9 +242,44 @@ public void onClick(View widget) {
     context.startActivity(intent);
 }
 </code></pre><p>它实际上是启动了一个activity，可能是web/email或者其他的满足intent filter/url schema的activity.</p>
-<p>以下是本猿的教训:<br>啥话不说直接上代码想不到displayName的用处,只想着用来和输入的msgText来作对比想匹配,还搞了个正则表达式,遍历了两次功能虽然是实现了但是却是很麻烦,<br>自己想不到其实 final String name = stockList[i];是可以用listStock来替换的.脑子真的转的很慢.<br>//        Pattern p = Pattern.compile(“( \$)(.*?)(\$ )”);<br>//        Matcher matcher = p.matcher(ssb);<br>//        List list = new ArrayList();<br>//        int j = 0;<br>//        while (matcher.find()) {<br>//            searchStocks = listStock.get(j);<br>//            String sel = matcher.group();<br>//            if (searchStocks.getDisplayname().equals(sel)) {<br>//                list.add(matcher.group());<br>//                j++;<br>//            }<br>//        }</p>
-<p>//        String[] stockList = (String[]) list.toArray(new String[0]);<br>//        MyLog.e(“pipei  “ + Arrays.toString(stockList));<br>//<br>//        if (stockList.length &gt; 0) {<br>//            for (int i = 0; i &lt; stockList.length; i++) {<br>//<br>//                final String name = stockList[i];<br>//                final int start = str.indexOf(name);<br>//                ssb.setSpan(new ClickableSpan() {<br>//                    @Override<br>//                    public void onClick(View widget) {<br>//                        Toast.makeText(context, name,<br>//                                Toast.LENGTH_SHORT).show();<br>//                    }<br>//<br>//                    @Override<br>//                    public void updateDrawState(TextPaint ds) {<br>//                        super.updateDrawState(ds);<br>//                        ds.setUnderlineText(true);<br>//                    }<br>//                }, start, start + name.length(), 0);<br>//            }<br>//        }</p>
-<p>看我工程师老大直接就用了如下代码,一次遍历就搞定了,前提是displayName唯一.</p>
+<p>##二<br>以下是本猿的教训:<br>啥话不说直接上代码想不到displayName的用处,只想着用来和输入的msgText来作对比想匹配,还搞了个正则表达式,遍历了两次功能虽然是实现了但是却是很麻烦,<br>自己想不到其实 final String name = stockList[i];是可以用listStock来替换的.脑子真的转的很慢.</p>
+<pre><code>//        Pattern p = Pattern.compile(&quot;( \\$)(.*?)(\\$ )&quot;);
+//        Matcher matcher = p.matcher(ssb);
+//        List list = new ArrayList();
+//        int j = 0;
+//        while (matcher.find()) {
+//            searchStocks = listStock.get(j);
+//            String sel = matcher.group();
+//            if (searchStocks.getDisplayname().equals(sel)) {
+//                list.add(matcher.group());
+//                j++;
+//            }
+//        }
+
+//        String[] stockList = (String[]) list.toArray(new String[0]);
+//        MyLog.e(&quot;pipei  &quot; + Arrays.toString(stockList));
+//
+//        if (stockList.length &gt; 0) {
+//            for (int i = 0; i &lt; stockList.length; i++) {
+//
+//                final String name = stockList[i];
+//                final int start = str.indexOf(name);
+//                ssb.setSpan(new ClickableSpan() {
+//                    @Override
+//                    public void onClick(View widget) {
+//                        Toast.makeText(context, name,
+//                                Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void updateDrawState(TextPaint ds) {
+//                        super.updateDrawState(ds);
+//                        ds.setUnderlineText(true);
+//                    }
+//                }, start, start + name.length(), 0);
+//            }
+//        }
+</code></pre><p>经老大指导,一次遍历就搞定了,前提是displayName唯一.</p>
 <pre><code>SpannableStringBuilder ssb = new     SpannableStringBuilder(str);
 for(int i = 0; i &lt; listStock.size(); i++) {
    StockElem.SearchStocks searchStocks = listStock.get(i);
@@ -368,11 +404,11 @@ for(int i = 0; i &lt; listStock.size(); i++) {
   
 <nav id="article-nav">
   
-    <a href="/2017/04/10/apk_simple/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/10/14/dialogFragment/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          让你的apk减减肥
+          自定义dialog对话框  (类似与QQ,微信分享文章的对话框)
         
       </div>
     </a>
@@ -516,6 +552,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RecyclerView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件 drawable shape</a>
               </li>
             
             <div class="clearfix"></div>
