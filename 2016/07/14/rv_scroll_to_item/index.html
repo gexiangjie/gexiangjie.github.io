@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="gexiangjie">
 <meta property="og:description" content="当 RecyclerView 点击的时候 item 会根据你设置的 position 通过scrollToPosition（position）自动跳转到相应的位置，但是由于每一个 item 的高度都是在变化的，所以不能保证相应的 item 一直都能位于窗口的顶部，这时候就可以通过scrollToPositionWithOffset（position，offset）来设置一下点击的时候相应item">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/IMG_20130802_193717.jpg">
-<meta property="og:updated_time" content="2017-08-31T05:40:41.000Z">
+<meta property="og:updated_time" content="2017-09-06T13:12:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RecycleView 中的 item 移动到当前视图的顶部">
 <meta name="twitter:description" content="当 RecyclerView 点击的时候 item 会根据你设置的 position 通过scrollToPosition（position）自动跳转到相应的位置，但是由于每一个 item 的高度都是在变化的，所以不能保证相应的 item 一直都能位于窗口的顶部，这时候就可以通过scrollToPositionWithOffset（position，offset）来设置一下点击的时候相应item">
@@ -181,7 +181,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://ovfk1aqnq.bkt.clouddn.com/IMG_20130802_193717.jpg" alt=""></p>
-<p>当 RecyclerView 点击的时候 item 会根据你设置的 position 通过scrollToPosition（position）自动跳转到相应的位置，但是由于每一个 item 的高度都是在变化的，所以不能保证相应的 item 一直都能位于窗口的顶部，这时候就可以通过scrollToPositionWithOffset（position，offset）来设置一下点击的时候相应item距离顶部的偏移量。<a id="more"></a><br>相关的偏移量可以根据计算而得，也可以直接设置为 0.偏移量 offset 的单位为px,这时候不管怎么点击都会让你点击的item位于当前视图的顶部。当然也有点小问题，就是当RecycleView到达底部的时候就会失效。<br>相关代码：</p>
+<p>当 RecyclerView 点击的时候 item 会根据你设置的 position 通过scrollToPosition（position）自动跳转到相应的位置，但是由于每一个 item 的高度都是在变化的，所以不能保证相应的 item 一直都能位于窗口的顶部，这时候就可以通过scrollToPositionWithOffset（position，offset）来设置一下点击的时候相应item距离顶部的偏移量。</p>
+<a id="more"></a>
+<p>相关的偏移量可以根据计算而得，也可以直接设置为 0.偏移量 offset 的单位为px,这时候不管怎么点击都会让你点击的item位于当前视图的顶部。当然也有点小问题，就是当RecycleView到达底部的时候就会失效。<br>相关代码：</p>
 <pre><code>mHeadAdapter.setmOnClicklistener(new OnRecycleViewHeadClickListener() 
 {
     @Override
@@ -431,19 +433,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
               </li>
              
               <li class="article-tag-list-item">

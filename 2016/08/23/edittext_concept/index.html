@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>EditText使用小结 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##一.EditText 光标设置android:cursorVisible=”true”//显示 android:cursorVisible=”false”//隐藏">
+  <meta name="description" content="一.EditText 光标设置android:cursorVisible=”true”//显示 android:cursorVisible=”false”//隐藏">
 <meta name="keywords" content="Android 控件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EditText使用小结">
 <meta property="og:url" content="http://yoursite.com/2016/08/23/edittext_concept/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="##一.EditText 光标设置android:cursorVisible=”true”//显示 android:cursorVisible=”false”//隐藏">
+<meta property="og:description" content="一.EditText 光标设置android:cursorVisible=”true”//显示 android:cursorVisible=”false”//隐藏">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E6%98%8E%E6%B9%96.jpg">
-<meta property="og:updated_time" content="2017-08-31T08:46:28.000Z">
+<meta property="og:updated_time" content="2017-09-06T13:15:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EditText使用小结">
-<meta name="twitter:description" content="##一.EditText 光标设置android:cursorVisible=”true”//显示 android:cursorVisible=”false”//隐藏">
+<meta name="twitter:description" content="一.EditText 光标设置android:cursorVisible=”true”//显示 android:cursorVisible=”false”//隐藏">
 <meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E6%98%8E%E6%B9%96.jpg">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
@@ -180,10 +180,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E6%98%8E%E6%B9%96.jpg" width="230" height="400"></p>
-<p>##一.EditText 光标设置<br>android:cursorVisible=”true”//显示</p>
+        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E6%98%8E%E6%B9%96.jpg" width="280" height="350"></p>
+<h3 id="一-EditText-光标设置"><a href="#一-EditText-光标设置" class="headerlink" title="一.EditText 光标设置"></a>一.EditText 光标设置</h3><p>android:cursorVisible=”true”//显示</p>
 <p>android:cursorVisible=”false”//隐藏<br><a id="more"></a></p>
-<p>##二.设置光标颜色<br>android:textCursorDrawable 这个属性是用来控制光标颜色的</p>
+<h3 id="二-设置光标颜色"><a href="#二-设置光标颜色" class="headerlink" title="二.设置光标颜色"></a>二.设置光标颜色</h3><p>android:textCursorDrawable 这个属性是用来控制光标颜色的</p>
 <p>android:textCursorDrawable=”@null”，”@null”作用是让光标颜色和text color一样,但是我直接用textCursorDrawable加上颜色值时,光标并不显示颜色,后来写了一个drawable文件来设置EditText光标的颜色和粗细,亲测有效,drawable文件:</p>
 <pre><code>&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:shape=&quot;rectangle&quot;&gt;
 &lt;size android:width=&quot;0.5dp&quot; /&gt;
@@ -191,8 +191,7 @@
 &lt;/shape&gt;
 </code></pre><p>在xml布局中引用:</p>
 <pre><code>android:textCursorDrawable=&quot;@drawable/color_cursor&quot;
-</code></pre><p>##三.EditText默认不显示光标，不可编辑，点击它，进入编辑状态，光标显示</p>
-<p>JAVA代码中设置EditText不可编辑，光标不可见：</p>
+</code></pre><h3 id="三-EditText默认不显示光标，不可编辑，点击它，进入编辑状态，光标显示"><a href="#三-EditText默认不显示光标，不可编辑，点击它，进入编辑状态，光标显示" class="headerlink" title="三.EditText默认不显示光标，不可编辑，点击它，进入编辑状态，光标显示"></a>三.EditText默认不显示光标，不可编辑，点击它，进入编辑状态，光标显示</h3><p>JAVA代码中设置EditText不可编辑，光标不可见：</p>
 <pre><code>et.setCursorVisible(false);
 </code></pre><p>设置EditText可编辑，光标可见：</p>
 <pre><code>et.setOnClickListener(new OnClickListener() {
@@ -444,19 +443,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>富文本点击类似于QQ点赞好友 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##一Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
+  <meta name="description" content="一Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="富文本点击类似于QQ点赞好友">
 <meta property="og:url" content="http://yoursite.com/2016/08/24/rich_text/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="##一Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
+<meta property="og:description" content="一Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_2.png">
-<meta property="og:updated_time" content="2017-09-01T09:08:08.000Z">
+<meta property="og:updated_time" content="2017-09-06T13:12:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="富文本点击类似于QQ点赞好友">
-<meta name="twitter:description" content="##一Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
+<meta name="twitter:description" content="一Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片">
 <meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
@@ -181,7 +181,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##一<br>Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片<br><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png" alt=""></p>
+        <h3 id="一"><a href="#一" class="headerlink" title="一"></a>一</h3><p>Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片<br><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png" alt=""></p>
 <a id="more"></a>
 <p>实现代码:</p>
 <pre><code>public class MainActivity extends AppCompatActivity {
@@ -231,7 +231,8 @@
     return ssb.append(&quot;等&quot; + friends.length + &quot;个人觉得很赞&quot;);
 }
 }
-</code></pre><p>布局文件比较简单这里就不粘了,就是一个TextView.<br>效果如下:<br><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_2.png" alt=""></p>
+</code></pre><p>布局文件比较简单这里就不粘了,就是一个TextView.<br>效果如下:</p>
+<p><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_2.png" alt=""></p>
 <p>其中LinkMovementMethod的解释如下:<br>比如它的onKeyDown调用ClickableSpan的onClick<br>URLSpan实现了ClickableSpan<br>用户点击一个url的话，就会调用LinkMovementMethod::onKeyDown，继而调用URLSpan的onClick，<br>我们看看URLSpan::onClick的实现</p>
 <pre><code>@override
 public void onClick(View widget) {
@@ -242,7 +243,7 @@ public void onClick(View widget) {
     context.startActivity(intent);
 }
 </code></pre><p>它实际上是启动了一个activity，可能是web/email或者其他的满足intent filter/url schema的activity.</p>
-<p>##二<br>以下是本猿的教训:<br>啥话不说直接上代码想不到displayName的用处,只想着用来和输入的msgText来作对比想匹配,还搞了个正则表达式,遍历了两次功能虽然是实现了但是却是很麻烦,<br>自己想不到其实 final String name = stockList[i];是可以用listStock来替换的.脑子真的转的很慢.</p>
+<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>以下是本猿的教训:<br>啥话不说直接上代码想不到displayName的用处,只想着用来和输入的msgText来作对比想匹配,还搞了个正则表达式,遍历了两次功能虽然是实现了但是却是很麻烦,<br>自己想不到其实 final String name = stockList[i];是可以用listStock来替换的.脑子真的转的很慢.</p>
 <pre><code>//        Pattern p = Pattern.compile(&quot;( \\$)(.*?)(\\$ )&quot;);
 //        Matcher matcher = p.matcher(ssb);
 //        List list = new ArrayList();
@@ -543,19 +544,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Drawable Shape 的使用 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="形状的Drawable文件,定义基本的几何图形,如(矩形,圆形,线条等),根元素是 节点比较多，相关的节点如下： ① \: ~ visible:设置是否可见 ~ shape:形状,可选:rectangle(矩形,包括正方形),oval(椭圆,包括圆),line(线段),ring(环形) ~ innerRadiusRatio:当shape为ring才有效,表示环内半径所占半径的比率,如果设置了inn">
+  <meta name="description" content="形状的Drawable文件,定义基本的几何图形,如(矩形,圆形,线条等),根元素是 节点比较多，相关的节点如下： ① shape: ~ visible:设置是否可见 ~ shape:形状,可选:rectangle(矩形,包括正方形),oval(椭圆,包括圆),line(线段),ring(环形) ~ innerRadiusRatio:当shape为ring才有效,表示环内半径所占半径的比率,如果设置">
 <meta name="keywords" content="Android 控件 drawable shape">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Drawable Shape 的使用">
 <meta property="og:url" content="http://yoursite.com/2016/10/19/shape/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="形状的Drawable文件,定义基本的几何图形,如(矩形,圆形,线条等),根元素是 节点比较多，相关的节点如下： ① \: ~ visible:设置是否可见 ~ shape:形状,可选:rectangle(矩形,包括正方形),oval(椭圆,包括圆),line(线段),ring(环形) ~ innerRadiusRatio:当shape为ring才有效,表示环内半径所占半径的比率,如果设置了inn">
-<meta property="og:updated_time" content="2017-09-01T09:27:53.000Z">
+<meta property="og:description" content="形状的Drawable文件,定义基本的几何图形,如(矩形,圆形,线条等),根元素是 节点比较多，相关的节点如下： ① shape: ~ visible:设置是否可见 ~ shape:形状,可选:rectangle(矩形,包括正方形),oval(椭圆,包括圆),line(线段),ring(环形) ~ innerRadiusRatio:当shape为ring才有效,表示环内半径所占半径的比率,如果设置">
+<meta property="og:updated_time" content="2017-09-06T13:10:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Drawable Shape 的使用">
-<meta name="twitter:description" content="形状的Drawable文件,定义基本的几何图形,如(矩形,圆形,线条等),根元素是 节点比较多，相关的节点如下： ① \: ~ visible:设置是否可见 ~ shape:形状,可选:rectangle(矩形,包括正方形),oval(椭圆,包括圆),line(线段),ring(环形) ~ innerRadiusRatio:当shape为ring才有效,表示环内半径所占半径的比率,如果设置了inn">
+<meta name="twitter:description" content="形状的Drawable文件,定义基本的几何图形,如(矩形,圆形,线条等),根元素是 节点比较多，相关的节点如下： ① shape: ~ visible:设置是否可见 ~ shape:形状,可选:rectangle(矩形,包括正方形),oval(椭圆,包括圆),line(线段),ring(环形) ~ innerRadiusRatio:当shape为ring才有效,表示环内半径所占半径的比率,如果设置">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -179,7 +179,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>形状的Drawable文件,定义基本的几何图形,如(矩形,圆形,线条等),根元素是<shape..> 节点比较多，相关的节点如下：</shape..></p>
-<p>① \<shape>:</shape></p>
+<p>① shape:</p>
 <p>~ visible:设置是否可见</p>
 <p>~ shape:形状,可选:rectangle(矩形,包括正方形),oval(椭圆,包括圆),line(线段),ring(环形)</p>
 <p>~ innerRadiusRatio:当shape为ring才有效,表示环内半径所占半径的比率,如果设置了innerRadius, 他会被忽略</p>
@@ -187,20 +187,20 @@
 <p>~ thicknessRatio:当shape为ring才有效,表环厚度占半径的比率</p>
 <p>~ thickness:当shape为ring才有效,表示环的厚度,即外半径与内半径的差</p>
 <p>~ useLevel:当shape为ring才有效,表示是否允许根据level来显示环的一部分<br><a id="more"></a></p>
-<p>②\<size>:</size></p>
+<p>②size:</p>
 <p>~ width:图形形状宽度</p>
 <p>~ height:图形形状高度</p>
-<p>③\<gradient>：设置渐变色</gradient></p>
-<p>④\<solid></solid></p>
+<p>③gradient：设置渐变色</p>
+<p>④solid:</p>
 <p>~ color:背景填充色,设置solid后会覆盖gradient设置的所有效果!!!!!!</p>
-<p>⑤\<stroke><br>~ width:边框的宽度</stroke></p>
+<p>⑤stroke:<br>~ width:边框的宽度</p>
 <p>~ color:边框的颜色</p>
 <p>~ dashWidth:边框虚线段的长度</p>
 <p>~ dashGap:边框的虚线段的间距</p>
-<p>⑥\<conner></conner></p>
+<p>⑥conner:</p>
 <p>~ radius:圆角半径,适用于上下左右四个角</p>
 <p>~ topLeftRadius,topRightRadius,BottomLeftRadius,tBottomRightRadius: 依次是左上,右上,左下,右下的圆角值,按自己需要设置!</p>
-<p>⑦\<padding><br>left,top,right,bottm:依次是左上右下方向上的边距!</padding></p>
+<p>⑦padding:<br>left,top,right,bottm:依次是左上右下方向上的边距!</p>
 
       
 
@@ -444,19 +444,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
               </li>
              
               <li class="article-tag-list-item">

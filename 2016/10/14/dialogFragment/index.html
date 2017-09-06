@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>自定义dialog对话框  (类似与QQ,微信分享文章的对话框) | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##一项目有分享文章到直播间的功能,当点击分享的时候的弹出对话框,类似与微信中把文章分享给朋友的对话框,话不多说直接上图.  像这种不同于弹出框,Android系统提供的方法无法满足要求,那么就需要自己定义一个.">
+  <meta name="description" content="一项目有分享文章到直播间的功能,当点击分享的时候的弹出对话框,类似与微信中把文章分享给朋友的对话框,话不多说直接上图.  像这种不同于弹出框,Android系统提供的方法无法满足要求,那么就需要自己定义一个.">
 <meta name="keywords" content="Android 控件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义dialog对话框  (类似与QQ,微信分享文章的对话框)">
 <meta property="og:url" content="http://yoursite.com/2016/10/14/dialogFragment/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="##一项目有分享文章到直播间的功能,当点击分享的时候的弹出对话框,类似与微信中把文章分享给朋友的对话框,话不多说直接上图.  像这种不同于弹出框,Android系统提供的方法无法满足要求,那么就需要自己定义一个.">
+<meta property="og:description" content="一项目有分享文章到直播间的功能,当点击分享的时候的弹出对话框,类似与微信中把文章分享给朋友的对话框,话不多说直接上图.  像这种不同于弹出框,Android系统提供的方法无法满足要求,那么就需要自己定义一个.">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/blog_dialogfragment_1.png">
 <meta property="og:image" content="http://img.blog.csdn.net/20161014104311711?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
-<meta property="og:updated_time" content="2017-09-01T09:18:30.000Z">
+<meta property="og:updated_time" content="2017-09-06T13:15:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义dialog对话框  (类似与QQ,微信分享文章的对话框)">
-<meta name="twitter:description" content="##一项目有分享文章到直播间的功能,当点击分享的时候的弹出对话框,类似与微信中把文章分享给朋友的对话框,话不多说直接上图.  像这种不同于弹出框,Android系统提供的方法无法满足要求,那么就需要自己定义一个.">
+<meta name="twitter:description" content="一项目有分享文章到直播间的功能,当点击分享的时候的弹出对话框,类似与微信中把文章分享给朋友的对话框,话不多说直接上图.  像这种不同于弹出框,Android系统提供的方法无法满足要求,那么就需要自己定义一个.">
 <meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/blog_dialogfragment_1.png">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
@@ -181,7 +181,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##一<br>项目有分享文章到直播间的功能,当点击分享的时候的弹出对话框,类似与微信中把文章分享给朋友的对话框,话不多说直接上图.</p>
+        <h3 id="一"><a href="#一" class="headerlink" title="一"></a>一</h3><p>项目有分享文章到直播间的功能,当点击分享的时候的弹出对话框,类似与微信中把文章分享给朋友的对话框,话不多说直接上图.</p>
 <p><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_dialogfragment_1.png" alt=""></p>
 <p>像这种不同于弹出框,Android系统提供的方法无法满足要求,那么就需要自己定义一个.<br><a id="more"></a><br>首先写一个布局文件shareTo.xml</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!--分享文章到直播间弹窗--&gt;
@@ -310,7 +310,7 @@
         android:textSize=&quot;17sp&quot; /&gt;
 &lt;/LinearLayout&gt;
 </code></pre><p><br>布局文件很简单,以下background只是对话框的圆角,自己写一下就可以或者删除就可以了.</p>
-<p>##二<br>下面是自定义dialog的实现 dialogShare.java</p>
+<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>下面是自定义dialog的实现 dialogShare.java</p>
 <pre><code>public class DialogShareEssay {
 private Dialog dialog;
 private Context context;
@@ -367,7 +367,7 @@ public void dismiss() {
     dialog.dismiss();
 }
 }
-</code></pre><p>##三<br>如果你需要向你的弹出框传入一些参数,比如头像,好有名称,文章标题之类的,可以在构造方法中加入这些参数,例如:</p>
+</code></pre><h3 id="三"><a href="#三" class="headerlink" title="三"></a>三</h3><p>如果你需要向你的弹出框传入一些参数,比如头像,好有名称,文章标题之类的,可以在构造方法中加入这些参数,例如:</p>
 <pre><code>public DialogShareEssay(Context context, Banner mBanner, String authorLogo, String abstractContent, int web_type) {
     this.context = context;
     this.mBanner = mBanner;
@@ -625,19 +625,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
               </li>
              
               <li class="article-tag-list-item">

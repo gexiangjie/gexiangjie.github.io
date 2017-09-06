@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>gexiangjie</title>
+  <title>Dagger2 Google 原文翻译 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Dagger &amp;amp; Android One of the primary advantages of Dagger 2 over most other dependency injection frameworks is that its strictly generated implementation (no reflection) means that it can be used i">
+<meta name="keywords" content="Android,Dagger2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gexiangjie">
+<meta property="og:title" content="Dagger2 Google 原文翻译">
 <meta property="og:url" content="http://yoursite.com/2017/09/01/dagger2_translate/index.html">
 <meta property="og:site_name" content="gexiangjie">
 <meta property="og:description" content="Dagger &amp;amp; Android One of the primary advantages of Dagger 2 over most other dependency injection frameworks is that its strictly generated implementation (no reflection) means that it can be used i">
-<meta property="og:updated_time" content="2017-09-01T05:37:29.000Z">
+<meta property="og:updated_time" content="2017-09-06T13:17:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gexiangjie">
+<meta name="twitter:title" content="Dagger2 Google 原文翻译">
 <meta name="twitter:description" content="Dagger &amp;amp; Android One of the primary advantages of Dagger 2 over most other dependency injection frameworks is that its strictly generated implementation (no reflection) means that it can be used i">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
@@ -160,12 +161,26 @@
             <article id="post-dagger2_translate" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Dagger2 Google 原文翻译
+    </h1>
+  
+
+        
+        <a href="/2017/09/01/dagger2_translate/" class="archive-article-date">
+  	<time datetime="2017-09-01T00:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <p>Dagger &amp; Android</p>
 <p>One of the primary advantages of Dagger 2 over most other dependency injection frameworks is that its strictly generated implementation (no reflection) means that it can be used in Android applications. However, there are still some considerations to be made when using Dagger within Android applications.</p>
-<p>Dagger2相对于大多数其他依赖注入框架的主要优点之一是其严格生成的实现（没有反射）意味着它可以在Android应用程序中使用。然而，在Android应用程序中使用Dagger时还需要考虑一些问题。</p>
-<p>Philosophy</p>
+<p>Dagger2相对于大多数其他依赖注入框架的主要优点之一是其严格生成的实现（没有反射）意味着它可以在Android应用程序中使用。然而，在Android应用程序中使用Dagger时还需要考虑一些问题。<br><a id="more"></a><br>Philosophy</p>
 <p>While code written for Android is Java source, it is often quite different in terms of style. Typically, such differences exist to accomodate the unique performance considerations of a mobile platform.</p>
 <p>But many of the patterns commonly applied to code intended for Android are contrary to those applied to other Java code. Even much of the advice in Effective Java is considered inappropriate for Android.</p>
 <p>In order to achieve the goals of both idiomatic and portable code, Dagger relies on ProGuard to post-process the compiled bytecode. This allows Dagger to emit source that looks and feels natural on both the server and Android, while using the different toolchains to produce bytecode that executes efficiently in both environements. Moreover, Dagger has an explicit goal to ensure that the Java source that it generates is consistently compatible with ProGuard optimizations.</p>
@@ -225,6 +240,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Dagger2</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -299,8 +329,8 @@
     </a>
   
   
-    <a href="/2017/05/22/diary-2017-0521-0527/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">江南见闻</div>
+    <a href="/2017/04/10/apk_simple/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">让你的apk减减肥</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -428,19 +458,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
               </li>
              
               <li class="article-tag-list-item">

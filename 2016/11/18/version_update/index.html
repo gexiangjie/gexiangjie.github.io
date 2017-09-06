@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Android 版本更新解决方案 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##前言最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dia">
+  <meta name="description" content="前言最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dialo">
 <meta name="keywords" content="Android 版本更新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 版本更新解决方案">
 <meta property="og:url" content="http://yoursite.com/2016/11/18/version_update/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="##前言最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dia">
-<meta property="og:updated_time" content="2017-09-01T09:40:50.000Z">
+<meta property="og:description" content="前言最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dialo">
+<meta property="og:updated_time" content="2017-09-06T13:09:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 版本更新解决方案">
-<meta name="twitter:description" content="##前言最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dia">
+<meta name="twitter:description" content="前言最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dialo">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -178,8 +178,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##前言<br>最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dialog会引起莫名的错误,所以所有的弹框全部采用的是dialogfragment.下面几种是我用过的方法.<br><a id="more"></a><br>   <em>方法一</em></p>
-<pre><code>public void downFile(final String url) {
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dialog会引起莫名的错误,所以所有的弹框全部采用的是dialogfragment.下面几种是我用过的方法.<br><a id="more"></a>    </p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><pre><code>public void downFile(final String url) {
     pBar = new ProgressDialog(getContext());    //进度条，在下载的时候实时更新进度
     pBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
     pBar.setCancelable(false);
@@ -256,8 +256,7 @@ void update() {
     startActivity(intent);
     android.os.Process.killProcess(android.os.Process.myPid());
 }
-</code></pre><p><em>方法二</em></p>
-<pre><code>public class MyDownloadAnsy extends AsyncTask&lt;String, Integer, Integer&gt; {
+</code></pre><h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><pre><code>public class MyDownloadAnsy extends AsyncTask&lt;String, Integer, Integer&gt; {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -343,8 +342,7 @@ void update() {
         }
     }
 }
-</code></pre><p><em>方法三</em></p>
-<p>上面的两种方式就是最简单文件下载然后监听安装，不过不同手机或许会出现不同的问题,还好谷歌给我们支持了,就是Android系统的DownloadManager ，个人觉得比较方便实用，它可以检测下载速度，显示下载进度，文件大小，断点下载等强大功能，下载过程中他会自动检测网络状态，网络断开时停止下载，连接上时自动接着下载，还可以设置成只有在wifi下面才进行下载，代码里面关键代码都写了注释，比较简单。    </p>
+</code></pre><h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>上面的两种方式就是最简单文件下载然后监听安装，不过不同手机或许会出现不同的问题,还好谷歌给我们支持了,就是Android系统的DownloadManager ，个人觉得比较方便实用，它可以检测下载速度，显示下载进度，文件大小，断点下载等强大功能，下载过程中他会自动检测网络状态，网络断开时停止下载，连接上时自动接着下载，还可以设置成只有在wifi下面才进行下载，代码里面关键代码都写了注释，比较简单。    </p>
 <pre><code>private static DownloadManager manager;
 private static long downloadId;
 private static String DOWNLOAD_FILE_NAME = &quot;update.apk&quot;;
@@ -776,19 +774,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
               </li>
              
               <li class="article-tag-list-item">
