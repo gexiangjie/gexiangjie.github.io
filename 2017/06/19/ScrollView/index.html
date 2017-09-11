@@ -6,17 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/9 | gexiangjie</title>
+  <title>ScrollView 使用小结 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的个人博客!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="gexiangjie">
-<meta property="og:url" content="http://yoursite.com/archives/2017/09/index.html">
+  <meta name="description" content="闲言碎语忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累. 官方解释">
+<meta name="keywords" content="Android控件,ScrollView">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ScrollView 使用小结">
+<meta property="og:url" content="http://yoursite.com/2017/06/19/ScrollView/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="这是我的个人博客!">
+<meta property="og:description" content="闲言碎语忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累. 官方解释">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-63d13f93c9968d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-760a79dbd0a6300e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-11T03:31:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gexiangjie">
-<meta name="twitter:description" content="这是我的个人博客!">
+<meta name="twitter:title" content="ScrollView 使用小结">
+<meta name="twitter:description" content="闲言碎语忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累. 官方解释">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4642697-63d13f93c9968d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -156,106 +161,266 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ScrollView" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/04/face_offer/" class="archive-article-date">
-  	<time datetime="2017-09-04T11:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/04/face_offer/">Android 求职一些常见的必备技能和面试中会问道的问题</a>
+    <h1 class="article-title" itemprop="name">
+      ScrollView 使用小结
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/06/19/ScrollView/" class="archive-article-date">
+  	<time datetime="2017-06-19T02:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="闲言碎语"><a href="#闲言碎语" class="headerlink" title="闲言碎语"></a>闲言碎语</h3><p>忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累.</p>
+<h3 id="官方解释"><a href="#官方解释" class="headerlink" title="官方解释"></a>官方解释</h3><p><img src="http://upload-images.jianshu.io/upload_images/4642697-63d13f93c9968d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><a id="more"></a></p>
+<p>从谷歌的文档我们可以得到ScrollView是一个可以滚动的用户布局容器，它可以让内容在手机屏幕上展示不开的情况下滚动展示。ScrollView是一个FrameLayout，所以你应该把一个子控件包含在它的整个内容滚动；这个子控件本身可以是一个复杂的层次结构对象的布局管理器，这个子控件一般是在垂直方向的一个LinearLayout呈现，用户可以通过滚动的顶级项目的垂直阵列。如果一个ScrollView有多个布局就会报出以下的错误:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4642697-760a79dbd0a6300e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="error"></p>
+<p>当然,也可以通过below和above让Scrollview在哪两个控件之间滚动,根据自己的项目实时调整.</p>
+<h3 id="xml中常用到的属性"><a href="#xml中常用到的属性" class="headerlink" title="xml中常用到的属性:"></a>xml中常用到的属性:</h3><h4 id="android-fadingEdge-”none”"><a href="#android-fadingEdge-”none”" class="headerlink" title="android:fadingEdge=”none”"></a>android:fadingEdge=”none”</h4><p>设置下拉滚动条时,边框渐变的方向。none（边框颜色不变）,horizontal（水平方向颜色变淡），vertical（垂直方向颜色变淡）.</p>
+<p>####android:overScrollMode=”never”<br>删除ScrollView拉到尽头（顶部、底部），然后继续拉出现的阴影效果,适用于2.3及以上的否则不用设置.</p>
+<p>####android:scrollbars=”none”<br>设置滚动条显示,none（隐藏），horizontal（水平），vertical（垂直）。见下列代码演示使用该属性让EditText内有滚动条。但是其他容器如LinearLayout设置了但是没有效果。</p>
+<h4 id="match-parent问题"><a href="#match-parent问题" class="headerlink" title="match_parent问题"></a>match_parent问题</h4><p>ScrollView 本身的高度设置为 match_parent,其子 View 的高度也设置为 match_parent,自然状态下该子 View 的高度并不会占满 ScrollView的高度。 原因是 match_parent 针对一般布局而言，是子 View 的高度和parent 的高度一致，但在 ScrollView 身上，工作机制并非如此，而是ScrollView 的高度随着子 View 的高度变化而变化(子 View 高度大于ScrollView 时)。在子 View 高度小于 ScrollView 高度时，必需在xml 里为 ScrollView 加上 Android:fillViewport=”true”，这样子View 小于 ScrollView 高度时就会占满父 View.</p>
+<p><strong>解决方法:</strong>xml里为ScrollView加上android:fillViewport=“true”.</p>
+<h3 id="ScrollView-中常用到的方法"><a href="#ScrollView-中常用到的方法" class="headerlink" title="ScrollView 中常用到的方法:"></a>ScrollView 中常用到的方法:</h3><h4 id="Scrollview-禁止滑动"><a href="#Scrollview-禁止滑动" class="headerlink" title="Scrollview 禁止滑动:`"></a>Scrollview 禁止滑动:`</h4><pre><code>scrollView.setOnTouchListener(new View.OnTouchListener() {
+   @Override
+   public boolean onTouch(View view, MotionEvent motionEvent) {
+         return true;
+}});
+</code></pre><p>####可滑动</p>
+<pre><code>scrollView.setOnTouchListener(new View.OnTouchListener() {
+     @Override
+     public boolean onTouch(View view, MotionEvent motionEvent) {
+          return false;
+}});
+</code></pre><h4 id="滚到到底部："><a href="#滚到到底部：" class="headerlink" title="滚到到底部："></a>滚到到底部：</h4><pre><code>scrollView.post(new Runnable() {
+      @Override
+      public void run() {//滑动底部
+        scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+}});
+</code></pre><h4 id="滚动到顶部："><a href="#滚动到顶部：" class="headerlink" title="滚动到顶部："></a>滚动到顶部：</h4><pre><code>scrollView.post(new Runnable() {
+     @Override
+     public void run() {//滑动顶部
+        scrollView.fullScroll(ScrollView.FOCUS_UP);
+}});
+</code></pre><h4 id="滚动到某个位置"><a href="#滚动到某个位置" class="headerlink" title="滚动到某个位置:"></a>滚动到某个位置:</h4><pre><code>scrollView.post(new Runnable() {
+     @Override
+     public void run() {
+        int offset = 100;//偏移值
+        scrollView.smoothScrollTo(0, offset);
+}});
+</code></pre><p>  <strong>注意:</strong> ScrollView 滚动的时候需要post 一个Runnable，让其在消息队列中执行滚动！<br>    第一，handler.post(runnable),并不是新开线程，只是让UI主线程去并发执行run()方法。<br>    第二，之所以放在handler里，是为了保证View都已经绘制完成。不然，你放在resume()中执行，应该也可以的。<br>    第三，smoothScrollTo类似于scrollTo，但是滚动的时候是平缓的而不是立即滚动到某处。另外，smoothScrollTo()方法可以打断滑动动画。</p>
+<h3 id="监听ScrollView滑动到底部-加载数据"><a href="#监听ScrollView滑动到底部-加载数据" class="headerlink" title="监听ScrollView滑动到底部,加载数据"></a>监听ScrollView滑动到底部,加载数据</h3><p>有时候我们想让在ScrollView滑动到底部的时候去做一些事情,但是Scrollview并没有直接提供这样的方法,此时我们可以通过简单的继承一下ScrollView,为ScrollView滑动到底部设置一下监听:</p>
+<pre><code>public class ScrollBottomScrollView extends ScrollView {
+
+private OnScrollBottomListener listener;
+private int calCount;
+
+public interface OnScrollBottomListener {
+    void scrollToBottom();
+}
+
+public void onScrollViewScrollToBottom(OnScrollBottomListener l) {
+    listener = l;
+}
+
+public void unRegisterOnScrollViewScrollToBottom() {
+    listener = null;
+}
+
+public ScrollBottomScrollView(Context context, AttributeSet attrs) {
+    super(context, attrs);
+}
+
+@Override
+protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+    View view = this.getChildAt(0);
+    if (this.getHeight() + this.getScrollY() == view.getHeight()) {
+        calCount++;
+        if (calCount == 1) {
+            if (listener != null) {
+                listener.scrollToBottom();
+            }
+        }
+    } else {
+        calCount = 0;
+    }
+}
+}
+</code></pre><p>在需要的地方调用如下:</p>
+<pre><code>scrollView.onScrollViewScrollToBottom(new ScrollBottomScrollView.OnScrollBottomListener() {
+    @Override
+    public void scrollToBottom() {
+         //请求数据
+}});
+</code></pre><p>另外如果你的布局中是ScrollView嵌入RecycerView那么就势必就会出现滑动冲突的问题,此时我们可以把RecycerView的滑动监听给禁止,这样就不会有冲突的问题了.</p>
+<pre><code>LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this) {
+   //禁止recycleview竖直滑动
+   @Overridepublic boolean canScrollVertically() {
+       return false;
+}};
+</code></pre><p>大概就用到了这么多,以后有新的研究还会继续更新.<br>另外有时间会把horizontalscrollview总结记录一下,想想都觉得激动.</p>
+<p><strong>谷歌官方文档</strong><br><a href="https://developer.android.com/reference/android/widget/ScrollView.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/ScrollView.html</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>不要怕我骄傲用你的钱砸我吧<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android控件</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试求职</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ScrollView</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/19/ScrollView/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/01/dagger2_translate/" class="archive-article-date">
-  	<time datetime="2017-09-01T00:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/09/01/dagger2_translate/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Dagger2 Google 原文翻译
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/10/apk_simple/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">让你的apk减减肥</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/01/dagger2_translate/">Dagger2 Google 原文翻译</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Dagger2</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -278,8 +443,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
