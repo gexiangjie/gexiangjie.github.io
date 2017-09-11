@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ScrollView 使用小结 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="闲言碎语忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累. 官方解释">
+  <meta name="description" content="闲言碎语忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累.">
 <meta name="keywords" content="Android控件,ScrollView">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ScrollView 使用小结">
 <meta property="og:url" content="http://yoursite.com/2017/06/19/ScrollView/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="闲言碎语忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累. 官方解释">
+<meta property="og:description" content="闲言碎语忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累.">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-63d13f93c9968d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-760a79dbd0a6300e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-11T03:31:29.000Z">
+<meta property="og:updated_time" content="2017-09-11T03:50:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ScrollView 使用小结">
-<meta name="twitter:description" content="闲言碎语忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累. 官方解释">
+<meta name="twitter:description" content="闲言碎语忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累.">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4642697-63d13f93c9968d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
@@ -182,37 +182,41 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="闲言碎语"><a href="#闲言碎语" class="headerlink" title="闲言碎语"></a>闲言碎语</h3><p>忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累.</p>
-<h3 id="官方解释"><a href="#官方解释" class="headerlink" title="官方解释"></a>官方解释</h3><p><img src="http://upload-images.jianshu.io/upload_images/4642697-63d13f93c9968d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><a id="more"></a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4642697-63d13f93c9968d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><a id="more"></a></p>
 <p>从谷歌的文档我们可以得到ScrollView是一个可以滚动的用户布局容器，它可以让内容在手机屏幕上展示不开的情况下滚动展示。ScrollView是一个FrameLayout，所以你应该把一个子控件包含在它的整个内容滚动；这个子控件本身可以是一个复杂的层次结构对象的布局管理器，这个子控件一般是在垂直方向的一个LinearLayout呈现，用户可以通过滚动的顶级项目的垂直阵列。如果一个ScrollView有多个布局就会报出以下的错误:</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/4642697-760a79dbd0a6300e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="error"></p>
 <p>当然,也可以通过below和above让Scrollview在哪两个控件之间滚动,根据自己的项目实时调整.</p>
-<h3 id="xml中常用到的属性"><a href="#xml中常用到的属性" class="headerlink" title="xml中常用到的属性:"></a>xml中常用到的属性:</h3><h4 id="android-fadingEdge-”none”"><a href="#android-fadingEdge-”none”" class="headerlink" title="android:fadingEdge=”none”"></a>android:fadingEdge=”none”</h4><p>设置下拉滚动条时,边框渐变的方向。none（边框颜色不变）,horizontal（水平方向颜色变淡），vertical（垂直方向颜色变淡）.</p>
-<p>####android:overScrollMode=”never”<br>删除ScrollView拉到尽头（顶部、底部），然后继续拉出现的阴影效果,适用于2.3及以上的否则不用设置.</p>
-<p>####android:scrollbars=”none”<br>设置滚动条显示,none（隐藏），horizontal（水平），vertical（垂直）。见下列代码演示使用该属性让EditText内有滚动条。但是其他容器如LinearLayout设置了但是没有效果。</p>
-<h4 id="match-parent问题"><a href="#match-parent问题" class="headerlink" title="match_parent问题"></a>match_parent问题</h4><p>ScrollView 本身的高度设置为 match_parent,其子 View 的高度也设置为 match_parent,自然状态下该子 View 的高度并不会占满 ScrollView的高度。 原因是 match_parent 针对一般布局而言，是子 View 的高度和parent 的高度一致，但在 ScrollView 身上，工作机制并非如此，而是ScrollView 的高度随着子 View 的高度变化而变化(子 View 高度大于ScrollView 时)。在子 View 高度小于 ScrollView 高度时，必需在xml 里为 ScrollView 加上 Android:fillViewport=”true”，这样子View 小于 ScrollView 高度时就会占满父 View.</p>
+<h3 id="xml中常用到的属性"><a href="#xml中常用到的属性" class="headerlink" title="xml中常用到的属性:"></a>xml中常用到的属性:</h3><p><strong>android:fadingEdge=”none”</strong><br>设置下拉滚动条时,边框渐变的方向。none（边框颜色不变）,horizontal（水平方向颜色变淡），vertical（垂直方向颜色变淡）.</p>
+<p><strong>android:overScrollMode=”never”</strong><br>删除ScrollView拉到尽头（顶部、底部），然后继续拉出现的阴影效果,适用于2.3及以上的否则不用设置.</p>
+<p><strong>android:scrollbars=”none”</strong><br>设置滚动条显示,none（隐藏），horizontal（水平），vertical（垂直）。见下列代码演示使用该属性让EditText内有滚动条。但是其他容器如LinearLayout设置了但是没有效果。</p>
+<p><strong>match_parent问题</strong><br>ScrollView 本身的高度设置为 match_parent,其子 View 的高度也设置为 match_parent,自然状态下该子 View 的高度并不会占满 ScrollView的高度。 原因是 match_parent 针对一般布局而言，是子 View 的高度和parent 的高度一致，但在 ScrollView 身上，工作机制并非如此，而是ScrollView 的高度随着子 View 的高度变化而变化(子 View 高度大于ScrollView 时)。在子 View 高度小于 ScrollView 高度时，必需在xml 里为 ScrollView 加上 Android:fillViewport=”true”，这样子View 小于 ScrollView 高度时就会占满父 View.</p>
 <p><strong>解决方法:</strong>xml里为ScrollView加上android:fillViewport=“true”.</p>
-<h3 id="ScrollView-中常用到的方法"><a href="#ScrollView-中常用到的方法" class="headerlink" title="ScrollView 中常用到的方法:"></a>ScrollView 中常用到的方法:</h3><h4 id="Scrollview-禁止滑动"><a href="#Scrollview-禁止滑动" class="headerlink" title="Scrollview 禁止滑动:`"></a>Scrollview 禁止滑动:`</h4><pre><code>scrollView.setOnTouchListener(new View.OnTouchListener() {
+<h3 id="ScrollView-中常用到的方法"><a href="#ScrollView-中常用到的方法" class="headerlink" title="ScrollView 中常用到的方法:"></a>ScrollView 中常用到的方法:</h3><p><strong>Scrollview 禁止滑动:</strong></p>
+<pre><code>scrollView.setOnTouchListener(new View.OnTouchListener() {
    @Override
    public boolean onTouch(View view, MotionEvent motionEvent) {
          return true;
 }});
-</code></pre><p>####可滑动</p>
+</code></pre><p><strong>可滑动</strong></p>
 <pre><code>scrollView.setOnTouchListener(new View.OnTouchListener() {
      @Override
      public boolean onTouch(View view, MotionEvent motionEvent) {
           return false;
 }});
-</code></pre><h4 id="滚到到底部："><a href="#滚到到底部：" class="headerlink" title="滚到到底部："></a>滚到到底部：</h4><pre><code>scrollView.post(new Runnable() {
+</code></pre><p><strong>滚到到底部：</strong></p>
+<pre><code>scrollView.post(new Runnable() {
       @Override
       public void run() {//滑动底部
         scrollView.fullScroll(ScrollView.FOCUS_DOWN);
 }});
-</code></pre><h4 id="滚动到顶部："><a href="#滚动到顶部：" class="headerlink" title="滚动到顶部："></a>滚动到顶部：</h4><pre><code>scrollView.post(new Runnable() {
+</code></pre><p><strong>滚动到顶部：</strong></p>
+<pre><code>scrollView.post(new Runnable() {
      @Override
      public void run() {//滑动顶部
         scrollView.fullScroll(ScrollView.FOCUS_UP);
 }});
-</code></pre><h4 id="滚动到某个位置"><a href="#滚动到某个位置" class="headerlink" title="滚动到某个位置:"></a>滚动到某个位置:</h4><pre><code>scrollView.post(new Runnable() {
+</code></pre><p><strong>滚动到某个位置:</strong></p>
+<pre><code>scrollView.post(new Runnable() {
      @Override
      public void run() {
         int offset = 100;//偏移值
@@ -378,18 +382,18 @@ protected void onScrollChanged(int l, int t, int oldl, int oldt) {
   
 <nav id="article-nav">
   
-    <a href="/2017/09/01/dagger2_translate/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/27/config_gradle/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Dagger2 Google 原文翻译
+          使用config.gradle统一管理项目的依赖库
         
       </div>
     </a>
   
   
-    <a href="/2017/04/10/apk_simple/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">让你的apk减减肥</div>
+    <a href="/2017/06/19/gradle_error/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Error:Failed to open zip file. Gradle&#39;s dependency cache may be corrupt (this sometimes occurs after a network connection timeout.)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -513,14 +517,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android控件</a>
               </li>
              
@@ -529,7 +525,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">config.gradle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">依赖库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,11 +549,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,6 +562,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android 控件 drawable shape</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gradle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">version error</a>
               </li>
             
             <div class="clearfix"></div>
