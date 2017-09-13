@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-94b2c85f7aa4fb29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-3575da684cab6e26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-b23d616ce917a65f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-11T13:39:00.000Z">
+<meta property="og:updated_time" content="2017-09-11T13:58:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java正则表达式">
 <meta name="twitter:description" content="本文主要讲一下什么是正则表达式,正则表达式的一些常用语法,以及我们项目中用到的一些正则表达式.">
@@ -204,11 +204,18 @@
 <p><strong>边界符</strong></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/4642697-534f8e37f099892b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>以上图片来自<a href="http://www.runoob.com/java/java-regular-expressions.html" target="_blank" rel="external">菜鸟教程</a>.<br>这些字符构成了我们书写正则表达式的要素.比如写一个匹配六位数字的表达式为\d{6},可以根据自己的需求查阅表格,书写自己的正则表达式.</p>
-<h3 id="String中的正则表达式"><a href="#String中的正则表达式" class="headerlink" title="String中的正则表达式"></a>String中的正则表达式</h3><p>应用正则表达式最简单的途径,就是使用String类的内建功能.<br><strong>matches()</strong><br>检查一个String是否匹配所给的正则表达式.<img src="http://upload-images.jianshu.io/upload_images/4642697-bab639d277e8bde0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="matches()"></p>
+<h3 id="String中的正则表达式"><a href="#String中的正则表达式" class="headerlink" title="String中的正则表达式"></a>String中的正则表达式</h3><p>应用正则表达式最简单的途径,就是使用String类的内建功能.<br><strong>matches()</strong><br>检查一个String是否匹配所给的正则表达式.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4642697-bab639d277e8bde0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="matches()"></p>
 <p><strong>split()</strong></p>
-<p>split()方法的功能是”将字符串从正则表达式匹配的地方切开”, 组装到一个数组中去.<img src="http://upload-images.jianshu.io/upload_images/4642697-0d2ea52440b52666.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="split()">第一个用的普通字符作为正则表达式,即使用空字符来划分,第二个和第三个都用到了’//W’ ,意思是非单词字符(可以去上面找一下该字符的说明),它将标点删掉了通过例子二可以看出来.第三个表示”字母e后面跟着一个或多个非单词字符”.可以看到,在原始字符串中,与正则表达式匹配的部分,在输出的结果中都不存在了.<br>String.split()还有一个重载版本,它允许你限制字符串分割次数.<br><strong>replaceXXX()</strong><br>String类自带的最后一个正则表达式工具是”替换”,可以只替换正则表达式第一个匹配的子串,或是替换所有匹配的地方.<img src="http://upload-images.jianshu.io/upload_images/4642697-94b2c85f7aa4fb29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="replace()">第一个表达式要匹配的是以字母o开头,后面跟一个或多个字母(这里是小写的w),并且只替换掉第一个匹配的部分,”oh”被换成了”gogogo”.<br>第二个是匹配两个单词中的任意一个,竖线表示或,并且替换所有匹配部分.</p>
+<p>split()方法的功能是”将字符串从正则表达式匹配的地方切开”, 组装到一个数组中去.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4642697-0d2ea52440b52666.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="split()"></p>
+<p>第一个用的普通字符作为正则表达式,即使用空字符来划分,第二个和第三个都用到了’//W’ ,意思是非单词字符(可以去上面找一下该字符的说明),它将标点删掉了通过例子二可以看出来.第三个表示”字母e后面跟着一个或多个非单词字符”.可以看到,在原始字符串中,与正则表达式匹配的部分,在输出的结果中都不存在了.<br>String.split()还有一个重载版本,它允许你限制字符串分割次数.<br><strong>replaceXXX()</strong><br>String类自带的最后一个正则表达式工具是”替换”,可以只替换正则表达式第一个匹配的子串,或是替换所有匹配的地方.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4642697-94b2c85f7aa4fb29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="replace()"></p>
+<p>第一个表达式要匹配的是以字母o开头,后面跟一个或多个字母(这里是小写的w),并且只替换掉第一个匹配的部分,”oh”被换成了”gogogo”.<br>第二个是匹配两个单词中的任意一个,竖线表示或,并且替换所有匹配部分.</p>
 <h3 id="创建正则表达式"><a href="#创建正则表达式" class="headerlink" title="创建正则表达式"></a>创建正则表达式</h3><p>一般来说,比起功能有限的String类,我们更愿意构造功能强大的正则表达式.因此我们需要用到java.util.regex 包中的三个类：<br>Pattern 类：<br>pattern 对象是一个正则表达式的编译表示。Pattern 类没有公共构造方法。要创建一个 Pattern 对象，你必须首先调用其公共静态编译方法，它返回一个 Pattern 对象。该方法接受一个正则表达式作为它的第一个参数。<br>Matcher 类：<br>Matcher 对象是对输入字符串进行解释和匹配操作的引擎。与Pattern 类一样，Matcher 也没有公共构造方法。你需要调用 Pattern 对象的 matcher 方法来获得一个 Matcher 对象。<br>PatternSyntaxException：<br>PatternSyntaxException 是一个非强制异常类，它表示一个正则表达式模式中的语法错误。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-3575da684cab6e26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当然Pattern和Matcher中还有很多的方法,譬如find(),start(),end(),reset()这里就不展开了,还会再写一篇来具体介绍这些方法.<br><img src="http://upload-images.jianshu.io/upload_images/4642697-b23d616ce917a65f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4642697-3575da684cab6e26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>当然Pattern和Matcher中还有很多的方法,譬如find(),start(),end(),reset()这里就不展开了,还会再写一篇来具体介绍这些方法.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4642697-b23d616ce917a65f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h3 id="项目中用到的一些正则表达式"><a href="#项目中用到的一些正则表达式" class="headerlink" title="项目中用到的一些正则表达式"></a>项目中用到的一些正则表达式</h3><p><strong>1.验证手机号格式是否正确:</strong></p>
 <pre><code>/** 
   * 大陆手机号码11位数，匹配格式：前三位固定格式+后8位任意数 
@@ -263,7 +270,7 @@ String pStr = &quot;(?&lt;=\\D)([0123569]\\d{5})(?=\\D)|^([0123569]\\d{5})(?=\\D
       }
       return str;
   }
-</code></pre><p>ps:参考书籍&lt;<thinking in="" java="">&gt;.</thinking></p>
+</code></pre><p>ps:参考书籍 Thinking in Java.</p>
 
       
 
@@ -507,14 +514,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android控件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
@@ -523,7 +522,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Android控件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -535,27 +546,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RecyclerView</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android 控件 drawable shape</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,6 +571,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">version error</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件 drawable shape</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
               </li>
             
             <div class="clearfix"></div>
