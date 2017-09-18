@@ -6,32 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>使用config.gradle统一管理项目的依赖库 | gexiangjie</title>
+  <title>ViewPager 3D轮播效果 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言当你看着你module中build.gradle躺着各种乱七八糟的依赖库时候是不是顿生无力感,想整理又不知道怎么有条有序,整理好又好怕再添加新的库的时候不知道放到哪里,好吧,这就是我的想法">
-<meta name="keywords" content="config.gradle,依赖库">
+  <meta name="description" content="前 言   一页显示三个,当中的呈放大状态,另外两页显示一部分并有灰色蒙层.效果如下:">
+<meta name="keywords" content="Android控件,viewpager">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用config.gradle统一管理项目的依赖库">
-<meta property="og:url" content="http://yoursite.com/2017/06/27/config_gradle/index.html">
+<meta property="og:title" content="ViewPager 3D轮播效果">
+<meta property="og:url" content="http://yoursite.com/2017/04/01/veiwpager_3d/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="前言当你看着你module中build.gradle躺着各种乱七八糟的依赖库时候是不是顿生无力感,想整理又不知道怎么有条有序,整理好又好怕再添加新的库的时候不知道放到哪里,好吧,这就是我的想法">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-66748bacc243e137.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-4556ece8f7e66084.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-3bdc83d8b9ed3826.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-6cd4f4c309b7e478.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-e238a5ecd3df5bcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-e87ad7b6edf95bd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-0dce26d55ed7e9c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-1d1b97c5eaa436f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-f2b6afe71f76a090.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-9791258e6c7d5734.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-749d726178a2aac0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-fce9e56ac7584567.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-11T13:49:29.000Z">
+<meta property="og:description" content="前 言   一页显示三个,当中的呈放大状态,另外两页显示一部分并有灰色蒙层.效果如下:">
+<meta property="og:image" content="http://img.blog.csdn.net/20170405110119650?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1OTgzNjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-09-18T07:21:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用config.gradle统一管理项目的依赖库">
-<meta name="twitter:description" content="前言当你看着你module中build.gradle躺着各种乱七八糟的依赖库时候是不是顿生无力感,想整理又不知道怎么有条有序,整理好又好怕再添加新的库的时候不知道放到哪里,好吧,这就是我的想法">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4642697-66748bacc243e137.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="ViewPager 3D轮播效果">
+<meta name="twitter:description" content="前 言   一页显示三个,当中的呈放大状态,另外两页显示一部分并有灰色蒙层.效果如下:">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170405110119650?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1OTgzNjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -171,162 +160,222 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-config_gradle" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-veiwpager_3d" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      使用config.gradle统一管理项目的依赖库
+      ViewPager 3D轮播效果
     </h1>
   
 
         
-        <a href="/2017/06/27/config_gradle/" class="archive-article-date">
-  	<time datetime="2017-06-27T03:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
+        <a href="/2017/04/01/veiwpager_3d/" class="archive-article-date">
+  	<time datetime="2017-04-01T15:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>当你看着你module中build.gradle躺着各种乱七八糟的依赖库时候是不是顿生无力感,想整理又不知道怎么有条有序,整理好又好怕再添加新的库的时候不知道放到哪里,好吧,这就是我的想法</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-66748bacc243e137.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="by gxj"></p>
-<a id="more"></a>
-<p>所以见着build.gradle的时候我都是绕着走的…昨天正好又添加依赖库,我终于忍不了了,gg后发现一个叫config.gradle的东西貌似能解决这个问题,那还等什么,干它…</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-4556ece8f7e66084.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="by gxj"></p>
-<h3 id="新建config-gradle文件"><a href="#新建config-gradle文件" class="headerlink" title="新建config.gradle文件"></a>新建config.gradle文件</h3><p>右击工程名称选择new-&gt;file-&gt;config.gradle,新建的config.gradle与你的module在同级目录中:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-3bdc83d8b9ed3826.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="by gxj"></p>
-<p>这样使用config中的配置就可以管理所有module中的配置了.</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-6cd4f4c309b7e478.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="by gxj"></p>
-<p>然后在项目的build.gradle文件中引入(注意是项目的build.gradle,而不是module的build.gradle)</p>
-<pre><code>apply from: &quot;config.gradle&quot;
-</code></pre><p>(注意:如果如果工程项目下有使用plugins{}的话,要把apply from: “config.gradle”放在plugins{}后面,如果放在前面会报以下错误</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-e238a5ecd3df5bcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>因为我的项目中使用了            </p>
-<pre><code>plugins {
-    id &quot;com.jfrog.bintray&quot; version &quot;1.7&quot;
+        <h4 id="前-言"><a href="#前-言" class="headerlink" title="前 言"></a>前 言</h4><p>   一页显示三个,当中的呈放大状态,另外两页显示一部分并有灰色蒙层.效果如下:</p>
+<p>   <img src="http://img.blog.csdn.net/20170405110119650?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1OTgzNjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="3Dviewpager效果"><br>  <a id="more"></a></p>
+<p>   这个实现起来还是比较容易的,不需要用到第三方的,使用viewpager完全可以实现.<br>布局文件如下,其中宽高可以自己定义:</p>
+<pre><code>&lt;LinearLayout
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;287dp&quot;
+android:layout_marginTop=&quot;12dp&quot;
+android:clipChildren=&quot;false&quot;
+android:gravity=&quot;center&quot;
+android:orientation=&quot;vertical&quot;&gt;
+
+    &lt;android.support.v4.view.ViewPager
+           android:id=&quot;@+id/view_pager&quot;
+        android:layout_width=&quot;165dp&quot;
+        android:layout_height=&quot;match_parent&quot;/&gt;
+&lt;/LinearLayout&gt;
+</code></pre><p>Activity代码如下,ZoomOutPageTransformer.java就是控制viewpager展示大小的蒙层,搜一下网上很多,等会我会把代码贴在下方:</p>
+<pre><code>viewPager.setOffscreenPageLimit(5);
+viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+adapter = new PageAdapter(this, jsonElements);
+viewPager.setAdapter(adapter);
+</code></pre><p>PageAdapter.java文件如下,数据源自己解决,这里图片加载使用的是glide.</p>
+<pre><code>public class PageAdapter extends PagerAdapter {
+    private JsonArray jsonArray;
+    private Context context;
+
+public PageAdapter(Context context, JsonArray jsonArray) {
+    this.context = context;
+    this.jsonArray = jsonArray;
 }
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/4642697-e87ad7b6edf95bd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这样就不会报错了.)</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-0dce26d55ed7e9c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="by gxj"></p>
-<h3 id="配置config-gradle"><a href="#配置config-gradle" class="headerlink" title="配置config.gradle"></a>配置config.gradle</h3><p>没啥好说就是把用到库归类命名以下:</p>
-<pre><code>ext {
-android = [
-        compileSdkVersion: 23,
-        buildToolsVersion: &apos;25.0.1&apos;,
-        applicationId    : &quot;com.hsl.stock&quot;,
-        minSdkVersion    : 15,
-        targetSdkVersion : 23,
-        versionCode      : 146,
-        versionName      : &quot;1.9.2.6.0&quot;
-]
 
-def dependVersion = [
-        support    : &quot;25.0.1&quot;,
-        retrofit   : &quot;2.2.0&quot;,
-        okhttp     : &quot;3.6.0&quot;,
-        dagger2    : &quot;2.0.2&quot;,
-        butterknife: &quot;7.0.1&quot;,
-        blockcanary: &quot;1.2.1&quot;,
-        leakcanary : &quot;1.4-beta2&quot;
-]
-
-dependencies = [
-        //base
-        &quot;appcompat-v7&quot;              : &quot;com.android.support:appcompat-v7:${dependVersion.support}&quot;,
-        &quot;cardview-v7&quot;               : &quot;com.android.support:cardview-v7:${dependVersion.support}&quot;,
-        &quot;recyclerview-v7&quot;           : &quot;com.android.support:recyclerview-v7:${dependVersion.support}&quot;,
-        &quot;design&quot;                    : &quot;com.android.support:design:${dependVersion.support}&quot;,
-        &quot;support-annotations&quot;       : &quot;com.android.support:support-annotations:${dependVersion.support}&quot;,
-
-        //ui
-        &quot;PhotoView&quot;                 : &quot;com.commit451:PhotoView:1.2.4&quot;,
-        &quot;datetimepicker&quot;            : &quot;com.github.flavienlaurent.datetimepicker:library:0.0.2&quot;,
-        &quot;pickerview&quot;                : &quot;com.bigkoo:pickerview:1.0.2&quot;,
-        &quot;ctiao_dfm&quot;                 : &quot;com.github.ctiao:dfm:0.4.4&quot;,
-        &quot;BaseRecyclerViewAdapter&quot;   : &quot;com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22&quot;,
-        &quot;convenientbanner&quot;          : &quot;com.bigkoo:convenientbanner:2.0.5&quot;,
-        &quot;diegocarloslima_fgelv&quot;     : &quot;com.diegocarloslima:fgelv:0.1.+@aar&quot;,
-
-        //rx
-        &quot;rxjava&quot;                    : &quot;io.reactivex.rxjava2:rxjava:2.0.7&quot;,
-        &quot;rxandroid&quot;                 : &quot;io.reactivex.rxjava2:rxandroid:2.0.1&quot;,
-
-        //network
-        &quot;retrofit&quot;                  : &quot;com.squareup.retrofit2:retrofit:${dependVersion.retrofit}&quot;,
-        &quot;retrofit-converter-gson&quot;   : &quot;com.squareup.retrofit2:converter-gson:${dependVersion.retrofit}&quot;,
-        &quot;retrofit-adapter-rxjava2&quot;  : &quot;com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofit}&quot;,
-        &quot;okhttp&quot;                    : &quot;com.squareup.okhttp3:okhttp:${dependVersion.okhttp}&quot;,
-        &quot;okhttp-logging-interceptor&quot;: &quot;com.squareup.okhttp3:logging-interceptor:${dependVersion.okhttp}&quot;,
-        &quot;glide&quot;                     : &quot;com.github.bumptech.glide:glide:3.7.0&quot;,
-        &quot;glide-okhttp3-integration&quot; : &quot;com.github.bumptech.glide:okhttp3-integration:1.4.0@aar&quot;,
-
-        //di
-        &quot;butterknife&quot;               : &quot;com.jakewharton:butterknife:${dependVersion.butterknife}&quot;,
-        &quot;butterknife-compiler&quot;      : &quot;com.jakewharton:butterknife-compiler:${dependVersion.butterknife}&quot;,
-
-        //other
-        &quot;multidex&quot;                  : &quot;com.android.support:multidex:1.0.1&quot;,
-        &quot;logger&quot;                    : &quot;com.orhanobut:logger:1.15&quot;,
-        &quot;fragmentation&quot;             : &quot;me.yokeyword:fragmentation:0.10.7&quot;,
-        &quot;umeng_analytics&quot;           : &quot;com.umeng.analytics:analytics:latest.integration&quot;,
-
-        //canary
-        &quot;blockcanary-android&quot;       : &quot;com.github.moduth:blockcanary-android:${dependVersion.blockcanary}&quot;,
-        &quot;blockcanary-no-op&quot;         : &quot;com.github.moduth:blockcanary-no-op:${dependVersion.blockcanary}&quot;,
-        &quot;leakcanary-android&quot;        : &quot;com.squareup.leakcanary:leakcanary-android:${dependVersion.leakcanary}&quot;,
-        &quot;leakcanary-android-no-op&quot;  : &quot;com.squareup.leakcanary:leakcanary-android-no-op:${dependVersion.leakcanary}&quot;
-]
+@Override
+public int getCount() {
+    return Integer.MAX_VALUE;
 }
-</code></pre><h3 id="在module的build-gradle中使用"><a href="#在module的build-gradle中使用" class="headerlink" title="在module的build.gradle中使用:"></a>在module的build.gradle中使用:</h3><p><strong>1.编译版本</strong></p>
-<pre><code>android {
-compileSdkVersion rootProject.ext.android.compileSdkVersion
-buildToolsVersion rootProject.ext.android.buildToolsVersion
-defaultConfig {
-    applicationId rootProject.ext.android.applicationId
-    minSdkVersion rootProject.ext.android.minSdkVersion
-    targetSdkVersion rootProject.ext.android.targetSdkVersion
-    versionCode rootProject.ext.android.versionCode
-    versionName rootProject.ext.android.versionName
-    multiDexEnabled true
-    ndk {
-        abiFilters &quot;armeabi&quot;, &quot;armeabi-v7a&quot;
+
+
+@Override
+public Object instantiateItem(ViewGroup container, int position) {
+    View view = LayoutInflater.from(context).inflate(R.layout.item_view, null);
+    ImageView imageView = (ImageView) view.findViewById(R.id.iv_movie);
+    position %= jsonArray.size();
+    String img_url = jsonArray.get(position).getAsString();
+    ImageLoadUtil.loadImage(container.getContext(), img_url, R.mipmap.icon_wx, imageView);
+    container.addView(view);
+    return view;
+}
+
+
+@Override
+public boolean isViewFromObject(View view, Object object) {
+    return view == object;
+}
+
+@Override
+public void destroyItem(ViewGroup container, int position, Object object) {
+    View view = (View) object;
+    container.removeView(view);
+}
+</code></pre><p>}</p>
+<p>现在这个轮播空间就写出来了,但是却不能自动轮播,需要用手滑动,那么我们就自己写一个handler来实现图片的自动轮播,代码中注释写的很清楚,不用一一讲解.</p>
+<p>private static class ImageHandler extends Handler {</p>
+<pre><code>    /**
+     * 请求更新显示的View。
+     */
+    protected static final int MSG_UPDATE_IMAGE = 1;
+    /**
+     * 请求暂停轮播。
+     */
+    protected static final int MSG_KEEP_SILENT = 2;
+    /**
+     * 请求恢复轮播。
+     */
+    protected static final int MSG_BREAK_SILENT = 3;
+    /**
+     * 记录最新的页号，当用户手动滑动时需要记录新页号，否则会使轮播的页面出错。
+     * 例如当前如果在第一页，本来准备播放的是第二页，而这时候用户滑动到了末页，
+     * 则应该播放的是第一页，如果继续按照原来的第二页播放，则逻辑上有问题。
+     */
+    protected static final int MSG_PAGE_CHANGED = 4;
+
+    //轮播间隔时间
+    protected static final long MSG_DELAY = 3000;
+
+    //使用弱引用避免Handler泄露.这里的泛型参数可以不是Activity，也可以是Fragment等
+    private WeakReference&lt;MACDPushActivity&gt; weakReference;
+    private int currentItem = 0;
+
+    protected ImageHandler(WeakReference&lt;MACDPushActivity&gt; wk) {
+        weakReference = wk;
+    }
+
+    @Override
+    public void handleMessage(Message msg) {
+        super.handleMessage(msg);
+        MACDPushActivity activity = weakReference.get();
+        if (activity == null) {
+            //Activity已经回收，无需再处理UI了
+            return;
+        }
+        //检查消息队列并移除未发送的消息，这主要是避免在复杂环境下消息出现重复等问题。
+        if (activity.handler.hasMessages(MSG_UPDATE_IMAGE)) {
+            activity.handler.removeMessages(MSG_UPDATE_IMAGE);
+        }
+        switch (msg.what) {
+            case MSG_UPDATE_IMAGE:
+                currentItem++;
+                activity.viewPager.setCurrentItem(currentItem);
+                //准备下次播放
+                activity.handler.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, MSG_DELAY);
+                break;
+            case MSG_KEEP_SILENT:
+                //只要不发送消息就暂停了
+                break;
+            case MSG_BREAK_SILENT:
+                activity.handler.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, MSG_DELAY);
+                break;
+            case MSG_PAGE_CHANGED:
+                //记录当前的页号，避免播放的时候页面显示不正确。
+                currentItem = msg.arg1;
+                break;
+            default:
+                break;
+        }
     }
 }
-</code></pre><p><strong>2.依赖库</strong></p>
-<pre><code>dependencies {
-compile fileTree(include: [&apos;*.jar&apos;], dir: &apos;libs&apos;)
-/* base */
-compile rootProject.ext.dependencies[&quot;appcompat-v7&quot;]
-compile rootProject.ext.dependencies[&quot;design&quot;]
-compile rootProject.ext.dependencies[&quot;recyclerview-v7&quot;]
-compile rootProject.ext.dependencies[&quot;cardview-v7&quot;]
-compile rootProject.ext.dependencies[&quot;support-annotations&quot;]
+</code></pre><p>然后看一下,在activity中的调用,这里使用弱引用方式,防止内存溢出.</p>
+<pre><code>ImageHandler handler = new ImageHandler(new WeakReference&lt;MACDPushActivity&gt;(this));
+viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            //配合Adapter的currentItem字段进行设置。
+            @Override
+            public void onPageSelected(int arg0) {
+                handler.sendMessage(Message.obtain(handler, ImageHandler.MSG_PAGE_CHANGED, arg0, 0));
+            }
 
-/* ui */
-compile rootProject.ext.dependencies[&quot;PhotoView&quot;]
-compile rootProject.ext.dependencies[&quot;datetimepicker&quot;]
-compile rootProject.ext.dependencies[&quot;pickerview&quot;]
-compile rootProject.ext.dependencies[&quot;ctiao_dfm&quot;]
-compile rootProject.ext.dependencies[&quot;BaseRecyclerViewAdapter&quot;]
-compile rootProject.ext.dependencies[&quot;convenientbanner&quot;]                       
-compile rootProject.ext.dependencies[&quot;diegocarloslima_fgelv&quot;]                 
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
 
-/* network */
-compile rootProject.ext.dependencies[&quot;glide&quot;]
+        //覆写该方法实现轮播效果的暂停和恢复
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+            switch (arg0) {
+                case ViewPager.SCROLL_STATE_DRAGGING:
+                    handler.sendEmptyMessage(ImageHandler.MSG_KEEP_SILENT);
+                    break;
+                case ViewPager.SCROLL_STATE_IDLE:
+                    handler.sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE, ImageHandler.MSG_DELAY);
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
+</code></pre><p>这样一个可以自动3D轮播就写好了.<br>附:ZoomOutPageTransformer.java</p>
+<pre><code>public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
+private static final float MIN_SCALE = 0.9f;
+private static final float MIN_ALPHA = 0.5f;
+private static float defaultScale = 0.9f;
+public void transformPage(View view, float position) {
+    int pageWidth = view.getWidth();
+    int pageHeight = view.getHeight();
 
-/* di */
-compile rootProject.ext.dependencies[&quot;butterknife&quot;]
+    if (position &lt; -1) { // [-Infinity,-1)
+        // This page is way off-screen to the left.
+        view.setAlpha(0);
+        view.setScaleX(defaultScale);
+        view.setScaleY(defaultScale);
+    } else if (position &lt;= 1) { // [-1,1]
+        // Modify the default slide transition to shrink the page as well
+        float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
+        float vertMargin = pageHeight * (1 - scaleFactor) / 2;
+        float horzMargin = pageWidth * (1 - scaleFactor) / 2;
+        if (position &lt; 0) {
+            view.setTranslationX(horzMargin - vertMargin / 2);
+        } else {
+            view.setTranslationX(-horzMargin + vertMargin / 2);
+        }
 
-/* other */
-compile rootProject.ext.dependencies[&quot;multidex&quot;]
-compile rootProject.ext.dependencies[&quot;logger&quot;]
-compile rootProject.ext.dependencies[&quot;fragmentation&quot;]
-compile rootProject.ext.dependencies[&quot;umeng_analytics&quot;]
-}
-</code></pre><p>整个世界清净了,再也不烦了.哈哈….</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-1d1b97c5eaa436f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="by gxj"><br><img src="http://upload-images.jianshu.io/upload_images/4642697-f2b6afe71f76a090.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="by gxj"><br><img src="http://upload-images.jianshu.io/upload_images/4642697-9791258e6c7d5734.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="by gxj"><br><img src="http://upload-images.jianshu.io/upload_images/4642697-749d726178a2aac0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="by gxj"><br><img src="http://upload-images.jianshu.io/upload_images/4642697-fce9e56ac7584567.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="by gxj"></p>
+        // Scale the page down (between MIN_SCALE and 1)
+        view.setScaleX(scaleFactor);
+        view.setScaleY(scaleFactor);
 
+        // Fade the page relative to its size.
+        view.setAlpha(MIN_ALPHA +
+                (scaleFactor - MIN_SCALE) /
+                        (1 - MIN_SCALE) * (1 - MIN_ALPHA));
+
+    } else { // (1,+Infinity]
+        // This page is way off-screen to the right.
+        view.setAlpha(0);
+        view.setScaleX(defaultScale);
+        view.setScaleY(defaultScale);
+    }
+}}
+</code></pre>
       
 
       
@@ -360,11 +409,11 @@ compile rootProject.ext.dependencies[&quot;umeng_analytics&quot;]
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">config.gradle</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android控件</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">依赖库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">viewpager</a>
         		</li>
       		
 		</ul>
@@ -420,7 +469,7 @@ compile rootProject.ext.dependencies[&quot;umeng_analytics&quot;]
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/27/config_gradle/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/01/veiwpager_3d/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -434,18 +483,18 @@ compile rootProject.ext.dependencies[&quot;umeng_analytics&quot;]
   
 <nav id="article-nav">
   
-    <a href="/2017/07/26/as_skill/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/10/apk_simple/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          老生(老司机)常谈的Android Studio 实用小技巧
+          让你的apk减减肥
         
       </div>
     </a>
   
   
-    <a href="/2017/06/19/ScrollView/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ScrollView 使用小结</div>
+    <a href="/2016/11/18/version_update/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 版本更新解决方案</div>
       <i class="icon-circle-right"></i>
     </a>
   
