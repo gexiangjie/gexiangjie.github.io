@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>gexiangjie</title>
+  <title>ViewPager 3D轮播效果 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的个人博客!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="gexiangjie">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="前几天项目中用到一个上阵指数大盘指数仪表图效果如下:">
+<meta name="keywords" content="Android控件,viewpager">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ViewPager 3D轮播效果">
+<meta property="og:url" content="http://yoursite.com/2017/04/01/DashboardCustom/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="这是我的个人博客!">
+<meta property="og:description" content="前几天项目中用到一个上阵指数大盘指数仪表图效果如下:">
+<meta property="og:image" content="http://img.blog.csdn.net/20170417193948952?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1OTgzNjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-09-18T07:29:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gexiangjie">
-<meta name="twitter:description" content="这是我的个人博客!">
+<meta name="twitter:title" content="ViewPager 3D轮播效果">
+<meta name="twitter:description" content="前几天项目中用到一个上阵指数大盘指数仪表图效果如下:">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170417193948952?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1OTgzNjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -156,118 +160,238 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-version_update" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-DashboardCustom" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/18/version_update/">Android 版本更新解决方案</a>
+    <h1 class="article-title" itemprop="name">
+      ViewPager 3D轮播效果
     </h1>
   
 
         
-        <a href="/2016/11/18/version_update/" class="archive-article-date">
-  	<time datetime="2016-11-18T11:13:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-18</time>
+        <a href="/2017/04/01/DashboardCustom/" class="archive-article-date">
+  	<time datetime="2017-04-01T15:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近友盟因为应用商店审核遭拒等原因,十月份停止版本更新服务,所以我们的项目集成的友盟版本更新就糟了秧了…求安慰.然后就只能自己动手丰衣足食喽. 版本更新说白无非就是在一个远程仓库中存放一个apk文件然后提供一个URL,而我们需要做的无非就是把这个文件下载下来,然后覆盖手机上原来的版本,从而实现了更新.整理一下思路,用到的技术有文件下载,存放在本地,监测是否下载完成,提示安装.另外因为dialog会引起莫名的错误,所以所有的弹框全部采用的是dialogfragment.下面几种是我用过的方法.<br>
-        
-          <a class="article-more-a" href="/2016/11/18/version_update/#more">more >></a>
-        
+        <p>  前几天项目中用到一个上阵指数大盘指数仪表图效果如下:</p>
+<p>  <img src="http://img.blog.csdn.net/20170417193948952?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1OTgzNjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""><br>  <a id="more"></a><br>一开始觉得用自定义View来写这个界面,而且仪表盘的图片也给好了,本来想这会非常简单,结果因为指针也是一张图片,指针的圆心不好控制,在给数值的时候总是会有略微的偏差看,尤其是在转着转着的时候就看出来,这是因为指针本身有宽度的问题,代码如下:</p>
+<pre><code>public class DashboardCustom extends View {
+private Paint paint;
+private Paint textPaint;
+int speed = 0;
+float radius;
+private Bitmap back;
+private Bitmap center;
+private Bitmap arrow;
+
+public DashboardCustom(Context context) {
+    this(context, null, 0);
+}
+
+public DashboardCustom(Context context, AttributeSet attrs) {
+    this(context, attrs, 0);
+}
+
+public DashboardCustom(Context context, AttributeSet attrs, int defStyleAttr) {
+    super(context, attrs, defStyleAttr);
+    /**
+     * 获得我们所定义的自定义样式属性
+     */
+    TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.DashboardCustom, defStyleAttr, 0);
+
+    speed = a.getInt(R.styleable.DashboardCustom_speed, 0);
+
+    paint = new Paint();
+    textPaint = new Paint();
+
+    radius = a.getDimension(R.styleable.DashboardCustom_radius, 200);
+    back = BitmapFactory.decodeResource(getResources(), R.drawable.dash);
+    arrow = BitmapFactory.decodeResource(getResources(), R.drawable.arrow);
+    a.recycle();
+}
+
+@Override
+protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    int width;
+    int height;
+    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+    int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+    int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+    int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+
+    if (widthMode == MeasureSpec.EXACTLY) {
+        width = widthSize;
+    } else {
+        float needWidth = back.getWidth();
+        int desired = (int) (getPaddingLeft() + needWidth + getPaddingRight());
+        width = desired;
+    }
+
+    if (heightMode == MeasureSpec.EXACTLY) {
+        height = heightSize;
+    } else {
+        float needWidth = back.getHeight();
+        int desired = (int) (getPaddingTop() + needWidth + getPaddingBottom());
+        height = desired;
+    }
+    setMeasuredDimension(width, height);
+}
+
+@Override
+protected void onDraw(Canvas canvas) {
+    int backWidth = back.getWidth();
+    int backHeight = back.getHeight();
+    //绘制表盘
+    canvas.drawBitmap(back, 0, 0, paint);
+    //绘制指针
+    float arc = (speed % 100) * 240 / 200;
+    Matrix matrix = new Matrix();
+    matrix.postRotate(arc);
+
+
+    Bitmap dstbmp = Bitmap.createBitmap(arrow, 0, 0, arrow.getWidth(),
+            arrow.getHeight(), matrix, true);
+
+    if (arc &gt;= 0)
+        canvas.drawBitmap(dstbmp, backWidth / 2 - arrow.getWidth() / 2 + (int) (arrow.getWidth() * Math.sin(arc * Math.PI / 180)), (int) (backWidth / 2 - arrow.getWidth() / 4 - arrow.getHeight() * Math.cos(arc * Math.PI / 180)), null);
+    else {
+        canvas.drawBitmap(dstbmp, backWidth / 2 - arrow.getWidth() / 2 + (int) (arrow.getHeight() * Math.sin(arc * Math.PI / 180)), (int) (backWidth / 2 - arrow.getWidth() / 4 - arrow.getHeight() * Math.cos(arc * Math.PI / 180)), null);
+    }
+
+    //中心数字
+    paint.setStrokeWidth(4);
+    paint.setColor(Color.WHITE);
+    paint.setTextSize(30);
+    //抗锯齿
+    paint.setAntiAlias(true);
+
+    paint.setTextAlign(Paint.Align.CENTER);
+    canvas.drawText(speed % 100 + &quot;&quot;, backWidth / 2, backHeight, paint);
+
+}
+
+public void setSpeed(int speed) {
+    this.speed = speed;
+    invalidate();
+}
+}
+</code></pre><p>搞了一天也没有调整好角度,于是退而求其次,好好的分析了一下思路,既然是指针是一张图片,那我就把它固定一个点,然后写个动画让其旋转不就好了么 ,于是有了下面的一种思路,把布局写好,然后写一个动画,完美解决,因为比较简单就不一一讲代码了.</p>
+<pre><code>public class DashboardLayout extends RelativeLayout {
+private ImageView img_dashboard;
+private ImageView img_arrow;
+private TextView tv_num;
+private float mIndex_num;
+private Context context;
+
+public DashboardLayout(Context context) {
+    this(context, null, 0);
+}
+
+public DashboardLayout(Context context, AttributeSet attrs) {
+    this(context, attrs, 0);
+}
+
+public DashboardLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    super(context, attrs, defStyleAttr);
+    this.context = context;
+    initView(context);
+}
+
+public void initView(Context context) {
+    View.inflate(context, R.layout.dashboar_view, DashboardLayout.this);
+    img_dashboard = (ImageView) this.findViewById(R.id.img_dashboard);
+    img_arrow = (ImageView) this.findViewById(R.id.img_arrow);
+    tv_num = (TextView) this.findViewById(R.id.tv_num);
+}
+
+float mFromDegrees = 0;
+float mToDegrees = 0;
+
+public void setIndexNum(float index_num) {
+    this.mIndex_num = index_num;
+    if (mIndex_num &gt; 100f) {
+        mIndex_num = 100f;
+    }
+    if (mIndex_num &lt; -100f) {
+        mIndex_num = -100f;
+    }
+
+    mToDegrees = (index_num) * 240 / 200;
+    RotateAnimation rotateAnimation = new RotateAnimation(mFromDegrees, mToDegrees, 27, 82);
+    rotateAnimation.setDuration(500);
+    rotateAnimation.setFillAfter(true);
+    img_arrow.startAnimation(rotateAnimation);
+    mFromDegrees = mToDegrees;
+    setText();
+}
+
+public void setText() {
+    tv_num.setText(mIndex_num + &quot;&quot;);
+
+}
+}
+</code></pre><p>布局代码:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+android:layout_width=&quot;wrap_content&quot;
+android:layout_height=&quot;wrap_content&quot;&gt;
+
+    &lt;ImageView
+         android:id=&quot;@+id/img_dashboard&quot;
+         android:layout_width=&quot;101dp&quot;
+         android:layout_height=&quot;76dp&quot;
+         android:src=&quot;@drawable/dash&quot; /&gt;
+
+    &lt;ImageView
+         android:id=&quot;@+id/img_arrow&quot;
+         android:layout_width=&quot;27.5dp&quot;
+         android:layout_height=&quot;41dp&quot;
+         android:layout_centerHorizontal=&quot;true&quot;
+         android:layout_marginTop=&quot;9.5dp&quot;
+         android:src=&quot;@drawable/zhizhen_black&quot; /&gt;
+
+    &lt;TextView
+         android:id=&quot;@+id/tv_num&quot;
+         android:layout_width=&quot;wrap_content&quot;
+         android:layout_height=&quot;wrap_content&quot;
+         android:layout_centerHorizontal=&quot;true&quot;
+         android:layout_marginTop=&quot;60dp&quot;
+         android:text=&quot;00&quot;
+         android:textSize=&quot;15sp&quot; /&gt;
+&lt;/RelativeLayout&gt;
+</code></pre>
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android 版本更新</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/18/version_update/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>不要怕我骄傲用你的钱砸我吧<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-shape" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/19/shape/">Drawable Shape 的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2016/10/19/shape/" class="archive-article-date">
-  	<time datetime="2016-10-19T07:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>形状的Drawable文件,定义基本的几何图形,如(矩形,圆形,线条等),根元素是<shape..> 节点比较多，相关的节点如下：</shape..></p>
-<p>① shape:</p>
-<p>~ visible:设置是否可见</p>
-<p>~ shape:形状,可选:rectangle(矩形,包括正方形),oval(椭圆,包括圆),line(线段),ring(环形)</p>
-<p>~ innerRadiusRatio:当shape为ring才有效,表示环内半径所占半径的比率,如果设置了innerRadius, 他会被忽略</p>
-<p>~ innerRadius:当shape为ring才有效,表示环的内半径的尺寸</p>
-<p>~ thicknessRatio:当shape为ring才有效,表环厚度占半径的比率</p>
-<p>~ thickness:当shape为ring才有效,表示环的厚度,即外半径与内半径的差</p>
-<p>~ useLevel:当shape为ring才有效,表示是否允许根据level来显示环的一部分<br>
-        
-          <a class="article-more-a" href="/2016/10/19/shape/#more">more >></a>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -278,473 +402,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Android 控件 drawable shape</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/19/shape/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dialogFragment" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/14/dialogFragment/">自定义dialog对话框  (类似与QQ,微信分享文章的对话框)</a>
-    </h1>
-  
-
-        
-        <a href="/2016/10/14/dialogFragment/" class="archive-article-date">
-  	<time datetime="2016-10-14T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一"><a href="#一" class="headerlink" title="一"></a>一</h3><p>项目有分享文章到直播间的功能,当点击分享的时候的弹出对话框,类似与微信中把文章分享给朋友的对话框,话不多说直接上图.</p>
-<p><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_dialogfragment_1.png" alt=""></p>
-<p>像这种不同于弹出框,Android系统提供的方法无法满足要求,那么就需要自己定义一个.<br>
-        
-          <a class="article-more-a" href="/2016/10/14/dialogFragment/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Android 控件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/14/dialogFragment/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-rich_text" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/24/rich_text/">富文本点击类似于QQ点赞好友</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/24/rich_text/" class="archive-article-date">
-  	<time datetime="2016-08-24T07:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一"><a href="#一" class="headerlink" title="一"></a>一</h3><p>Spannable做富文本部分点击时跳转,类似于QQ的点赞好友的点击跳转效果.QQ空间的图片<br><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_rich_text_1.png" alt=""></p>
-        
-          <a class="article-more-a" href="/2016/08/24/rich_text/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/24/rich_text/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-oschnia_app_manager" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/24/oschnia_app_manager/">开源中国客户端Activity管理类</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/24/oschnia_app_manager/" class="archive-article-date">
-  	<time datetime="2016-08-24T05:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/ic_user.jpeg" alt=""><br>开源中国客户端的activity压栈,出栈,获取,结束的管理类,可直接用在项目中.<br>
-        
-          <a class="article-more-a" href="/2016/08/24/oschnia_app_manager/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/24/oschnia_app_manager/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-edittext_concept" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/23/edittext_concept/">EditText使用小结</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/23/edittext_concept/" class="archive-article-date">
-  	<time datetime="2016-08-23T02:18:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E6%98%8E%E6%B9%96.jpg" width="280" height="350"></p>
-<h3 id="一-EditText-光标设置"><a href="#一-EditText-光标设置" class="headerlink" title="一.EditText 光标设置"></a>一.EditText 光标设置</h3><p>android:cursorVisible=”true”//显示</p>
-<p>android:cursorVisible=”false”//隐藏<br>
-        
-          <a class="article-more-a" href="/2016/08/23/edittext_concept/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Android 控件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/23/edittext_concept/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-add_external_sdk" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/01/add_external_sdk/">Android stdio 添加外部SDK为依赖库</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/01/add_external_sdk/" class="archive-article-date">
-  	<time datetime="2016-08-01T02:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>写此文只是为了开发中便利,不用每次Google,别无他意.<br>首先,将下载的第三方的SDK,解压成一个文件夹,然后将此文件夹放入你主工程的目录下,</p>
-<p><img src="http://ovfk1aqnq.bkt.clouddn.com/blog_sdk_1.png" alt=""><br>
-        
-          <a class="article-more-a" href="/2016/08/01/add_external_sdk/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/01/add_external_sdk/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-rv_scroll_to_item" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/14/rv_scroll_to_item/">RecycleView 中的 item 移动到当前视图的顶部</a>
-    </h1>
-  
-
-        
-        <a href="/2016/07/14/rv_scroll_to_item/" class="archive-article-date">
-  	<time datetime="2016-07-14T12:48:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/IMG_20130802_193717.jpg" alt=""></p>
-<p>当 RecyclerView 点击的时候 item 会根据你设置的 position 通过scrollToPosition（position）自动跳转到相应的位置，但是由于每一个 item 的高度都是在变化的，所以不能保证相应的 item 一直都能位于窗口的顶部，这时候就可以通过scrollToPositionWithOffset（position，offset）来设置一下点击的时候相应item距离顶部的偏移量。</p>
-        
-          <a class="article-more-a" href="/2016/07/14/rv_scroll_to_item/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android控件</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">RecyclerView</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">viewpager</a>
         		</li>
       		
 		</ul>
@@ -753,16 +415,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/07/14/rv_scroll_to_item/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/01/DashboardCustom/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/04/01/veiwpager_3d/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ViewPager 3D轮播效果
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/18/version_update/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 版本更新解决方案</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -782,12 +512,12 @@
 
 
 
+  
+  
+  
 
   
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+
   
 
 
@@ -810,8 +540,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
