@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/04/face_offer/index.html">
 <meta property="og:site_name" content="gexiangjie">
 <meta property="og:description" content="前言身为一个Android程序员,在追求技术的同时,也不断地在追求金钱.可以说我们都是为了人民币在奋斗,都想从小平台到大平台,从小公司到大公司再到BAT,从技术小白到技术大牛…不一而足(没错我就是这么露骨).然而在我们向上走的时候面临的最重要的一个环节可能就是面试.只有通过面试才能拿到Offer,才能走向人生巅峰.那么如何应对面试中的问题呢?又如何回答的让面试官满意呢?咱们直接捞干的,首先,对于一">
-<meta property="og:updated_time" content="2017-09-12T13:50:21.000Z">
+<meta property="og:updated_time" content="2017-09-18T13:00:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 求职一些常见的必备技能和面试中会问道的问题">
 <meta name="twitter:description" content="前言身为一个Android程序员,在追求技术的同时,也不断地在追求金钱.可以说我们都是为了人民币在奋斗,都想从小平台到大平台,从小公司到大公司再到BAT,从技术小白到技术大牛…不一而足(没错我就是这么露骨).然而在我们向上走的时候面临的最重要的一个环节可能就是面试.只有通过面试才能拿到Offer,才能走向人生巅峰.那么如何应对面试中的问题呢?又如何回答的让面试官满意呢?咱们直接捞干的,首先,对于一">
@@ -238,6 +238,36 @@ return view;
 <p>一些Android程序可能引用我们的Anroid程序的对象(比如注册机制)。即使我们的Android程序已经结束了，但是别的引用程序仍然还有对我们的Android程序的某个对象的引用，泄漏的内存依然不能被垃圾回收。调用registerReceiver后未调用unregisterReceiver。 比如:假设我们希望在锁屏界面(LockScreen)中，监听系统中的电话服务以获取一些信息(如信号强度等)，则可以在LockScreen中定义一个 PhoneStateListener的对象，同时将它注册到TelephonyManager服务中。对于LockScreen对象，当需要显示锁屏界面的时候就会创建一个LockScreen对象，而当锁屏界面消失的时候LockScreen对象就会被释放掉。 但是如果在释放 LockScreen对象的时候忘记取消我们之前注册的PhoneStateListener对象，则会导致LockScreen无法被垃圾回收。如果不断的使锁屏界面显示和消失，则最终会由于大量的LockScreen对象没有办法被回收而引起OutOfMemory,使得system_process 进程挂掉。 虽然有些系统程序，它本身好像是可以自动取消注册的(当然不及时)，但是我们还是应该在我们的程序中明确的取消注册，程序结束时应该把所有的注册都取消掉。</p>
 <p><em>6.集合中对象没清理造成的内存泄漏</em></p>
 <p>我们通常把一些对象的引用加入到了集合中，当我们不需要该对象时，并没有把它的引用从集合中清理掉，这样这个集合就会越来越大。如果这个集合是static的话，那情况就更严重了。</p>
+<h4 id="百度糯米电话面试题"><a href="#百度糯米电话面试题" class="headerlink" title="百度糯米电话面试题"></a>百度糯米电话面试题</h4><p>1.ArrayList 和 Hashmap 简单说一些,区别,底层的数据结构.</p>
+<p>ArrayList : 由数组实现的List。允许对元素进行快速随机访问，但是向List中间插入与移除元素的速度很慢。</p>
+<p>HashMap : Map基于散列表的实现。插入和查询“键值对”的开销是固定的,使用对象的hashCode()进行快速查询的。此方法能够显着提高性能。</p>
+<p>2.Handler 消息机制</p>
+<p>Android 的消息机制也就是 handler 机制,创建 handler 的时候会创建一个 looper ( 通过 looper.prepare() 来创建 ),looper 一般为主线程 looper. handler 通过 send 发送消息 (sendMessage) ,当然 post 一系列方法最终也是通过 send 来实现的,在 send 方法中handler 会通过 enqueueMessage() 方法中的 enqueueMessage(msg,millis )向消息队列 MessageQueue 插入一条消息,同时会把本身的 handler 通过 msg.target = this 传入.Looper 是一个死循环,不断的读取MessageQueue中的消息,loop 方法会调用 MessageQueue 的 next 方法来获取新的消息,next 操作是一个阻塞操作,当没有消息的时候 next 方法会一直阻塞,进而导致 loop 一直阻塞,当有消息的时候,Looper 就会处理消息 Looper 收到消息之后就开始处理消息: msg.target.dispatchMessage(msg),当然这里的 msg.target 就是上面传过来的发送这条消息的 handler 对象,这样 handler 发送的消息最终又交给他的dispatchMessage方法来处理了,这里不同的是,handler 的 dispatchMessage 方法是在创建 Handler时所使用的 Looper 中执行的,这样就成功的将代码逻辑切换到了主线程了.其中 Handler 处理消息的过程是:首先,检查Message 的 callback 是否为 null,不为 null 就通过 handleCallBack 来处理消息,Message 的 callback 是一个 Runnable 对象,实际上是 handler 的 post 方法所传递的 Runnable 参数.其次是检查 mCallback 是 否为 null,不为 null 就调用 mCallback 的handleMessage 方法来处理消息.</p>
+<p>3.引起内存泄漏的场景</p>
+<p>见上.</p>
+<p>4.多线程的使用场景?</p>
+<p>使用多线程就一定效率高吗？ 有时候使用多线程并不是为了提高效率，而是使得CPU能够同时处理多个事件。</p>
+<p>1).为了不阻塞主线程,启动其他线程来做好事的事情,比如APP中耗时操作都不在UI中做.</p>
+<p>2).实现更快的应用程序,即主线程专门监听用户请求,子线程用来处理用户请求,以获得大的吞吐量.感觉这种情况下，多线程的效率未必高。 这种情况下的多线程是为了不必等待， 可以并行处理多条数据。<br>比如JavaWeb的就是主线程专门监听用户的HTTP请求，然后启动子线程去处理用户的HTTP请求。</p>
+<p>3).某种优先级虽然很低的服务，但是却要不定时去做。</p>
+<p>比如Jvm的垃圾回收。</p>
+<p>4.)某种任务，虽然耗时，但是不耗CPU的操作时，开启多个线程，效率会有显著提高。<br>比如读取文件，然后处理。 磁盘IO是个很耗费时间，但是不耗CPU计算的工作。 所以可以一个线程读取数据，一个线程处理数据。肯定比</p>
+<p>一个线程读取数据，然后处理效率高。 因为两个线程的时候充分利用了CPU等待磁盘IO的空闲时间。</p>
+<p>5.常用的线程池有哪几种?</p>
+<p>答:Android中的线程池都是之间或间接通过配置ThreadPoolExecutor来实现不同特性的线程池.Android中最常见的四类具有不同特性的线程池分别为FixThreadPool、CachedThreadPool、SingleThreadPool、ScheduleThreadExecutor.</p>
+<p>下面详细的介绍一下:</p>
+<p>1).FixThreadPool</p>
+<p>只有核心线程,并且数量固定的,也不会被回收,所有线程都活动时,因为队列没有限制大小,新任务会等待执行.</p>
+<p>优点:更快的响应外界请求.</p>
+<p>2).SingleThreadPool</p>
+<p>只有一个核心线程,确保所有的任务都在同一线程中按顺序完成.因此不需要处理线程同步的问题.</p>
+<p>3).CachedThreadPool<br>只有非核心线程,最大线程数非常大,所有线程都活动时,会为新任务创建新线程,否则会利用空闲线程(60s空闲时间,过了就会被回收,所以线程池中有0个线程的可能)处理任务.</p>
+<p>优点:任何任务都会被立即执行(任务队列SynchronousQueue相当于一个空集合);比较适合执行大量的耗时较少的任务.</p>
+<p>4).ScheduledThreadPool</p>
+<p>核心线程数固定,非核心线程(闲着没活干会被立即回收)数没有限制.</p>
+<p>优点:执行定时任务以及有固定周期的重复任务</p>
+<p>参考<a href="http://blog.csdn.net/seu_calvin/article/details/52415337" target="_blank" rel="external">Android开发——Android中常见的4种线程池（保证你能看懂并理解）</a></p>
+<p>6.在公司做了什么?团队规模?为什么离职?</p>
 
       
 
@@ -512,10 +542,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gradle</a>
               </li>
              
@@ -541,6 +567,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
               </li>
             
             <div class="clearfix"></div>
