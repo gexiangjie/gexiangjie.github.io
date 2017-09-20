@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016/11 | gexiangjie</title>
+  <title>百度的面试题解析 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的个人博客!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="gexiangjie">
-<meta property="og:url" content="http://yoursite.com/archives/2016/11/index.html">
+  <meta name="description" content="百度糯米电话面试题1.ArrayList 和 Hashmap 简单说一些,区别,底层的数据结构. ArrayList : 由数组实现的List。允许对元素进行快速随机访问，但是向List中间插入与移除元素的速度很慢。 HashMap : Map基于散列表的实现。插入和查询“键值对”的开销是固定的,使用对象的hashCode()进行快速查询的。此方法能够显着提高性能。 2.Handler 消息机制">
+<meta name="keywords" content="Android,面试求职">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度的面试题解析">
+<meta property="og:url" content="http://yoursite.com/2017/09/20/face_baidu/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="这是我的个人博客!">
+<meta property="og:description" content="百度糯米电话面试题1.ArrayList 和 Hashmap 简单说一些,区别,底层的数据结构. ArrayList : 由数组实现的List。允许对元素进行快速随机访问，但是向List中间插入与移除元素的速度很慢。 HashMap : Map基于散列表的实现。插入和查询“键值对”的开销是固定的,使用对象的hashCode()进行快速查询的。此方法能够显着提高性能。 2.Handler 消息机制">
+<meta property="og:updated_time" content="2017-09-20T09:11:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gexiangjie">
-<meta name="twitter:description" content="这是我的个人博客!">
+<meta name="twitter:title" content="百度的面试题解析">
+<meta name="twitter:description" content="百度糯米电话面试题1.ArrayList 和 Hashmap 简单说一些,区别,底层的数据结构. ArrayList : 由数组实现的List。允许对元素进行快速随机访问，但是向List中间插入与移除元素的速度很慢。 HashMap : Map基于散列表的实现。插入和查询“键值对”的开销是固定的,使用对象的hashCode()进行快速查询的。此方法能够显着提高性能。 2.Handler 消息机制">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -156,60 +158,339 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-face_baidu" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/18/version_update/" class="archive-article-date">
-  	<time datetime="2016-11-18T11:13:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/18/version_update/">Android 版本更新解决方案</a>
+    <h1 class="article-title" itemprop="name">
+      百度的面试题解析
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/09/20/face_baidu/" class="archive-article-date">
+  	<time datetime="2017-09-20T09:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="百度糯米电话面试题"><a href="#百度糯米电话面试题" class="headerlink" title="百度糯米电话面试题"></a>百度糯米电话面试题</h4><p>1.ArrayList 和 Hashmap 简单说一些,区别,底层的数据结构.</p>
+<p>ArrayList : 由数组实现的List。允许对元素进行快速随机访问，但是向List中间插入与移除元素的速度很慢。</p>
+<p>HashMap : Map基于散列表的实现。插入和查询“键值对”的开销是固定的,使用对象的hashCode()进行快速查询的。此方法能够显着提高性能。</p>
+<p>2.Handler 消息机制</p>
+<p>Android 的消息机制也就是 handler 机制,创建 handler 的时候会创建一个 looper ( 通过 looper.prepare() 来创建 ),looper 一般为主线程 looper. handler 通过 send 发送消息 (sendMessage) ,当然 post 一系列方法最终也是通过 send 来实现的,在 send 方法中handler 会通过 enqueueMessage() 方法中的 enqueueMessage(msg,millis )向消息队列 MessageQueue 插入一条消息,同时会把本身的 handler 通过 msg.target = this 传入.Looper 是一个死循环,不断的读取MessageQueue中的消息,loop 方法会调用 MessageQueue 的 next 方法来获取新的消息,next 操作是一个阻塞操作,当没有消息的时候 next 方法会一直阻塞,进而导致 loop 一直阻塞,当有消息的时候,Looper 就会处理消息 Looper 收到消息之后就开始处理消息: msg.target.dispatchMessage(msg),当然这里的 msg.target 就是上面传过来的发送这条消息的 handler 对象,这样 handler 发送的消息最终又交给他的dispatchMessage方法来处理了,这里不同的是,handler 的 dispatchMessage 方法是在创建 Handler时所使用的 Looper 中执行的,这样就成功的将代码逻辑切换到了主线程了.其中 Handler 处理消息的过程是:首先,检查Message 的 callback 是否为 null,不为 null 就通过 handleCallBack 来处理消息,Message 的 callback 是一个 Runnable 对象,实际上是 handler 的 post 方法所传递的 Runnable 参数.其次是检查 mCallback 是 否为 null,不为 null 就调用 mCallback 的handleMessage 方法来处理消息.</p>
+<p>3.引起内存泄漏的场景</p>
+<p>1.资源对象没关闭造成的内存泄漏</p>
+<p>2.构造Adapter时，没有使用缓存的convertView</p>
+<p>3.Bitmap对象不在使用时调用recycle()释放内存</p>
+<p>4.试着使用关于application的context来替代和activity相关的context</p>
+<p>5.注册没取消造成的内存泄漏</p>
+<p>6.集合中对象没清理造成的内存泄漏</p>
+<p>4.多线程的使用场景?</p>
+<p>使用多线程就一定效率高吗？ 有时候使用多线程并不是为了提高效率，而是使得CPU能够同时处理多个事件。</p>
+<p>1).为了不阻塞主线程,启动其他线程来做好事的事情,比如APP中耗时操作都不在UI中做.</p>
+<p>2).实现更快的应用程序,即主线程专门监听用户请求,子线程用来处理用户请求,以获得大的吞吐量.感觉这种情况下，多线程的效率未必高。 这种情况下的多线程是为了不必等待， 可以并行处理多条数据。<br>比如JavaWeb的就是主线程专门监听用户的HTTP请求，然后启动子线程去处理用户的HTTP请求。</p>
+<p>3).某种优先级虽然很低的服务，但是却要不定时去做。</p>
+<p>比如Jvm的垃圾回收。</p>
+<p>4.)某种任务，虽然耗时，但是不耗CPU的操作时，开启多个线程，效率会有显著提高。<br>比如读取文件，然后处理。 磁盘IO是个很耗费时间，但是不耗CPU计算的工作。 所以可以一个线程读取数据，一个线程处理数据。肯定比</p>
+<p>一个线程读取数据，然后处理效率高。 因为两个线程的时候充分利用了CPU等待磁盘IO的空闲时间。</p>
+<p>5.常用的线程池有哪几种?</p>
+<p>答:Android中的线程池都是之间或间接通过配置ThreadPoolExecutor来实现不同特性的线程池.Android中最常见的四类具有不同特性的线程池分别为FixThreadPool、CachedThreadPool、SingleThreadPool、ScheduleThreadExecutor.</p>
+<p>下面详细的介绍一下:</p>
+<p>1).FixThreadPool</p>
+<p>只有核心线程,并且数量固定的,也不会被回收,所有线程都活动时,因为队列没有限制大小,新任务会等待执行.</p>
+<p>优点:更快的响应外界请求.</p>
+<p>2).SingleThreadPool</p>
+<p>只有一个核心线程,确保所有的任务都在同一线程中按顺序完成.因此不需要处理线程同步的问题.</p>
+<p>3).CachedThreadPool<br>只有非核心线程,最大线程数非常大,所有线程都活动时,会为新任务创建新线程,否则会利用空闲线程(60s空闲时间,过了就会被回收,所以线程池中有0个线程的可能)处理任务.</p>
+<p>优点:任何任务都会被立即执行(任务队列SynchronousQueue相当于一个空集合);比较适合执行大量的耗时较少的任务.</p>
+<p>4).ScheduledThreadPool</p>
+<p>核心线程数固定,非核心线程(闲着没活干会被立即回收)数没有限制.</p>
+<p>优点:执行定时任务以及有固定周期的重复任务</p>
+<p>参考<a href="http://blog.csdn.net/seu_calvin/article/details/52415337" target="_blank" rel="external">Android开发——Android中常见的4种线程池（保证你能看懂并理解）</a></p>
+<p>6.在公司做了什么?团队规模?为什么离职?</p>
+<ol>
+<li>类的加载过程，Person person = new Person();为例进行说明。<br>1、因为new用到了Person.class，所以会先找到Person.class文件，并加载到内存中</li>
+</ol>
+<p>2、执行该类中的static代码块，如果有的话，给Person.class类进行初始化</p>
+<p>3、在堆内存中开辟空间分配内存地址</p>
+<p>4、在堆内存中建立对象的特有属性，并进行默认初始化</p>
+<p>5、对属性进行显示初始化</p>
+<p>6、对对象进行构造代码块初始化</p>
+<p>7、对对象进行与之对应的构造函数进行初始化</p>
+<p>8、将内存地址付给栈内存中的p变量</p>
+<ol>
+<li>JVM相关知识，GC机制。</li>
+</ol>
+<ol>
+<li>类的加载器，双亲机制，Android的类加载器。</li>
+</ol>
+<p>类的加载器:<br><a href="http://blog.csdn.net/xyang81/article/details/7292380" target="_blank" rel="external">http://blog.csdn.net/xyang81/article/details/7292380</a><br>大家都知道，当我们写好一个Java程序之后，不是管是CS还是BS应用，都是由若干个.class文件组织而成的一个完整的Java应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的class文件当中，所以经常要从这个class文件中要调用另外一个class文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启动的时候，并不会一次性加载程序所要用的所有class文件，而是根据程序的需要，通过Java的类加载机制（ClassLoader）来动态加载某个class文件到内存当中的，从而只有class文件被载入到了内存之后，才能被其它class所引用。所以ClassLoader就是用来动态加载class文件到内存当中用的。<br>双亲机制:</p>
+<p>1、原理介绍</p>
+<pre><code>ClassLoader使用的是双亲委托模型来搜索类的，每个ClassLoader实例都有一个父类加载器的引用（不是继承的关系，是一个包含的关系），虚拟机内置的类加载器（Bootstrap ClassLoader）本身没有父类加载器，但可以用作其它ClassLoader实例的的父类加载器。当一个ClassLoader实例需要加载某个类时，它会试图亲自搜索某个类之前，先把这个任务委托给它的父类加载器，这个过程是由上至下依次检查的，首先由最顶层的类加载器Bootstrap ClassLoader试图加载，如果没加载到，则把任务转交给Extension ClassLoader试图加载，如果也没加载到，则转交给App ClassLoader 进行加载，如果它也没有加载得到的话，则返回给委托的发起者，由它到指定的文件系统或网络等URL中加载该类。如果它们都没有加载到这个类时，则抛出ClassNotFoundException异常。否则将这个找到的类生成一个类的定义，并将它加载到内存当中，最后返回这个类在内存中的Class实例对象。
+</code></pre><p> 2、为什么要使用双亲委托这种模型呢？</p>
+<pre><code>因为这样可以避免重复加载，当父亲已经加载了该类的时候，就没有必要子ClassLoader再加载一次。考虑到安全因素，我们试想一下，如果不使用这种委托模式，那我们就可以随时使用自定义的String来动态替代java核心api中定义的类型，这样会存在非常大的安全隐患，而双亲委托的方式，就可以避免这种情况，因为String已经在启动时就被引导类加载器（Bootstrcp ClassLoader）加载，所以用户自定义的ClassLoader永远也无法加载一个自己写的String，除非你改变JDK中ClassLoader搜索类的默认算法。
+</code></pre><p>3、 但是JVM在搜索类的时候，又是如何判定两个class是相同的呢？</p>
+<pre><code>JVM在判定两个class是否相同时，不仅要判断两个类名是否相同，而且要判断是否由同一个类加载器实例加载的。只有两者同时满足的情况下，JVM才认为这两个class是相同的。就算两个class是同一份class字节码，如果被两个不同的ClassLoader实例所加载，JVM也会认为它们是两个不同class。比如网络上的一个Java类org.classloader.simple.NetClassLoaderSimple，javac编译之后生成字节码文件NetClassLoaderSimple.class，ClassLoaderA和ClassLoaderB这两个类加载器并读取了NetClassLoaderSimple.class文件，并分别定义出了java.lang.Class实例来表示这个类，对于JVM来说，它们是两个不同的实例对象，但它们确实是同一份字节码文件，如果试图将这个Class实例生成具体的对象进行转换时，就会抛运行时异常java.lang.ClassCaseException，提示这是两个不同的类型。
+</code></pre><p>Android类加载器<br>对于Android而言，最终的apk文件包含的是dex类型的文件，dex文件是将class文件重新打包，打包的规则又不是简单地压缩，而是完全对class文件内部的各种函数表，变量表进行优化，产生一个新的文件，即dex文件。因此加载这种特殊的Class文件就需要特殊的类加载器DexClassLoader。</p>
+<ol>
+<li>Android中进程的级别，以及各自的区别。</li>
+</ol>
+<p>1、前台进程</p>
+<p>用户当前正在做的事情需要这个进程。如果满足下面的条件之一，一个进程就被认为是前台进程：</p>
+<p>这个进程拥有一个正在与用户交互的Activity(这个Activity的onResume()方法被调用)。</p>
+<p>这个进程拥有一个绑定到正在与用户交互的activity上的Service。</p>
+<p>这个进程拥有一个前台运行的Service（service调用了方法startForeground()）.</p>
+<p>这个进程拥有一个正在执行其任何一个生命周期回调方法（onCreate(),onStart(),或onDestroy()）的Service。</p>
+<p>这个进程拥有正在执行其onReceive()方法的BroadcastReceiver。</p>
+<p>通常，在任何时间点，只有很少的前台进程存在。它们只有在达到无法调合的矛盾时才会被杀－－如内存太小而不能继续运行时。通常，到了这时，设备就达到了一个内存分页调度状态，所以需要杀一些前台进程来保证用户界面的反应</p>
+<p>2、可见进程</p>
+<p>一个进程不拥有运行于前台的组件，但是依然能影响用户所见。满足下列条件时，进程即为可见：</p>
+<p>这个进程拥有一个不在前台但仍可见的Activity(它的onPause()方法被调用)。当一个前台activity启动一个对话框时，就出了这种情况。</p>
+<p>3、服务进程</p>
+<p>一个可见进程被认为是极其重要的。并且，除非只有杀掉它才可以保证所有前台进程的运行，否则是不能动它的。</p>
+<p>这个进程拥有一个绑定到可见activity的Service。</p>
+<p>一个进程不在上述两种之内，但它运行着一个被startService()所启动的service。</p>
+<p>尽管一个服务进程不直接影响用户所见，但是它们通常做一些用户关心的事情（比如播放音乐或下载数据），所以系统不到前台进程和可见进程活不下去时不会杀它。</p>
+<p>4、后台进程</p>
+<p>一个进程拥有一个当前不可见的activity(activity的onStop()方法被调用)。</p>
+<p>这样的进程们不会直接影响到用户体验，所以系统可以在任意时刻杀了它们从而为前台、可见、以及服务进程们提供存储空间。通常有很多后台进程在运行。它们被保存在一个LRU(最近最少使用)列表中来确保拥有最近刚被看到的activity的进程最后被杀。如果一个activity正确的实现了它的生命周期方法，并保存了它的当前状态，那么杀死它的进程将不会对用户的可视化体验造成影响。因为当用户返回到这个activity时，这个activity会恢复它所有的可见状态。</p>
+<p>5、空进程</p>
+<p>一个进程不拥有入何active组件。</p>
+<p>保留这类进程的唯一理由是高速缓存，这样可以提高下一次一个组件要运行它时的启动速度。系统经常为了平衡在进程高速缓存和底层的内核高速缓存之间的整体系统资源而杀死它们。</p>
+<ol>
+<li><p>插件化原理。</p>
+</li>
+<li><p>集合框架，list，map，set都有哪些具体的实现类，区别都是什么。<br>1、List,Set都是继承自Collection接口，Map则不是</p>
+</li>
+</ol>
+<p>2、List特点：元素有放入顺序，元素可重复 ，Set特点：元素无放入顺序，元素不可重复，重复元素会覆盖掉，（注意：元素虽然无放入顺序，但是元素在set中的位置是有该元素的HashCode决定的，其位置其实是固定的，加入Set 的Object必须定义equals()方法 ，另外list支持for循环，也就是通过下标来遍历，也可以用迭代器，但是set只能用迭代，因为他无序，无法用下标来取得想要的值。） </p>
+<p>3.Set和List对比：<br>Set：检索元素效率低下，删除和插入效率高，插入和删除不会引起元素位置改变。<br>List：和数组类似，List可以动态增长，查找元素效率高，插入删除元素效率低，因为会引起其他元素位置改变。 </p>
+<p>4.Map适合储存键值对的数据</p>
+<p>5.线程安全集合类与非线程安全集合类<br>LinkedList、ArrayList、HashSet是非线程安全的，Vector是线程安全的;<br>HashMap是非线程安全的，HashTable是线程安全的;<br>StringBuilder是非线程安全的，StringBuffer是线程安全的。</p>
+<p>下面是具体的使用介绍：<br>ArrayList与LinkedList的区别和适用场景</p>
+<p>Arraylist：<br>优点：ArrayList是实现了基于动态数组的数据结构,因为地址连续，一旦数据存储好了，查询操作效率会比较高（在内存里是连着放的）。<br>缺点：因为地址连续， ArrayList要移动数据,所以插入和删除操作效率比较低。<br>LinkedList：<br>优点：LinkedList基于链表的数据结构,地址是任意的，所以在开辟内存空间的时候不需要等一个连续的地址，对于新增和删除操作add和remove，LinedList比较占优势。LinkedList 适用于要头尾操作或插入指定位置的场景<br>缺点：因为LinkedList要移动指针,所以查询操作性能比较低。<br>适用场景分析：<br>当需要对数据进行对此访问的情况下选用ArrayList，当需要对数据进行多次增加删除修改时采用LinkedList。</p>
+<p>ArrayList与Vector的区别和适用场景</p>
+<p>ArrayList有三个构造方法：</p>
+<p>Java代码<br>public ArrayList(int initialCapacity)//构造一个具有指定初始容量的空列表。<br>public ArrayList()//构造一个初始容量为10的空列表。<br>public ArrayList(Collection&lt;? extends E&gt; c)//构造一个包含指定 collection 的元素的列表<br>Vector有四个构造方法：</p>
+<p>Java代码<br>public Vector()//使用指定的初始容量和等于零的容量增量构造一个空向量。<br>public Vector(int initialCapacity)//构造一个空向量，使其内部数据数组的大小，其标准容量增量为零。<br>public Vector(Collection&lt;? extends E&gt; c)//构造一个包含指定 collection 中的元素的向量<br>public Vector(int initialCapacity,int capacityIncrement)//使用指定的初始容量和容量增量构造一个空的向量    </p>
+<p>ArrayList和Vector都是用数组实现的，主要有这么三个区别：</p>
+<p>1.Vector是多线程安全的，线程安全就是说多线程访问同一代码，不会产生不确定的结果。而ArrayList不是，这个可以从源码中看出，Vector类中的方法很多有synchronized进行修饰，这样就导致了Vector在效率上无法与ArrayList相比；</p>
+<p>2.两个都是采用的线性连续空间存储元素，但是当空间不足的时候，两个类的增加方式是不同。</p>
+<p>3.Vector可以设置增长因子，而ArrayList不可以。</p>
+<p>4.Vector是一种老的动态数组，是线程同步的，效率很低，一般不赞成使用。<br>适用场景分析：<br>1.Vector是线程同步的，所以它也是线程安全的，而ArrayList是线程异步的，是不安全的。如果不考虑到线程的安全因素，一般用ArrayList效率比较高。<br>2.如果集合中的元素的数目大于目前集合数组的长度时，在集合中使用数据量比较大的数据，用Vector有一定的优势。</p>
+<p>HashSet与Treeset的适用场景</p>
+<p>1.TreeSet 是二差树（红黑树的树据结构）实现的,Treeset中的数据是自动排好序的，不允许放入null值 </p>
+<p>2.HashSet 是哈希表实现的,HashSet中的数据是无序的，可以放入null，但只能放入一个null，两者中的值都不能重复，就如数据库中唯一约束<br>3.HashSet要求放入的对象必须实现HashCode()方法，放入的对象，是以hashcode码作为标识的，而具有相同内容的String对象，hashcode是一样，所以放入的内容不能重复。但是同一个类的对象可以放入不同的实例</p>
+<p>适用场景分析:HashSet是基于Hash算法实现的，其性能通常都优于TreeSet。为快速查找而设计的Set，我们通常都应该使用HashSet，在我们需要排序的功能时，我们才使用TreeSet。</p>
+<p>HashMap与TreeMap、HashTable的区别及适用场景</p>
+<p>HashMap 非线程安全<br>HashMap：基于哈希表实现。使用HashMap要求添加的键类明确定义了hashCode()和equals()[可以重写hashCode()和equals()]，为了优化HashMap空间的使用，您可以调优初始容量和负载因子。 </p>
+<p>TreeMap：非线程安全基于红黑树实现。TreeMap没有调优选项，因为该树总处于平衡状态。 </p>
+<p>适用场景分析：<br>HashMap和HashTable:HashMap去掉了HashTable的contains方法，但是加上了containsValue()和containsKey()方法。HashTable同步的，而HashMap是非同步的，效率上比HashTable要高。HashMap允许空键值，而HashTable不允许。<br>HashMap：适用于Map中插入、删除和定位元素。<br>Treemap：适用于按自然顺序或自定义顺序遍历键(key)。</p>
+<ol>
+<li>concurrentHashmap原理，原子类。<br>ConcurrentHashMap作为一种线程安全且高效的哈希表的解决方案，尤其其中的”分段锁”的方案，相比HashTable的全表锁在性能上的提升非常之大</li>
+<li>volatile原理。</li>
+<li>Binder机制。</li>
+<li>View的绘制流程，事件传递机制，Handler异步消息机制。<br>View的绘制流程：OnMeasure()——&gt;OnLayout()——&gt;OnDraw()</li>
+</ol>
+<p>各步骤的主要工作：</p>
+<p>*<br>OnMeasure()：测量视图大小。从顶层父View到子View递归调用measure方法，measure方法又回调OnMeasure。</p>
+<p>*<br>OnLayout()：确定View位置，进行页面布局。从顶层父View向子View的递归调用view.layout方法的过程，即父View根据上一步measure子View所得到的布局大小和布局参数，将子View放在合适的位置上。</p>
+<p>*<br>OnDraw()：绘制视图。ViewRoot创建一个Canvas对象，然后调用OnDraw()。六个步骤：①、绘制视图的背景；②、保存画布的图层（Layer）；③、绘制View的内容；④、绘制View子视图，如果没有就不用；⑤、还原图层（Layer）；⑥、绘制滚动条。</p>
+<ol>
+<li>Interger中的128(-128~127),这里考的是常量池的概念，这个没回答上来。<br>a.当数值范围为-128~127时：如果两个new出来Integer对象，即使值相同，通过“==”比较结果为false，但两个对象直接赋值，则通过“==”比较结果为“true，这一点与String非常相似。</li>
+</ol>
+<p>b.当数值不在-128~127时，无论通过哪种方式，即使两个对象的值相等，通过“==”比较，其结果为false；</p>
+<p>c.当一个Integer对象直接与一个int基本数据类型通过“==”比较，其结果与第一点相同；</p>
+<p>d.Integer对象的hash值为数值本身；</p>
+<p>为什么是-128-127?<br>在Integer类中有一个静态内部类IntegerCache，在IntegerCache类中有一个Integer数组，用以缓存当数值范围为-128~127时的Integer对象。</p>
+<ol>
+<li>线程池的相关知识。</li>
+<li>Handler机制，HandlerThread实现等等。</li>
+<li>LRUCache算法是怎样实现的。<br>内部存在一个LinkedHashMap和maxSize，把最近使用的对象用强引用存储在 LinkedHashMap中，给出来put和get方法，每次put图片时计算缓存中所有图片总大小，跟maxSize进行比较，大于maxSize，就将最久添加的图片移除；反之小于maxSize就添加进来。<br>之前，我们会使用内存缓存技术实现，也就是软引用或弱引用，在Android 2.3（APILevel 9）开始，垃圾回收器会更倾向于回收持有软引用或弱引用的对象，这让软引用和弱引用变得不再可靠。</li>
+</ol>
+<ol>
+<li>说了说项目中相关的知识。<ol>
+<li>聊了聊之前做过的项目。</li>
+<li>内存泄露，怎样查找，怎么产生的内存泄露。</li>
+<li>怎样计算一张图片的大小，加载bitmap过程（怎样保证不产生内存溢出），二级缓存，LRUCache算法。</li>
+</ol>
+</li>
+</ol>
+<p>计算一张图片的大小<br>图片占用内存的计算公式：图片高度 <em> 图片宽度 </em> 一个像素占用的内存大小.所以，计算图片占用内存大小的时候，要考虑图片所在的目录跟设备密度，这两个因素其实影响的是图片的高宽，android会对图片进行拉升跟压缩。</p>
+<p>加载bitmap过程（怎样保证不产生内存溢出）</p>
+<ol>
+<li><p>由于Android对图片使用内存有限制，若是加载几兆的大图片便内存溢出。Bitmap会将图片的所有像素（即长x宽）加载到内存中，如果图片分辨率过大，会直接导致内存OOM，只有在BitmapFactory加载图片时使用BitmapFactory.Options对相关参数进行配置来减少加载的像素。</p>
+</li>
+<li><p>BitmapFactory.Options相关参数详解：(1).Options.inPreferredConfig值来降低内存消耗。 </p>
+</li>
+</ol>
+<p>比如：默认值ARGB_8888改为RGB_565,节约一半内存。<br>(2).设置Options.inSampleSize 缩放比例，对大图片进行压缩 。<br>(3).设置Options.inPurgeable和inInputShareable：让系统能及时回 收内存。<br>A：inPurgeable：设置为True时，表示系统内存不足时可以被回 收，设置为False时，表示不能被回收。<br>B：inInputShareable：设置是否深拷贝，与inPurgeable结合使用，inPurgeable为false时，该参数无意义。</p>
+<p>(4).使用decodeStream代替其他方法。</p>
+<p>decodeResource,setImageResource,setImageBitmap等方法</p>
+<ol>
+<li><p>简单介绍一下java中的泛型，泛型擦除以及相关的概念。<br>泛型是Java SE 1.5的新特性，泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。这种参数类型可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口、泛型方法。 Java语言引入泛型的好处是安全简单。<br>在Java SE 1.5之前，没有泛型的情况的下，通过对类型Object的引用来实现参数的“任意化”，“任意化”带来的缺点是要做显式的强制类型转换，而这种转换是要求开发者对实际参数类型可以预知的情况下进行的。对于强制类型转换错误的情况，编译器可能不提示错误，在运行的时候才出现异常，这是一个安全隐患。<br>泛型的好处是在编译的时候检查类型安全，并且所有的强制转换都是自动和隐式的，提高代码的重用率。<br>1、泛型的类型参数只能是类类型（包括自定义类），不能是简单类型。<br>2、同一种泛型可以对应多个版本（因为参数类型是不确定的），不同版本的泛型类实例是不兼容的。<br>3、泛型的类型参数可以有多个。<br>4、泛型的参数类型可以使用extends语句，例如<t extends="" superclass="">。习惯上称为“有界类型”。<br>5、泛型的参数类型还可以是通配符类型。例如Class&lt;?&gt; classType = Class.forName(“java.lang.String”);<br>泛型擦除以及相关的概念<br>Java中的泛型基本上都是在编译器这个层次来实现的。在生成的Java字节码中是不包含泛型中的类型信息的。使用泛型的时候加上的类型参数，会在编译器在编译的时候去掉。这个过程就称为类型擦除。<br>类型擦除引起的问题及解决方法<br>1、先检查，在编译，以及检查编译的对象和引用传递的问题<br>2、自动类型转换<br>3、类型擦除与多态的冲突和解决方法<br>4、泛型类型变量不能是基本数据类型<br>5、运行时类型查询<br>6、异常中使用泛型的问题<br>7、数组（这个不属于类型擦除引起的问题）<br>9、类型擦除后的冲突<br>10、泛型在静态方法和静态类中的问题 </t></p>
+</li>
+<li><p>Android优化相关的只是，布局优化、内存优化等等。</p>
+</li>
+<li>SQL相关的知识优化的方案，这里我直接说不太了解，就过了。</li>
+<li>算法题，m <em> n的矩阵，能形成几个正方形（2 </em> 2能形成1个正方形，2 <em> 3 2个，3 </em> 3 6个）<br>计数的关键是要观察到任意一个倾斜的正方形必然唯一内接于一个非倾斜的正方形，而一个非倾斜的边长为k的非倾斜正方形，一条边上有k-1个内点，每个内点恰好确定一个内接于其中的倾斜正方形，加上非倾斜正方形本身，可知，将边长为k的非倾斜正方形数目乘以k，再按k求和即可得到所有正方形的数目。<br>设2≤n≤m，k≤n-1，则边长为k的非倾斜有<br>(n-k)(m-k)个，故所有正方形有<br>∑(m-k)(n-k)k个<br>例如m=n=4<br>正方形有3<em>3</em>1+2<em>2</em>2+1<em>1</em>3=20个<br>for(int )<ol>
+<li>项目相关。</li>
+<li>Android优化.。</li>
+<li>插件化相关技术，热修补技术是怎样实现的，和插件化有什么区别。<br>都使用ClassLoader来实现的加载的新的功能类，都可以使用PathClassLoader与DexClassLoader</li>
+</ol>
+</li>
+</ol>
+<p>不同的是：</p>
+<p>　　热修复因为是为了修复Bug的，所以要将新的同名类替代同名的Bug类，要抢先加载新的类而不是Bug类，所以多做两件事：在原先的app打包的时候，阻止相关类去打上CLASS_ISPREVERIFIED标志，还有在热修复时动态改变BaseDexClassLoader对象间接引用的dexElements，这样才能抢先代替Bug类，完成系统不加载旧的Bug类</p>
+<p>　　而插件化只是增肌新的功能类或者是资源文件，所以不涉及抢先加载旧的类这样的使命，就避过了阻止相关类去打上CLASS_ISPREVERIFIED标志和还有在热修复时动态改变BaseDexClassLoader对象间接引用的dexElements</p>
+<p>　　所以插件化比热修复简单，热修复是在插件化的基础上在进行替旧的Bug类</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>不要怕我骄傲用你的钱砸我吧<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android 版本更新</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试求职</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/20/face_baidu/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/09/04/face_offer/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 求职一些常见的必备技能和面试中会问道的问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -232,8 +513,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
