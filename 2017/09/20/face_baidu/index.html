@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>百度的面试题解析 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="百度糯米电话面试题1.ArrayList 和 Hashmap 简单说一些,区别,底层的数据结构. ArrayList : 由数组实现的List。允许对元素进行快速随机访问，但是向List中间插入与移除元素的速度很慢。 HashMap : Map基于散列表的实现。插入和查询“键值对”的开销是固定的,使用对象的hashCode()进行快速查询的。此方法能够显着提高性能。">
+  <meta name="description" content="准备的知识 类的加载过程，Person person = new Person();为例进行说明。1、因为new用到了Person.class，所以会先找到Person.class文件，并加载到内存中  2、执行该类中的static代码块，如果有的话，给Person.class类进行初始化 3、在堆内存中开辟空间分配内存地址 4、在堆内存中建立对象的特有属性，并进行默认初始化 5、对属性进行显示初">
 <meta name="keywords" content="Android,面试求职">
 <meta property="og:type" content="article">
 <meta property="og:title" content="百度的面试题解析">
 <meta property="og:url" content="http://yoursite.com/2017/09/20/face_baidu/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="百度糯米电话面试题1.ArrayList 和 Hashmap 简单说一些,区别,底层的数据结构. ArrayList : 由数组实现的List。允许对元素进行快速随机访问，但是向List中间插入与移除元素的速度很慢。 HashMap : Map基于散列表的实现。插入和查询“键值对”的开销是固定的,使用对象的hashCode()进行快速查询的。此方法能够显着提高性能。">
-<meta property="og:updated_time" content="2017-09-26T04:25:59.000Z">
+<meta property="og:description" content="准备的知识 类的加载过程，Person person = new Person();为例进行说明。1、因为new用到了Person.class，所以会先找到Person.class文件，并加载到内存中  2、执行该类中的static代码块，如果有的话，给Person.class类进行初始化 3、在堆内存中开辟空间分配内存地址 4、在堆内存中建立对象的特有属性，并进行默认初始化 5、对属性进行显示初">
+<meta property="og:updated_time" content="2017-09-26T04:52:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="百度的面试题解析">
-<meta name="twitter:description" content="百度糯米电话面试题1.ArrayList 和 Hashmap 简单说一些,区别,底层的数据结构. ArrayList : 由数组实现的List。允许对元素进行快速随机访问，但是向List中间插入与移除元素的速度很慢。 HashMap : Map基于散列表的实现。插入和查询“键值对”的开销是固定的,使用对象的hashCode()进行快速查询的。此方法能够显着提高性能。">
+<meta name="twitter:description" content="准备的知识 类的加载过程，Person person = new Person();为例进行说明。1、因为new用到了Person.class，所以会先找到Person.class文件，并加载到内存中  2、执行该类中的static代码块，如果有的话，给Person.class类进行初始化 3、在堆内存中开辟空间分配内存地址 4、在堆内存中建立对象的特有属性，并进行默认初始化 5、对属性进行显示初">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -178,41 +178,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="百度糯米电话面试题"><a href="#百度糯米电话面试题" class="headerlink" title="百度糯米电话面试题"></a>百度糯米电话面试题</h4><p>1.ArrayList 和 Hashmap 简单说一些,区别,底层的数据结构.</p>
-<p>ArrayList : 由数组实现的List。允许对元素进行快速随机访问，但是向List中间插入与移除元素的速度很慢。</p>
-<p>HashMap : Map基于散列表的实现。插入和查询“键值对”的开销是固定的,使用对象的hashCode()进行快速查询的。此方法能够显着提高性能。<br><a id="more"></a><br>2.Handler 消息机制</p>
-<p>Android 的消息机制也就是 handler 机制,创建 handler 的时候会创建一个 looper ( 通过 looper.prepare() 来创建 ),looper 一般为主线程 looper. handler 通过 send 发送消息 (sendMessage) ,当然 post 一系列方法最终也是通过 send 来实现的,在 send 方法中handler 会通过 enqueueMessage() 方法中的 enqueueMessage(msg,millis )向消息队列 MessageQueue 插入一条消息,同时会把本身的 handler 通过 msg.target = this 传入.Looper 是一个死循环,不断的读取MessageQueue中的消息,loop 方法会调用 MessageQueue 的 next 方法来获取新的消息,next 操作是一个阻塞操作,当没有消息的时候 next 方法会一直阻塞,进而导致 loop 一直阻塞,当有消息的时候,Looper 就会处理消息 Looper 收到消息之后就开始处理消息: msg.target.dispatchMessage(msg),当然这里的 msg.target 就是上面传过来的发送这条消息的 handler 对象,这样 handler 发送的消息最终又交给他的dispatchMessage方法来处理了,这里不同的是,handler 的 dispatchMessage 方法是在创建 Handler时所使用的 Looper 中执行的,这样就成功的将代码逻辑切换到了主线程了.其中 Handler 处理消息的过程是:首先,检查Message 的 callback 是否为 null,不为 null 就通过 handleCallBack 来处理消息,Message 的 callback 是一个 Runnable 对象,实际上是 handler 的 post 方法所传递的 Runnable 参数.其次是检查 mCallback 是 否为 null,不为 null 就调用 mCallback 的handleMessage 方法来处理消息.</p>
-<p>3.引起内存泄漏的场景</p>
-<p>1.资源对象没关闭造成的内存泄漏</p>
-<p>2.构造Adapter时，没有使用缓存的convertView</p>
-<p>3.Bitmap对象不在使用时调用recycle()释放内存</p>
-<p>4.试着使用关于application的context来替代和activity相关的context</p>
-<p>5.注册没取消造成的内存泄漏</p>
-<p>6.集合中对象没清理造成的内存泄漏</p>
-<p>4.多线程的使用场景?</p>
-<p>使用多线程就一定效率高吗？ 有时候使用多线程并不是为了提高效率，而是使得CPU能够同时处理多个事件。</p>
-<p>1).为了不阻塞主线程,启动其他线程来做好事的事情,比如APP中耗时操作都不在UI中做.</p>
-<p>2).实现更快的应用程序,即主线程专门监听用户请求,子线程用来处理用户请求,以获得大的吞吐量.感觉这种情况下，多线程的效率未必高。 这种情况下的多线程是为了不必等待， 可以并行处理多条数据。<br>比如JavaWeb的就是主线程专门监听用户的HTTP请求，然后启动子线程去处理用户的HTTP请求。</p>
-<p>3).某种优先级虽然很低的服务，但是却要不定时去做。</p>
-<p>比如Jvm的垃圾回收。</p>
-<p>4.)某种任务，虽然耗时，但是不耗CPU的操作时，开启多个线程，效率会有显著提高。<br>比如读取文件，然后处理。 磁盘IO是个很耗费时间，但是不耗CPU计算的工作。 所以可以一个线程读取数据，一个线程处理数据。肯定比</p>
-<p>一个线程读取数据，然后处理效率高。 因为两个线程的时候充分利用了CPU等待磁盘IO的空闲时间。</p>
-<p>5.常用的线程池有哪几种?</p>
-<p>答:Android中的线程池都是之间或间接通过配置ThreadPoolExecutor来实现不同特性的线程池.Android中最常见的四类具有不同特性的线程池分别为FixThreadPool、CachedThreadPool、SingleThreadPool、ScheduleThreadExecutor.</p>
-<p>下面详细的介绍一下:</p>
-<p>1).FixThreadPool</p>
-<p>只有核心线程,并且数量固定的,也不会被回收,所有线程都活动时,因为队列没有限制大小,新任务会等待执行.</p>
-<p>优点:更快的响应外界请求.</p>
-<p>2).SingleThreadPool</p>
-<p>只有一个核心线程,确保所有的任务都在同一线程中按顺序完成.因此不需要处理线程同步的问题.</p>
-<p>3).CachedThreadPool<br>只有非核心线程,最大线程数非常大,所有线程都活动时,会为新任务创建新线程,否则会利用空闲线程(60s空闲时间,过了就会被回收,所以线程池中有0个线程的可能)处理任务.</p>
-<p>优点:任何任务都会被立即执行(任务队列SynchronousQueue相当于一个空集合);比较适合执行大量的耗时较少的任务.</p>
-<p>4).ScheduledThreadPool</p>
-<p>核心线程数固定,非核心线程(闲着没活干会被立即回收)数没有限制.</p>
-<p>优点:执行定时任务以及有固定周期的重复任务</p>
-<p>参考<a href="http://blog.csdn.net/seu_calvin/article/details/52415337" target="_blank" rel="external">Android开发——Android中常见的4种线程池（保证你能看懂并理解）</a></p>
-<p>6.在公司做了什么?团队规模?为什么离职?</p>
-<ol>
+        <h4 id="准备的知识"><a href="#准备的知识" class="headerlink" title="准备的知识"></a>准备的知识</h4><ol>
 <li>类的加载过程，Person person = new Person();为例进行说明。<br>1、因为new用到了Person.class，所以会先找到Person.class文件，并加载到内存中</li>
 </ol>
 <p>2、执行该类中的static代码块，如果有的话，给Person.class类进行初始化</p>
@@ -221,7 +187,7 @@
 <p>5、对属性进行显示初始化</p>
 <p>6、对对象进行构造代码块初始化</p>
 <p>7、对对象进行与之对应的构造函数进行初始化</p>
-<p>8、将内存地址付给栈内存中的p变量</p>
+<p>8、将内存地址付给栈内存中的p变量<br><a id="more"></a></p>
 <ol>
 <li>JVM相关知识，GC机制。</li>
 </ol>
@@ -348,6 +314,67 @@
 <p>　　热修复因为是为了修复Bug的，所以要将新的同名类替代同名的Bug类，要抢先加载新的类而不是Bug类，所以多做两件事：在原先的app打包的时候，阻止相关类去打上CLASS_ISPREVERIFIED标志，还有在热修复时动态改变BaseDexClassLoader对象间接引用的dexElements，这样才能抢先代替Bug类，完成系统不加载旧的Bug类</p>
 <p>　　而插件化只是增肌新的功能类或者是资源文件，所以不涉及抢先加载旧的类这样的使命，就避过了阻止相关类去打上CLASS_ISPREVERIFIED标志和还有在热修复时动态改变BaseDexClassLoader对象间接引用的dexElements</p>
 <p>　　所以插件化比热修复简单，热修复是在插件化的基础上在进行替旧的Bug类</p>
+<h4 id="百度糯米电话面试题"><a href="#百度糯米电话面试题" class="headerlink" title="百度糯米电话面试题"></a>百度糯米电话面试题</h4><p>1.ArrayList 和 Hashmap 简单说一些,区别,底层的数据结构.</p>
+<p>ArrayList : 由数组实现的List。允许对元素进行快速随机访问，但是向List中间插入与移除元素的速度很慢。</p>
+<p>HashMap : Map基于散列表的实现。插入和查询“键值对”的开销是固定的,使用对象的hashCode()进行快速查询的。此方法能够显着提高性能。</p>
+<p>2.Handler 消息机制</p>
+<p>Android 的消息机制也就是 handler 机制,创建 handler 的时候会创建一个 looper ( 通过 looper.prepare() 来创建 ),looper 一般为主线程 looper. handler 通过 send 发送消息 (sendMessage) ,当然 post 一系列方法最终也是通过 send 来实现的,在 send 方法中handler 会通过 enqueueMessage() 方法中的 enqueueMessage(msg,millis )向消息队列 MessageQueue 插入一条消息,同时会把本身的 handler 通过 msg.target = this 传入.Looper 是一个死循环,不断的读取MessageQueue中的消息,loop 方法会调用 MessageQueue 的 next 方法来获取新的消息,next 操作是一个阻塞操作,当没有消息的时候 next 方法会一直阻塞,进而导致 loop 一直阻塞,当有消息的时候,Looper 就会处理消息 Looper 收到消息之后就开始处理消息: msg.target.dispatchMessage(msg),当然这里的 msg.target 就是上面传过来的发送这条消息的 handler 对象,这样 handler 发送的消息最终又交给他的dispatchMessage方法来处理了,这里不同的是,handler 的 dispatchMessage 方法是在创建 Handler时所使用的 Looper 中执行的,这样就成功的将代码逻辑切换到了主线程了.其中 Handler 处理消息的过程是:首先,检查Message 的 callback 是否为 null,不为 null 就通过 handleCallBack 来处理消息,Message 的 callback 是一个 Runnable 对象,实际上是 handler 的 post 方法所传递的 Runnable 参数.其次是检查 mCallback 是 否为 null,不为 null 就调用 mCallback 的handleMessage 方法来处理消息.</p>
+<p>3.引起内存泄漏的场景</p>
+<p>1.资源对象没关闭造成的内存泄漏</p>
+<p>2.构造Adapter时，没有使用缓存的convertView</p>
+<p>3.Bitmap对象不在使用时调用recycle()释放内存</p>
+<p>4.试着使用关于application的context来替代和activity相关的context</p>
+<p>5.注册没取消造成的内存泄漏</p>
+<p>6.集合中对象没清理造成的内存泄漏</p>
+<p>4.多线程的使用场景?</p>
+<p>使用多线程就一定效率高吗？ 有时候使用多线程并不是为了提高效率，而是使得CPU能够同时处理多个事件。</p>
+<p>1).为了不阻塞主线程,启动其他线程来做好事的事情,比如APP中耗时操作都不在UI中做.</p>
+<p>2).实现更快的应用程序,即主线程专门监听用户请求,子线程用来处理用户请求,以获得大的吞吐量.感觉这种情况下，多线程的效率未必高。 这种情况下的多线程是为了不必等待， 可以并行处理多条数据。<br>比如JavaWeb的就是主线程专门监听用户的HTTP请求，然后启动子线程去处理用户的HTTP请求。</p>
+<p>3).某种优先级虽然很低的服务，但是却要不定时去做。</p>
+<p>比如Jvm的垃圾回收。</p>
+<p>4.)某种任务，虽然耗时，但是不耗CPU的操作时，开启多个线程，效率会有显著提高。<br>比如读取文件，然后处理。 磁盘IO是个很耗费时间，但是不耗CPU计算的工作。 所以可以一个线程读取数据，一个线程处理数据。肯定比</p>
+<p>一个线程读取数据，然后处理效率高。 因为两个线程的时候充分利用了CPU等待磁盘IO的空闲时间。</p>
+<p>5.常用的线程池有哪几种?</p>
+<p>答:Android中的线程池都是之间或间接通过配置ThreadPoolExecutor来实现不同特性的线程池.Android中最常见的四类具有不同特性的线程池分别为FixThreadPool、CachedThreadPool、SingleThreadPool、ScheduleThreadExecutor.</p>
+<p>下面详细的介绍一下:</p>
+<p>1).FixThreadPool</p>
+<p>只有核心线程,并且数量固定的,也不会被回收,所有线程都活动时,因为队列没有限制大小,新任务会等待执行.</p>
+<p>优点:更快的响应外界请求.</p>
+<p>2).SingleThreadPool</p>
+<p>只有一个核心线程,确保所有的任务都在同一线程中按顺序完成.因此不需要处理线程同步的问题.</p>
+<p>3).CachedThreadPool<br>只有非核心线程,最大线程数非常大,所有线程都活动时,会为新任务创建新线程,否则会利用空闲线程(60s空闲时间,过了就会被回收,所以线程池中有0个线程的可能)处理任务.</p>
+<p>优点:任何任务都会被立即执行(任务队列SynchronousQueue相当于一个空集合);比较适合执行大量的耗时较少的任务.</p>
+<p>4).ScheduledThreadPool</p>
+<p>核心线程数固定,非核心线程(闲着没活干会被立即回收)数没有限制.</p>
+<p>优点:执行定时任务以及有固定周期的重复任务</p>
+<p>参考<a href="http://blog.csdn.net/seu_calvin/article/details/52415337" target="_blank" rel="external">Android开发——Android中常见的4种线程池（保证你能看懂并理解）</a></p>
+<p>6.在公司做了什么?团队规模?为什么离职?</p>
+<h4 id="面试中实际涉及到的问题"><a href="#面试中实际涉及到的问题" class="headerlink" title="面试中实际涉及到的问题"></a>面试中实际涉及到的问题</h4><p><strong>第一轮</strong></p>
+<p>1.知道哪些单例模式,手写一个线程安全的单例,并分析为什么是线程安全的?</p>
+<p>2.Java中的集合有哪些?解释一下HashMap?底部的数据结构?散列表冲突的处理方法,散列表是一个什么样的数据结构?HashMap是采用什么方法处理冲突的?</p>
+<p>3.解释一下什么是MVP架构,划出图解,一句话解释MVP和MVC的区别?</p>
+<p>4.Handle消息机制?在使用Handler的时候要注意哪些东西,是否会引起内存泄漏?画一下Handler机制的图解?</p>
+<p>5.是否做过性能优化?已经采取了哪些措施进行优化?</p>
+<p>6.引起内存泄漏的原因是什么?以及你是怎么解决的?</p>
+<p>这些问题应该都是比较基础的问题,每个两年的开发者都应该是非常熟悉并能相许叙述的.第一轮猜测应该是一个普通开发者.</p>
+<p><strong>第二轮</strong></p>
+<p>1.关于并发理解多少?说几个并发的集合?</p>
+<p>2.Handler 消息机制图解?</p>
+<p>3.在项目中做了哪些东西?</p>
+<p>4.画图说明View 事件传递机制?并举一个例子阐述</p>
+<p>5.类加载机制,如何换肤插件,换肤插件中存在的问题?hotfix是否用过,原理是否了解?</p>
+<p>6.说说项目中用到了哪些设计模式,说了一下策略模式和观察者模式?</p>
+<p>7.会JS么?有Hybid开发经验么?</p>
+<p>8.说一下快排的思想?手写代码</p>
+<p>9.堆有哪些数据结构?</p>
+<p>这个明显的压力比较大,知识的纵向了解也比较深,应该是个leader.</p>
+<p><strong>第三轮</strong></p>
+<p>1.介绍一下在项目中的角色?</p>
+<p>2.遇到困难是怎么解决的?</p>
+<p>3.如何与人相处,与别人意见相左的时候是怎么解决的,并举生活中的一个例子.</p>
+<p>4.有没有压力特别大的时候?</p>
+<p>这个应该是项目经理了,问的问题偏向于生活性格方面.</p>
+<p>虽然希望渺茫,但是也是人生中一个经历,知识方面自己还要很多需要补足的地方,无论是纵向还是横向,四个月后给自己一个交代!!!</p>
 
       
 
@@ -582,11 +609,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color5">Android控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android控件</a>
+                <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,6 +626,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,11 +645,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,7 +653,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
+                <a href="javascript:void(0)" class="js-tag color2">gradle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">version error</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,23 +669,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android 控件 drawable shape</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件 drawable shape</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gradle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">version error</a>
               </li>
             
             <div class="clearfix"></div>
