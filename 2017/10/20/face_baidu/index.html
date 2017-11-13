@@ -16,8 +16,10 @@
 <meta property="og:site_name" content="gexiangjie">
 <meta property="og:description" content="如梦朦胧&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;九月份的时候有了换工作的躁动,然后投了某度的Android岗位,本以为像我这种非211、985没工作经验的渣渣只能被直接pass,结果却意外的收到了电话,真是受宠若惊.经过电面,技术三面,然后就是等通知到最后拿到了OFFER,如梦一般,真是挺激动的.">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/timg.jpeg">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/binder_compose.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/binder_ipc.png">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/asdream.jpg">
-<meta property="og:updated_time" content="2017-11-13T01:28:58.000Z">
+<meta property="og:updated_time" content="2017-11-13T02:02:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="经历的某度的一场面试">
 <meta name="twitter:description" content="如梦朦胧&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;九月份的时候有了换工作的躁动,然后投了某度的Android岗位,本以为像我这种非211、985没工作经验的渣渣只能被直接pass,结果却意外的收到了电话,真是受宠若惊.经过电面,技术三面,然后就是等通知到最后拿到了OFFER,如梦一般,真是挺激动的.">
@@ -224,7 +226,8 @@ public Vector(int initialCapacity,int capacityIncrement)//使用指定的初始�
 <p><strong><em>OnMeasure()：</em></strong><br><br>&ensp;&ensp;&ensp;&ensp;测量视图大小。从顶层父View到子View递归调用measure方法，measure方法又回调OnMeasure。</p>
 <p><strong><em>OnLayout()：</em></strong><br><br>&ensp;&ensp;&ensp;&ensp;确定View位置，进行页面布局。从顶层父View向子View的递归调用view.layout方法的过程，即父View根据上一步measure子View所得到的布局大小和布局参数，将子View放在合适的位置上。</p>
 <p><strong><em>OnDraw()：</em></strong><br><br>&ensp;&ensp;&ensp;&ensp;绘制视图:ViewRoot创建一个Canvas对象，然后调用OnDraw()。六个步骤：①、绘制视图的背景；②、保存画布的图层（Layer）；③、绘制View的内容；④、绘制View子视图，如果没有就不用；⑤、还原图层（Layer）；⑥、绘制滚动条。</p>
-<h4 id="三-事件传递机制"><a href="#三-事件传递机制" class="headerlink" title="三. 事件传递机制"></a>三. 事件传递机制</h4><h4 id="四-Binder机制"><a href="#四-Binder机制" class="headerlink" title="四. Binder机制"></a>四. Binder机制</h4><h4 id="五-Android中进程的级别，以及各自的区别。"><a href="#五-Android中进程的级别，以及各自的区别。" class="headerlink" title="五. Android中进程的级别，以及各自的区别。"></a>五. Android中进程的级别，以及各自的区别。</h4><p><strong>1、前台进程</strong><br><br>&ensp;&ensp;&ensp;&ensp;用户当前正在做的事情需要这个进程。如果满足下面的条件之一，一个进程就被认为是前台进程：<br><br>a.这个进程拥有一个正在与用户交互的Activity(这个Activity的onResume()方法被调用)。<br><br>b.这个进程拥有一个绑定到正在与用户交互的activity上的Service。<br><br>c.这个进程拥有一个前台运行的Service（service调用了方法startForeground()）.<br>d.这个进程拥有一个正在执行其任何一个生命周期回调方法（onCreate(),onStart(),或onDestroy()）的Service。<br><br>e.这个进程拥有正在执行其onReceive()方法的BroadcastReceiver。<br><br>&ensp;&ensp;&ensp;&ensp;通常，在任何时间点，只有很少的前台进程存在。它们只有在达到无法调合的矛盾时才会被杀－－如内存太小而不能继续运行时。通常，到了这时，设备就达到了一个内存分页调度状态，所以需要杀一些前台进程来保证用户界面的反应.</p>
+<h4 id="三-事件传递机制"><a href="#三-事件传递机制" class="headerlink" title="三. 事件传递机制"></a>三. 事件传递机制</h4><h4 id="四-Binder机制"><a href="#四-Binder机制" class="headerlink" title="四. Binder机制"></a>四. Binder机制</h4><p><strong>1.了解Binder</strong><br><br>&ensp;&ensp;&ensp;&ensp;在Android系统中，每一个应用程序都运行在独立的进程中，这也保证了当其中一个程序出现异常而不会影响另一个应用程序的正常运转。在许多情况下，我们activity都会与各种系统的service打交道，很显然，我们写的程序中activity与系统service肯定不是同一个进程，但是它们之间是怎样实现通信的呢？所以Binder是android中一种实现进程间通信（IPC）的方式之一。<br><br>&ensp;&ensp;&ensp;&ensp;1).首先，Binder分为Client和Server两个进程。<br><br>&ensp;&ensp;&ensp;&ensp;注意，Client和Server是相对的。谁发消息，谁就是Client，谁接收消息，谁就是Server。<br><br>&ensp;&ensp;&ensp;&ensp;举个例子，两个进程A和B之间使用Binder通信，进程A发消息给进程B，那么这时候A是Binder Client，B是Binder Server；进程B发消息给进程A，那么这时候B是Binder Client，A是Binder Server——其实这么说虽然简单了，但还是不太严谨，我们先这么理解着。<br><br>&ensp;&ensp;&ensp;&ensp;2).其次，我们看下面这个图（摘自田维术的博客），基本说明白了Binder的组成解构：<img src="http://ovfk1aqnq.bkt.clouddn.com/binder_compose.png" alt=""><br>&ensp;&ensp;&ensp;&ensp;图中的IPC就是进程间通信的意思。<br><br>&ensp;&ensp;&ensp;&ensp;图中的ServiceManager，负责把Binder Server注册到一个容器中。<br><br>&ensp;&ensp;&ensp;&ensp;有人把ServiceManager比喻成电话局，存储着每个住宅的座机电话，还是很恰当的。张三给李四打电话，拨打电话号码，会先转接到电话局，电话局的接线员查到这个电话号码的地址，因为李四的电话号码之前在电话局注册过，所以就能拨通；没注册，就会提示该号码不存在。<br><br>&ensp;&ensp;&ensp;&ensp;对照着Android Binder机制，对着上面这图，张三就是Binder Client，李四就是Binder Server，电话局就是ServiceManager，电话局的接线员在这个过程中做了很多事情，对应着图中的Binder驱动.<br><br>&ensp;&ensp;&ensp;&ensp;3).接下来我们看Binder通信的过程，还是摘自田维术博客的一张图：<img src="http://ovfk1aqnq.bkt.clouddn.com/binder_ipc.png" alt=""><br>注：图中的SM也就是ServiceManager。<br><br>&ensp;&ensp;&ensp;&ensp;我们看到，Client想要直接调用Server的add方法，是不可以的，因为它们在不同的进程中，这时候就需要Binder来帮忙了。<br><br>&ensp;&ensp;&ensp;&ensp;首先是Server在SM这个容器中注册。<br><br>&ensp;&ensp;&ensp;&ensp;其次，Client想要调用Server的add方法，就需要先获取Server对象， 但是SM不会把真正的Server对象返回给Client，而是把Server的一个代理对象返回给Client，也就是Proxy。<br><br>&ensp;&ensp;&ensp;&ensp;然后，Client调用Proxy的add方法，SM会帮他去调用Server的add方法，并把结果返回给Client。<br><br>&ensp;&ensp;&ensp;&ensp;以上这3步，Binder驱动出了很多力，但我们不需要知道Binder驱动的底层实现，涉及到C++的代码了——把有限的时间去做更有意义的事情。<br><br>(ps:以上节选自包建强老师的文章<a href="http://www.cnblogs.com/Jax/p/6864103.html" target="_blank" rel="external">传送门</a>.<br><br><strong>2.为什么android选用Binder来实现进程间通信？</strong><br>1).可靠性。在移动设备上，通常采用基于Client-Server的通信方式来实现互联网与设备间的内部通信。目前linux支持IPC包括传统的管道，System V IPC，即消息队列/共享内存/信号量，以及socket中只有socket支持Client-Server的通信方式。Android系统为开发者提供了丰富进程间通信的功能接口，媒体播放，传感器，无线传输。这些功能都由不同的server来管理。开发都只关心将自己应用程序的client与server的通信建立起来便可以使用这个服务。毫无疑问，如若在底层架设一套协议来实现Client-Server通信，增加了系统的复杂性。在资源有限的手机 上来实现这种复杂的环境，可靠性难以保证。<br>2).传输性能。socket主要用于跨网络的进程间通信和本机上进程间的通信，但传输效率低，开销大。消息队列和管道采用存储-转发方式，即数据先从发送方缓存区拷贝到内核开辟的一块缓存区中，然后从内核缓存区拷贝到接收方缓存区，其过程至少有两次拷贝。虽然共享内存无需拷贝，但控制复杂。比较各种IPC方式的数据拷贝次数。共享内存：0次。Binder：1次。Socket/管道/消息队列：2次。<br>3).安全性。Android是一个开放式的平台，所以确保应用程序安全是很重要的。Android对每一个安装应用都分配了UID/PID,其中进程的UID是可用来鉴别进程身份。传统的只能由用户在数据包里填写UID/PID，这样不可靠，容易被恶意程序利用。而我们要求由内核来添加可靠的UID。<br>所以，出于可靠性、传输性、安全性。android建立了一套新的进程间通信方式。</p>
+<h4 id="五-Android中进程的级别，以及各自的区别。"><a href="#五-Android中进程的级别，以及各自的区别。" class="headerlink" title="五. Android中进程的级别，以及各自的区别。"></a>五. Android中进程的级别，以及各自的区别。</h4><p><strong>1、前台进程</strong><br><br>&ensp;&ensp;&ensp;&ensp;用户当前正在做的事情需要这个进程。如果满足下面的条件之一，一个进程就被认为是前台进程：<br><br>a.这个进程拥有一个正在与用户交互的Activity(这个Activity的onResume()方法被调用)。<br><br>b.这个进程拥有一个绑定到正在与用户交互的activity上的Service。<br><br>c.这个进程拥有一个前台运行的Service（service调用了方法startForeground()）.<br>d.这个进程拥有一个正在执行其任何一个生命周期回调方法（onCreate(),onStart(),或onDestroy()）的Service。<br><br>e.这个进程拥有正在执行其onReceive()方法的BroadcastReceiver。<br><br>&ensp;&ensp;&ensp;&ensp;通常，在任何时间点，只有很少的前台进程存在。它们只有在达到无法调合的矛盾时才会被杀－－如内存太小而不能继续运行时。通常，到了这时，设备就达到了一个内存分页调度状态，所以需要杀一些前台进程来保证用户界面的反应.</p>
 <p><strong>2、可见进程</strong><br><br>&ensp;&ensp;&ensp;&ensp;一个进程不拥有运行于前台的组件，但是依然能影响用户所见。满足下列条件时，进程即为可见：<br><br>这个进程拥有一个不在前台但仍可见的Activity(它的onPause()方法被调用)。当一个前台activity启动一个对话框时，就出了这种情况。</p>
 <p><strong>3、服务进程</strong><br><br>&ensp;&ensp;&ensp;&ensp;一个可见进程被认为是极其重要的。并且，除非只有杀掉它才可以保证所有前台进程的运行，否则是不能动它的。<br><br>这个进程拥有一个绑定到可见activity的Service。<br><br>一个进程不在上述两种之内，但它运行着一个被startService()所启动的service。<br><br>尽管一个服务进程不直接影响用户所见，但是它们通常做一些用户关心的事情（比如播放音乐或下载数据），所以系统不到前台进程和可见进程活不下去时不会杀它。</p>
 <p><strong>4、后台进程</strong><br><br>&ensp;&ensp;&ensp;&ensp;一个进程拥有一个当前不可见的activity(activity的onStop()方法被调用)。<br><br>&ensp;&ensp;&ensp;&ensp;这样的进程们不会直接影响到用户体验，所以系统可以在任意时刻杀了它们从而为前台、可见、以及服务进程们提供存储空间。通常有很多后台进程在运行。它们被保存在一个LRU(最近最少使用)列表中来确保拥有最近刚被看到的activity的进程最后被杀。如果一个activity正确的实现了它的生命周期方法，并保存了它的当前状态，那么杀死它的进程将不会对用户的可视化体验造成影响。因为当用户返回到这个activity时，这个activity会恢复它所有的可见状态。</p>
@@ -523,10 +526,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android控件</a>
               </li>
              
@@ -535,7 +534,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,6 +543,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,19 +562,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,15 +574,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android 控件 drawable shape</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件 drawable shape</a>
               </li>
             
             <div class="clearfix"></div>
