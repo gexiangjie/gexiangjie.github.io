@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/binder_compose.png">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/binder_ipc.png">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/asdream.jpg">
-<meta property="og:updated_time" content="2017-11-15T11:16:43.000Z">
+<meta property="og:updated_time" content="2017-11-15T11:20:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="经历的某度的一场面试">
 <meta name="twitter:description" content="如梦朦胧&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;九月份的时候有了换工作的躁动,然后投了某度的Android岗位,本以为像我这种非211、985没工作经验的渣渣只能被直接pass,结果却意外的收到了电话,真是受宠若惊.经过电面,技术三面,然后就是等通知到最后拿到了OFFER,如梦一般,真是挺激动的.">
@@ -232,7 +232,8 @@ public Vector(int initialCapacity,int capacityIncrement)//使用指定的初始�
 <p><strong>适用场景分析：</strong><br>HashMap和HashTable:HashMap去掉了HashTable的contains方法，但是加上了containsValue()和containsKey()方法。HashTable同步的，而HashMap是非同步的，效率上比HashTable要高。HashMap允许空键值，而HashTable不允许。<br><br>HashMap：适用于Map中插入、删除和定位元素。 <br><br>Treemap：适用于按自然顺序或自定义顺序遍历键(key)。<br></p>
 <p>(ps:其实我们工作的过程中对集合的使用是很频繁的,稍加注意并总结积累一下,在面试的时候应该会回答的很轻松)</p>
 <h4 id="五-concurrentHashmap原理，原子类。"><a href="#五-concurrentHashmap原理，原子类。" class="headerlink" title="五. concurrentHashmap原理，原子类。"></a>五. concurrentHashmap原理，原子类。</h4><p>&ensp;&ensp;&ensp;&ensp;ConcurrentHashMap作为一种线程安全且高效的哈希表的解决方案，尤其其中的”分段锁”的方案，相比HashTable的全表锁在性能上的提升非常之大.</p>
-<h4 id="六-volatile原理"><a href="#六-volatile原理" class="headerlink" title="六. volatile原理"></a>六. volatile原理</h4><h4 id="七-多线程的使用场景"><a href="#七-多线程的使用场景" class="headerlink" title="七. 多线程的使用场景"></a>七. 多线程的使用场景</h4><p>使用多线程就一定效率高吗？ 有时候使用多线程并不是为了提高效率，而是使得CPU能够同时处理多个事件。<br><br>1).为了不阻塞主线程,启动其他线程来做好事的事情,比如APP中耗时操作都不在UI中做.<br><br>2).实现更快的应用程序,即主线程专门监听用户请求,子线程用来处理用户请求,以获得大的吞吐量.感觉这种情况下，多线程的效率未必高。 这种情况下的多线程是为了不必等待， 可以并行处理多条数据。<br>比如JavaWeb的就是主线程专门监听用户的HTTP请求，然后启动子线程去处理用户的HTTP请求。<br><br>3).某种优先级虽然很低的服务，但是却要不定时去做。<br><br>比如Jvm的垃圾回收。<br><br>4.)某种任务，虽然耗时，但是不耗CPU的操作时，开启多个线程，效率会有显著提高。<br><br>比如读取文件，然后处理。 磁盘IO是个很耗费时间，但是不耗CPU计算的工作。 所以可以一个线程读取数据，一个线程处理数据。肯定比一个线程读取数据，然后处理效率高。 因为两个线程的时候充分利用了CPU等待磁盘IO的空闲时间。</p>
+<h4 id="六-volatile原理"><a href="#六-volatile原理" class="headerlink" title="六. volatile原理"></a>六. volatile原理</h4><p>&ensp;&ensp;&ensp;&ensp;在《Java并发编程：核心理论》一文中，我们已经提到过可见性、有序性及原子性问题，通常情况下我们可以通过Synchronized关键字来解决这些个问题，不过如果对Synchronized原理有了解的话，应该知道Synchronized是一个比较重量级的操作，对系统的性能有比较大的影响，所以，如果有其他解决方案，我们通常都避免使用Synchronized来解决问题。而volatile关键字就是Java中提供的另一种解决可见性和有序性问题的方案。对于原子性，需要强调一点，也是大家容易误解的一点：对volatile变量的单次读/写操作可以保证原子性的，如long和double类型变量，但是并不能保证i++这种操作的原子性，因为本质上i++是读、写两次操作。<br><br>参考文章<a href="https://www.cnblogs.com/paddix/p/5428507.html" target="_blank" rel="external">插好眼了等传送</a></p>
+<h4 id="七-多线程的使用场景"><a href="#七-多线程的使用场景" class="headerlink" title="七. 多线程的使用场景"></a>七. 多线程的使用场景</h4><p>使用多线程就一定效率高吗？ 有时候使用多线程并不是为了提高效率，而是使得CPU能够同时处理多个事件。<br><br>1).为了不阻塞主线程,启动其他线程来做好事的事情,比如APP中耗时操作都不在UI中做.<br><br>2).实现更快的应用程序,即主线程专门监听用户请求,子线程用来处理用户请求,以获得大的吞吐量.感觉这种情况下，多线程的效率未必高。 这种情况下的多线程是为了不必等待， 可以并行处理多条数据。<br>比如JavaWeb的就是主线程专门监听用户的HTTP请求，然后启动子线程去处理用户的HTTP请求。<br><br>3).某种优先级虽然很低的服务，但是却要不定时去做。<br><br>比如Jvm的垃圾回收。<br><br>4.)某种任务，虽然耗时，但是不耗CPU的操作时，开启多个线程，效率会有显著提高。<br><br>比如读取文件，然后处理。 磁盘IO是个很耗费时间，但是不耗CPU计算的工作。 所以可以一个线程读取数据，一个线程处理数据。肯定比一个线程读取数据，然后处理效率高。 因为两个线程的时候充分利用了CPU等待磁盘IO的空闲时间。</p>
 <h4 id="八-JAVA常量池"><a href="#八-JAVA常量池" class="headerlink" title="八. JAVA常量池"></a>八. JAVA常量池</h4><p><strong><em>Interger中的128(-128~127)</em></strong><br><br>a.当数值范围为-128~127时：如果两个new出来Integer对象，即使值相同，通过“==”比较结果为false，但两个对象直接赋值，则通过“==”比较结果为“true，这一点与String非常相似。<br><br>b.当数值不在-128~127时，无论通过哪种方式，即使两个对象的值相等，通过“==”比较，其结果为false；<br><br>c.当一个Integer对象直接与一个int基本数据类型通过“==”比较，其结果与第一点相同；<br><br>d.Integer对象的hash值为数值本身；</p>
 <p><strong><em>为什么是-128-127?</em></strong><br>&ensp;&ensp;&ensp;&ensp;在Integer类中有一个静态内部类IntegerCache，在IntegerCache类中有一个Integer数组，用以缓存当数值范围为-128~127时的Integer对象。</p>
 <h4 id="九-简单介绍一下java中的泛型，泛型擦除以及相关的概念。"><a href="#九-简单介绍一下java中的泛型，泛型擦除以及相关的概念。" class="headerlink" title="九. 简单介绍一下java中的泛型，泛型擦除以及相关的概念。"></a>九. 简单介绍一下java中的泛型，泛型擦除以及相关的概念。</h4><p>&ensp;&ensp;&ensp;&ensp;泛型是Java SE 1.5的新特性，泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。这种参数类型可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口、泛型方法。 Java语言引入泛型的好处是安全简单。<br><br>&ensp;&ensp;&ensp;&ensp;在Java SE 1.5之前，没有泛型的情况的下，通过对类型Object的引用来实现参数的“任意化”，“任意化”带来的缺点是要做显式的强制类型转换，而这种转换是要求开发者对实际参数类型可以预知的情况下进行的。对于强制类型转换错误的情况，编译器可能不提示错误，在运行的时候才出现异常，这是一个安全隐患。<br><br>&ensp;&ensp;&ensp;&ensp;泛型的好处是在编译的时候检查类型安全，并且所有的强制转换都是自动和隐式的，提高代码的重用率。<br><br>1、泛型的类型参数只能是类类型（包括自定义类），不能是简单类型。<br><br>2、同一种泛型可以对应多个版本（因为参数类型是不确定的），不同版本的泛型类实例是不兼容的。<br><br>3、泛型的类型参数可以有多个。<br><br>4、泛型的参数类型可以使用extends语句，例如<t extends="" superclass="">。习惯上称为“有界类型”。<br><br>5、泛型的参数类型还可以是通配符类型。例如Class&lt;?&gt; classType = Class.forName(“java.lang.String”);<br></t></p>
@@ -623,11 +624,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,15 +656,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gradle</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">version error</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,11 +676,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件 drawable shape</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android 控件 drawable shape</a>
+                <a href="javascript:void(0)" class="js-tag color3">RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
