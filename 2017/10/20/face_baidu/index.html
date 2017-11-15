@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/binder_compose.png">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/binder_ipc.png">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/asdream.jpg">
-<meta property="og:updated_time" content="2017-11-15T11:20:35.000Z">
+<meta property="og:updated_time" content="2017-11-15T11:30:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="经历的某度的一场面试">
 <meta name="twitter:description" content="如梦朦胧&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;九月份的时候有了换工作的躁动,然后投了某度的Android岗位,本以为像我这种非211、985没工作经验的渣渣只能被直接pass,结果却意外的收到了电话,真是受宠若惊.经过电面,技术三面,然后就是等通知到最后拿到了OFFER,如梦一般,真是挺激动的.">
@@ -337,7 +337,7 @@ for (Counter a : mArray) {
 <h4 id="十-怎样计算一张图片的大小，加载bitmap过程（怎样保证不产生内存溢出），二级缓存，LRUCache算法。"><a href="#十-怎样计算一张图片的大小，加载bitmap过程（怎样保证不产生内存溢出），二级缓存，LRUCache算法。" class="headerlink" title="十. 怎样计算一张图片的大小，加载bitmap过程（怎样保证不产生内存溢出），二级缓存，LRUCache算法。"></a>十. 怎样计算一张图片的大小，加载bitmap过程（怎样保证不产生内存溢出），二级缓存，LRUCache算法。</h4><p><strong>计算一张图片的大小</strong><br>&ensp;&ensp;&ensp;&ensp;图片占用内存的计算公式：图片高度 <em> 图片宽度 </em> 一个像素占用的内存大小.所以，计算图片占用内存大小的时候，要考虑图片所在的目录跟设备密度，这两个因素其实影响的是图片的高宽，android会对图片进行拉升跟压缩。</p>
 <p><strong>加载bitmap过程（怎样保证不产生内存溢出）</strong><br><br>&ensp;&ensp;&ensp;&ensp;由于Android对图片使用内存有限制，若是加载几兆的大图片便内存溢出。Bitmap会将图片的所有像素（即长x宽）加载到内存中，如果图片分辨率过大，会直接导致内存OOM，只有在BitmapFactory加载图片时使用BitmapFactory.Options对相关参数进行配置来减少加载的像素。</p>
 <p><strong>BitmapFactory.Options相关参数详解</strong><br><br>(1).Options.inPreferredConfig值来降低内存消耗。<br><br>比如：默认值ARGB_8888改为RGB_565,节约一半内存。<br><br>(2).设置Options.inSampleSize 缩放比例，对大图片进行压缩 。<br><br>(3).设置Options.inPurgeable和inInputShareable：让系统能及时回 收内存。 <br><br>A：inPurgeable：设置为True时，表示系统内存不足时可以被回 收，设置为False时，表示不能被回收。 <br><br>B：inInputShareable：设置是否深拷贝，与inPurgeable结合使用，inPurgeable为false时，该参数无意义。<br><br>(4).使用decodeStream代替其他方法。<br><br>decodeResource,setImageResource,setImageBitmap等方法</p>
-<p>####十一. LRUCache算法是怎样实现的。<br>&ensp;&ensp;&ensp;&ensp;内部存在一个LinkedHashMap和maxSize，把最近使用的对象用强引用存储在 LinkedHashMap中，给出来put和get方法，每次put图片时计算缓存中所有图片总大小，跟maxSize进行比较，大于maxSize，就将最久添加的图片移除；反之小于maxSize就添加进来。 <br><br>&ensp;&ensp;&ensp;&ensp;之前，我们会使用内存缓存技术实现，也就是软引用或弱引用，在Android 2.3（APILevel 9）开始，垃圾回收器会更倾向于回收持有软引用或弱引用的对象，这让软引用和弱引用变得不再可靠。</p>
+<h4 id="十一-LRUCache算法是怎样实现的。"><a href="#十一-LRUCache算法是怎样实现的。" class="headerlink" title="十一. LRUCache算法是怎样实现的。"></a>十一. LRUCache算法是怎样实现的。</h4><p>&ensp;&ensp;&ensp;&ensp;内部存在一个LinkedHashMap和maxSize，把最近使用的对象用强引用存储在 LinkedHashMap中，给出来put和get方法，每次put图片时计算缓存中所有图片总大小，跟maxSize进行比较，大于maxSize，就将最久添加的图片移除；反之小于maxSize就添加进来。 <br><br>&ensp;&ensp;&ensp;&ensp;之前，我们会使用内存缓存技术实现，也就是软引用或弱引用，在Android 2.3（APILevel 9）开始，垃圾回收器会更倾向于回收持有软引用或弱引用的对象，这让软引用和弱引用变得不再可靠。</p>
 <h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><h4 id="一-算法题"><a href="#一-算法题" class="headerlink" title="一. 算法题"></a>一. 算法题</h4><p>m <em> n的矩阵，能形成几个正方形（2 </em> 2能形成1个正方形，2 <em> 3 2个，3 </em> 3 6个）<br><br>计数的关键是要观察到任意一个倾斜的正方形必然唯一内接于一个非倾斜的正方形，而一个非倾斜的边长为k的非倾斜正方形，一条边上有k-1个内点，每个内点恰好确定一个内接于其中的倾斜正方形，加上非倾斜正方形本身，可知，将边长为k的非倾斜正方形数目乘以k，再按k求和即可得到所有正方形的数目。<br><br>设2≤n≤m，k≤n-1，则边长为k的非倾斜有<br>(n-k)(m-k)个，故所有正方形有<br>∑(m-k)(n-k)k个<br>例如m=n=4<br>正方形有3<em>3</em>1+2<em>2</em>2+1<em>1</em>3=20个</p>
 <h3 id="下面是面试过程中遇到的题目"><a href="#下面是面试过程中遇到的题目" class="headerlink" title="下面是面试过程中遇到的题目"></a>下面是面试过程中遇到的题目</h3><p>大多数题目都可以在上面找到答案.</p>
 <h4 id="电话面试题"><a href="#电话面试题" class="headerlink" title="电话面试题"></a>电话面试题</h4><p> 1.ArrayList 和 Hashmap 简单说一些,区别,底层的数据结构.</p>
@@ -371,7 +371,7 @@ for (Counter a : mArray) {
 <p>3.如何与人相处,与别人意见相左的时候是怎么解决的,并举生活中的一个例子.</p>
 <p>4.有没有压力特别大的时候?</p>
 <p>这个应该是项目经理了,问的问题偏向于生活性格方面.</p>
-<p>虽然希望渺茫,但是也是人生中一个经历,知识方面自己还要很多需要补足的地方,无论是纵向还是横向,四个月后给自己一个交代!!!</p>
+<p>以上面试中问到的题目基本上都可以在上面找到答案,所以做准备是很重要的,但技术是一点点积累的,就算你全会背了,面试过了,真正等到工作的时候还是回捉襟见肘的,所以踏实点吧骚年.</p>
 <h4 id="如梦飘落"><a href="#如梦飘落" class="headerlink" title="如梦飘落"></a>如梦飘落</h4><p><img src="http://ovfk1aqnq.bkt.clouddn.com/asdream.jpg" alt=""><br>种种原因我却拒绝了百度的OFFER,或许很可惜,但更激励我学好技术.</p>
 
       
@@ -624,11 +624,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,10 +640,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">config.gradle</a>
               </li>
              
@@ -652,7 +648,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,11 +656,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gradle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">version error</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,6 +665,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gradle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">version error</a>
               </li>
              
               <li class="article-tag-list-item">
