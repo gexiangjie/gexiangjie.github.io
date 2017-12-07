@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E9%9B%AA.jpeg">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-298fa4766b8f9766.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4642697-283058591749ac76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-12-07T09:02:27.000Z">
+<meta property="og:updated_time" content="2017-12-07T09:05:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DialogFragment 报错汇总">
 <meta name="twitter:description" content="今天是冬令节气中的大雪">
@@ -186,14 +186,14 @@
 <p><img src="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E9%9B%AA.jpeg" alt="by gxj"></p>
 <a id="more"></a>
 <p>最近在降低项目总体错误率,发现有一些dialogFragment报了几个active、already added的错误,就修复了一波.</p>
-<h4 id="Fragment-already-active"><a href="#Fragment-already-active" class="headerlink" title="Fragment already active"></a>Fragment already active</h4><p><img src="http://upload-images.jianshu.io/upload_images/4642697-298fa4766b8f9766.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误日志">这是Fragment调用setArguments()方法时报的错误.原因是当Android堆栈正在删除Fragment而删除操作没有完成时,也就是Fragment仍保持active又被重新调用了setArguments()方法,常见操作是快速连续点击调用这个Fragment的操作.<br>解决方法:使用Fragment的isRemoving()方法来判断该Fragment是否还存在堆栈中,如果true,那么Fragment依然active,那么可以采取复写相同地址下的Arguments来解决;如果false,那么说明Fragment not active,可以直接调用setArguments()见下面代码.</p>
+<h4 id="Fragment-already-active"><a href="#Fragment-already-active" class="headerlink" title="Fragment already active"></a>Fragment already active</h4><p><img src="http://upload-images.jianshu.io/upload_images/4642697-298fa4766b8f9766.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误日志"><br>这是Fragment调用setArguments()方法时报的错误.原因是当Android堆栈正在删除Fragment而删除操作没有完成时,也就是Fragment仍保持active又被重新调用了setArguments()方法,常见操作是快速连续点击调用这个Fragment的操作.<br>解决方法:使用Fragment的isRemoving()方法来判断该Fragment是否还存在堆栈中,如果true,那么Fragment依然active,那么可以采取复写相同地址下的Arguments来解决;如果false,那么说明Fragment not active,可以直接调用setArguments()见下面代码.</p>
 <pre><code>if (fragment.isRemoving()) {
     fragment.getArguments().putAll(bundle);
 } else {
     fragment.setArguments(bundle);
 }
 </code></pre><p>如果是全局的dialogfragment,可以通过判断dialogFragment是否为null来设置.</p>
-<h4 id="Fragment-already-added"><a href="#Fragment-already-added" class="headerlink" title="Fragment already added"></a>Fragment already added</h4><p><img src="http://upload-images.jianshu.io/upload_images/4642697-283058591749ac76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误日志"><strong>出现场景</strong>:<br>Fragment:快速双击调用FragmentTransaction.add()方法添加fragment，而fragment不是每次单独生成的，就会引起这个异常。<br>DialogFragment:快速点击呼起dialogFragment的按钮,因为<br>DialogFragment.show()内部调用了FragmentTransaction.add()方法，所以调用DialogFragment.show()方法时候也可能会出现这个异常。<br>解决方法:<br>Fragment:在add()方法时候，先判断fragmentA.isAdded()，如下调用可以避免该异常：</p>
+<h4 id="Fragment-already-added"><a href="#Fragment-already-added" class="headerlink" title="Fragment already added"></a>Fragment already added</h4><p><img src="http://upload-images.jianshu.io/upload_images/4642697-283058591749ac76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误日志"><br><strong>出现场景</strong>:<br>Fragment:快速双击调用FragmentTransaction.add()方法添加fragment，而fragment不是每次单独生成的，就会引起这个异常。<br>DialogFragment:快速点击呼起dialogFragment的按钮,因为<br>DialogFragment.show()内部调用了FragmentTransaction.add()方法，所以调用DialogFragment.show()方法时候也可能会出现这个异常。<br>解决方法:<br>Fragment:在add()方法时候，先判断fragmentA.isAdded()，如下调用可以避免该异常：</p>
 <pre><code>if(!fragmentA.isAdded()){
         FragmentManager manager =getFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
@@ -444,7 +444,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
+                <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -452,7 +452,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
+                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -464,7 +464,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
+                <a href="javascript:void(0)" class="js-tag color4">config.gradle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">依赖库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,11 +476,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">config.gradle</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">依赖库</a>
+                <a href="javascript:void(0)" class="js-tag color5">-Fragment Exception</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,19 +492,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">version error</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-Fragment Exception</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">api implemention</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">version error</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,6 +505,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
