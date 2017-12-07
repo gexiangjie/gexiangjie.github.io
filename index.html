@@ -158,17 +158,31 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-尘埃落定" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-fragment_exception" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/07/fragment_exception/">DialogFragment 报错汇总</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/07/fragment_exception/" class="archive-article-date">
+  	<time datetime="2017-12-07T08:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-07</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>毕业后的第一次悸动</p>
-<p>从9月20至今的一切仿佛让我的心在不断试炼.由于对现有工作的一丝不满,一气之下,投了简历,面了百度,经过百度的六轮面试之后成功拿到OFFER.自从拿到OFFER,心中就是各种忐忑,担心现在工作的离职,忧虑百度的新工作…而现在都已经尘埃落定了.是的,我拒绝了百度,有现实原因,也有远期的原因,亦或者说我面向金钱低下了我的头颅,终究是因为自己不再孤身一人,再也不能Say Go Let’s Go.</p>
-<p>拒绝了人生的第一个机会,剩下的应该是沉淀了吧,既然现在的技术能让公司不惜如此盛情挽留我,也只能说明我这过去一年的价值,说明不了接下来的工作是否能再获得一份满意的答卷.本身拒绝百度就是拒绝了一次技术上升的机会,拒绝了一次镀金,但我相信以后肯定还会有机会,比现在更好的机会.</p>
-<p>那么剩下的就是更加努力的做现在的产品了,多看书,升华技术,让自己更加的丰富,时刻为下一次的机会做准备.</p>
-<p>如梦飘落.</p>
-
+        <p>今天是冬令节气中的大雪</p>
+<p><img src="http://ovfk1aqnq.bkt.clouddn.com/%E5%A4%A7%E9%9B%AA.jpeg" alt="by gxj"></p>
+        
+          <a class="article-more-a" href="/2017/12/07/fragment_exception/#more">more >></a>
+        
       
 
       
@@ -176,11 +190,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-Fragment Exception</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/31/尘埃落定/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/12/07/fragment_exception/">展开全文 >></a>
         </p>
       
 
@@ -210,31 +235,50 @@
 
 
   
-    <article id="post-face_baidu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-gradle3.x.x中的api和implemention的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/20/face_baidu/">经历的某度的一场面试</a>
+      <a class="article-title" href="/2017/11/28/gradle3.x.x中的api和implemention的区别/">Android Gradle 3.x.x中api和implemention的区别</a>
     </h1>
   
 
         
-        <a href="/2017/10/20/face_baidu/" class="archive-article-date">
-  	<time datetime="2017-10-20T09:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
+        <a href="/2017/11/28/gradle3.x.x中的api和implemention的区别/" class="archive-article-date">
+  	<time datetime="2017-11-28T07:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/timg.jpeg" alt=""></p>
-<h3 id="如梦朦胧"><a href="#如梦朦胧" class="headerlink" title="如梦朦胧"></a>如梦朦胧</h3><p>&ensp;&ensp;&ensp;&ensp;九月份的时候有了换工作的躁动,然后投了某度的Android岗位,本以为像我这种非211、985没工作经验的渣渣只能被直接pass,结果却意外的收到了电话,真是受宠若惊.经过电面,技术三面,然后就是等通知到最后拿到了OFFER,如梦一般,真是挺激动的.<br>
-        
-          <a class="article-more-a" href="/2017/10/20/face_baidu/#more">more >></a>
-        
+        <p>I think this topic needs a bit more coverage because maybe is not so immediate for every developer.</p>
+<p>Gradle compile keyword has been deprecated in favor of the new api and implementation keywords.</p>
+<p>I will not explain api, because it’s the same thing as using the old compile, so if you replace all your compile with api everything will works as always.</p>
+<p>To understand the implementation keyword we need an example.</p>
+<p>EXAMPLE</p>
+<p>We have this library called MyLibrary where internally we are using another library called InternalLibrary. Something like this:</p>
+<p>//internal library module<br>public class InternalLibrary {<br>    public static String giveMeAString(){<br>        return “hello”;<br>    }<br>}</p>
+<p>//my library module<br>public class MyLibrary {<br>    public String myString(){<br>        return InternalLibrary.giveMeAString();<br>    }<br>}<br>The build.gradle dependencies of MyLibrary its like this:</p>
+<p>dependencies {<br>    api project(‘:InternalLibrary’)<br>}<br>Now in your code you want to use MyLibrary so you should have a build.gradle with this dependency</p>
+<p>dependencies {<br>    api project(‘:MyLibrary’)<br>}<br>In your application code, with the api keyword (or using the old compile) you can access both MyLibrary and InternalLibrary.</p>
+<p>//so you can access the library (as it should)<br>MyLibrary myLib = new MyLibrary();<br>System.out.println(myLib.myString());</p>
+<p>//but you can access the internal library too (and you shouldn’t)<br>System.out.println(InternalLibrary.giveMeAString());<br>In this way you are potentially “leaking” the internal implementation of something that you shouldn’t use because it’s not directly imported by you.</p>
+<p>To prevent this, Gradle has created the new implementation keyword, so now if you switch api to implementation in your MyLibrary</p>
+<p>dependencies {<br>    implementation project(‘:InternalLibrary’)<br>}<br>And in your app build.gradle</p>
+<p>dependencies {<br>    implementation project(‘:MyLibrary’)<br>}<br>you won’t be able to call InternalLibrary.giveMeAString() in your app code anymore. While if MyLibrary uses the api keyword to import InternalLibrary, in your app you will be able to call InternalLibrary.giveMeAString() without problems, independently if you use api or implementation to add MyLibrary to your app.</p>
+<p>Using thi sort of boxing strategy the Android gradle plugin knows that if you edit something in InternalLibrary it will trigger the recompilation of MyLibrary only. It will not trigger the recompilation of your entire app because you don’t have access to InternalLibrary. This mechanism when you have a lot of nested dependencies can speed-up the build a lot.(Watch the video linked at the end for a full understanding of this)</p>
+<p>CONCLUSIONS</p>
+<p>When you switch to the new Android gradle plugin 3.X.X, you should replace all your compile with the implementation keyword (1<em>). Then try to compile and test your app. If everything it’s ok leave the code as is, if you have problems you probably have something wrong with your dependencies or you used something that now is private and not more accessible. Suggestion by Android Gradle plugin engineer Jerome Dochez (1)</em>)<br>If you are a library mantainer you should use api for every dependency which is needed for the public API of your library, while use implementation for test dependencies or dependencies which must not be used by the final users.<br>REFERENCES (This is the same video splitted up for time saving)</p>
+<p>Google I/O 2017 - How speed up Gradle builds (FULL VIDEO)</p>
+<p>Google I/O 2017 - How speed up Gradle builds (NEW GRADLE PLUGIN 3.0.0 PART ONLY)</p>
+<p>Google I/O 2017 - How speed up Gradle builds (reference to 1*)</p>
+<p>Android documentation</p>
+<p>参考链接:<a href="https://stackoverflow.com/questions/44413952/gradle-implementation-vs-api-configuration" target="_blank" rel="external">https://stackoverflow.com/questions/44413952/gradle-implementation-vs-api-configuration</a></p>
+
       
 
       
@@ -251,7 +295,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试求职</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gradle</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">api implemention</a>
         		</li>
       		
 		</ul>
@@ -261,7 +309,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/20/face_baidu/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/28/gradle3.x.x中的api和implemention的区别/">展开全文 >></a>
         </p>
       
 
@@ -298,13 +346,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/20/face_moudu/">百度的面试题解析</a>
+      <a class="article-title" href="/2017/11/16/face_moudu/">经历的某度的一场面试</a>
     </h1>
   
 
         
-        <a href="/2017/09/20/face_moudu/" class="archive-article-date">
-  	<time datetime="2017-09-20T09:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-20</time>
+        <a href="/2017/11/16/face_moudu/" class="archive-article-date">
+  	<time datetime="2017-11-16T01:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-16</time>
 </a>
         
       </header>
@@ -316,7 +364,7 @@
 <h3 id="面试的准备"><a href="#面试的准备" class="headerlink" title="面试的准备"></a>面试的准备</h3><p>&ensp;&ensp;&ensp;&ensp;当收到HR的面试的通知还是很懵逼的,因为感觉自己突然啥都不会了,迅速镇定下来,去网上找了一下某度的面试题,但是发现都只有提问了什么并没有对所提问题的解答,那只能自力更生,像做试卷一样,一遍总结一遍温顾.其实大多都是平时开发中用到的,只是我们没有总结过,被问起来的时候回答的难免会有点捉襟见肘,不能回答的很全面.下面为我个人总(bai)结(du)的,希望对你能有所帮助,但毕竟能力有限,有写的不对的地方,还望轻喷.虽然喷我我也不会改的.<br>&ensp;&ensp;&ensp;&ensp;因为本文篇幅较长建议收藏,在用到时候找出来看一眼.有一些知识点可能没涉及到,以后会加以补足.因为面试无非是考察你对技术的理解和总结,所以本篇的每个点总结的比较精简,只是让你大概的说出来,有的部分是需要能够画出原理图并进行解释说明,这个要在工作中多积累.</p>
 <h3 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h3><h4 id="一-类的加载过程，Person-person-new-Person-为例进行说明。"><a href="#一-类的加载过程，Person-person-new-Person-为例进行说明。" class="headerlink" title="一. 类的加载过程，Person person = new Person();为例进行说明。"></a>一. 类的加载过程，Person person = new Person();为例进行说明。</h4><p>1).因为new用到了Person.class，所以会先找到Person.class文件，并加载到内存中;<br>2).执行该类中的static代码块，如果有的话，给Person.class类进行初始化;<br>3).在堆内存中开辟空间分配内存地址;<br>4).在堆内存中建立对象的特有属性，并进行默认初始化;<br>5).对属性进行显示初始化;<br>6).对对象进行构造代码块初始化;<br>7).对对象进行与之对应的构造函数进行初始化;<br>8).将内存地址付给栈内存中的p变量</p>
 <h4 id="二-JVM相关知识，GC机制。"><a href="#二-JVM相关知识，GC机制。" class="headerlink" title="二. JVM相关知识，GC机制。"></a>二. JVM相关知识，GC机制。</h4><p><strong>JVM基本构成</strong><br><img src="http://upload-images.jianshu.io/upload_images/4642697-bbcb5924cdaf30f8.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>从上图可知，JVM主要包括四个部分：<br>&ensp;&ensp;&ensp;&ensp;1.类加载器（ClassLoader）:在JVM启动时或者在类运行时将需要的class加载到JVM中。（下图表示了从java源文件到JVM的整个过程，可配合理解。 <img src="http://upload-images.jianshu.io/upload_images/4642697-1cf5f815751beeab.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&ensp;&ensp;&ensp;&ensp;2.执行引擎：负责执行class文件中包含的字节码指令；<br>&ensp;&ensp;&ensp;&ensp;3.内存区（也叫运行时数据区）：是在JVM运行的时候操作所分配的内存区。运行时内存区主要可以划分为5个区域，如图：<img src="http://upload-images.jianshu.io/upload_images/4642697-160b9ba3bfeaf8f5.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>从上图可知，JVM主要包括四个部分：<br>&ensp;&ensp;&ensp;&ensp;1.类加载器（ClassLoader）:在JVM启动时或者在类运行时将需要的class加载到JVM中。（下图表示了从java源文件到JVM的整个过程，可配合理解。<br><img src="http://upload-images.jianshu.io/upload_images/4642697-1cf5f815751beeab.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&ensp;&ensp;&ensp;&ensp;2.执行引擎：负责执行class文件中包含的字节码指令；<br>&ensp;&ensp;&ensp;&ensp;3.内存区（也叫运行时数据区）：是在JVM运行的时候操作所分配的内存区。运行时内存区主要可以划分为5个区域，如图：<img src="http://upload-images.jianshu.io/upload_images/4642697-160b9ba3bfeaf8f5.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <ul>
 <li>方法区(Method Area)：用于存储类结构信息的地方，包括常量池、静态变量、构造函数等。虽然JVM规范把方法区描述为堆的一个逻辑部分， 但它却有个别名non-heap（非堆），所以大家不要搞混淆了。方法区还包含一个运行时常量池。</li>
 <li>java堆(Heap)：存储java实例或者对象的地方。这块是GC的主要区域。从存储的内容我们可以很容易知道，方法区和堆是被所有java线程共享的。</li>
@@ -498,7 +546,140 @@ for (Counter a : mArray) {
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/20/face_moudu/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/16/face_moudu/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-尘埃落定" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>毕业后的第一次悸动</p>
+<p>从9月20至今的一切仿佛让我的心在不断试炼.由于对现有工作的一丝不满,一气之下,投了简历,面了百度,经过百度的六轮面试之后成功拿到OFFER.自从拿到OFFER,心中就是各种忐忑,担心现在工作的离职,忧虑百度的新工作…而现在都已经尘埃落定了.是的,我拒绝了百度,有现实原因,也有远期的原因,亦或者说我面向金钱低下了我的头颅,终究是因为自己不再孤身一人,再也不能Say Go Let’s Go.</p>
+<p>拒绝了人生的第一个机会,剩下的应该是沉淀了吧,既然现在的技术能让公司不惜如此盛情挽留我,也只能说明我这过去一年的价值,说明不了接下来的工作是否能再获得一份满意的答卷.本身拒绝百度就是拒绝了一次技术上升的机会,拒绝了一次镀金,但我相信以后肯定还会有机会,比现在更好的机会.</p>
+<p>那么剩下的就是更加努力的做现在的产品了,多看书,升华技术,让自己更加的丰富,时刻为下一次的机会做准备.</p>
+<p>如梦飘落.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/31/尘埃落定/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-face_baidu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/20/face_baidu/">经历的某度的一场面试</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/20/face_baidu/" class="archive-article-date">
+  	<time datetime="2017-10-20T09:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/timg.jpeg" alt=""></p>
+<h3 id="如梦朦胧"><a href="#如梦朦胧" class="headerlink" title="如梦朦胧"></a>如梦朦胧</h3><p>&ensp;&ensp;&ensp;&ensp;九月份的时候有了换工作的躁动,然后投了某度的Android岗位,本以为像我这种非211、985没工作经验的渣渣只能被直接pass,结果却意外的收到了电话,真是受宠若惊.经过电面,技术三面,然后就是等通知到最后拿到了OFFER,如梦一般,真是挺激动的.<br>
+        
+          <a class="article-more-a" href="/2017/10/20/face_baidu/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试求职</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/20/face_baidu/">展开全文 >></a>
         </p>
       
 
@@ -941,168 +1122,6 @@ for (Counter a : mArray) {
 
 
   
-    <article id="post-config_gradle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/27/config_gradle/">使用config.gradle统一管理项目的依赖库</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/27/config_gradle/" class="archive-article-date">
-  	<time datetime="2017-06-27T03:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>当你看着你module中build.gradle躺着各种乱七八糟的依赖库时候是不是顿生无力感,想整理又不知道怎么有条有序,整理好又好怕再添加新的库的时候不知道放到哪里,好吧,这就是我的想法</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-66748bacc243e137.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="by gxj"></p>
-        
-          <a class="article-more-a" href="/2017/06/27/config_gradle/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">config.gradle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">依赖库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/27/config_gradle/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ScrollView" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/19/ScrollView/">ScrollView 使用小结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/19/ScrollView/" class="archive-article-date">
-  	<time datetime="2017-06-19T02:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="闲言碎语"><a href="#闲言碎语" class="headerlink" title="闲言碎语"></a>闲言碎语</h3><p>忙忙碌碌的一个多月又结束了,连续奋战到凌晨四点的两周也成为了过去式…此次上线因为添加了视频直播和点播功能,所以比较赶,真是分分钟要猝死的赶脚.不过此次又是上线又是对旧知识的巩固和对新技术的探究,此次用到的ScrollView比较多,写一篇文章用以积累.</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4642697-63d13f93c9968d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>
-        
-          <a class="article-more-a" href="/2017/06/19/ScrollView/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android控件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ScrollView</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/19/ScrollView/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1200,10 +1219,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android控件</a>
               </li>
              
@@ -1212,11 +1227,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1232,15 +1259,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1252,15 +1271,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-Fragment Exception</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">api implemention</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RecyclerView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
