@@ -6,21 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Android 自定义相机 识别身份证) | gexiangjie</title>
+  <title>Android 自定义相机 识别身份证(上) | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天圣诞节">
+  <meta name="description" content="今天情人节">
 <meta name="keywords" content="camera">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 自定义相机 识别身份证)">
-<meta property="og:url" content="http://yoursite.com/2018/02/26/custom_camera/index.html">
+<meta property="og:title" content="Android 自定义相机 识别身份证(上)">
+<meta property="og:url" content="http://yoursite.com/2018/02/14/custom_camera/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="今天圣诞节">
-<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/shengdan.jpeg">
-<meta property="og:updated_time" content="2018-02-28T12:22:53.000Z">
+<meta property="og:description" content="今天情人节">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/love.jpeg">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/camera_el.jpg">
+<meta property="og:updated_time" content="2018-03-28T01:51:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 自定义相机 识别身份证)">
-<meta name="twitter:description" content="今天圣诞节">
-<meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/shengdan.jpeg">
+<meta name="twitter:title" content="Android 自定义相机 识别身份证(上)">
+<meta name="twitter:description" content="今天情人节">
+<meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/love.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -167,23 +168,157 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Android 自定义相机 识别身份证)
+      Android 自定义相机 识别身份证(上)
     </h1>
   
 
         
-        <a href="/2018/02/26/custom_camera/" class="archive-article-date">
-  	<time datetime="2018-02-26T14:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
+        <a href="/2018/02/14/custom_camera/" class="archive-article-date">
+  	<time datetime="2018-02-14T14:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天圣诞节</p>
-<p><img src="http://ovfk1aqnq.bkt.clouddn.com/shengdan.jpeg" alt="by gxj"></p>
+        <p>今天情人节</p>
+<p><img src="http://ovfk1aqnq.bkt.clouddn.com/love.jpeg" alt="by gxj"></p>
 <a id="more"></a>
-<p>最近一直忙着做券商的东西,其中一个就是涉及到拍照识别身份证的功能,因为UI给的图是带有头框和国徽框的,如图:<br>我们知道调用相机的方法有两种<br>所以使用直接调用相机的方法无法完成这种效果,所以叫采用自定义的方法.</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>而我还在忙着港股券商上线,在做港股的过程中,用户开户功能涉及到拍照识别身份证的功能,如图:<img src="http://ovfk1aqnq.bkt.clouddn.com/camera_el.jpg" alt="by gxj"></p>
+<h3 id="调用相机的两种方法"><a href="#调用相机的两种方法" class="headerlink" title="调用相机的两种方法"></a>调用相机的两种方法</h3><h4 id="一-使用相机应用程序进行拍照"><a href="#一-使用相机应用程序进行拍照" class="headerlink" title="一.使用相机应用程序进行拍照"></a>一.使用相机应用程序进行拍照</h4><p>利用一个描述了执行目的Intent对象，Android可以将某些执行任务委托给其他应用,比如调用相机。整个过程包含三部分： Intent 本身，一个函数调用来启动外部的 Activity，当焦点返回到我们的Activity时，处理返回图像数据的代码。</p>
+<p>下面的函数通过发送一个Intent来捕获照片：</p>
+<pre><code>static final int REQUEST_IMAGE_CAPTURE = 1;
+
+private void dispatchTakePictureIntent() {
+    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+    }
+}
+</code></pre><p>注意在调用startActivityForResult()方法之前，先调用resolveActivity()，这个方法会返回能处理该Intent的第一个Activity（即检查有没有能处理这个Intent的Activity）。执行这个检查非常重要，因为如果在调用startActivityForResult()时，没有应用能处理你的Intent，应用将会崩溃。所以只要返回结果不为null，使用该Intent就是安全的。(因为这种方法并不能实现我们的需求,因此不做过多解释,需要的童鞋可以去搜索一下具体用法)</p>
+<h4 id="二-通过使用Android框架所提供的API来直接控制相机硬件，实现自定义相机模块。"><a href="#二-通过使用Android框架所提供的API来直接控制相机硬件，实现自定义相机模块。" class="headerlink" title="二.通过使用Android框架所提供的API来直接控制相机硬件，实现自定义相机模块。"></a>二.通过使用Android框架所提供的API来直接控制相机硬件，实现自定义相机模块。</h4><h5 id="1-打开相机对象"><a href="#1-打开相机对象" class="headerlink" title="1.打开相机对象"></a>1.打开相机对象</h5><p>&nbsp;&nbsp;获取一个 Camera 实例是直接控制相机的第一步。Camera是最主要的类，用于管理和操作camera资源。它提供了完整的相机底层接口，支持相机资源切换，设置预览/拍摄尺寸，设定光圈、曝光、聚焦等相关参数，获取预览/拍摄帧数据等功能，我会在下面介绍一下他的主要方法.</p>
+<p>&nbsp;&nbsp;编写一个打开相机的方法,在onResume()方法里面去调用执行，单独的方法使得代码更容易重用，也便于保持控制流程更加简单。</p>
+<pre><code>private int mCameraId = 0;
+
+ /**
+ * 获取Camera实例
+ *
+ * @return
+ */
+private void safeOpenCamera() {
+    try {
+        releaseCamera();
+        mCamera = Camera.open(mCameraId);
+    } catch (Exception e) {
+        Log.e(getString(R.string.app_name), &quot;failed to open Camera&quot;);
+        e.printStackTrace();
+    }
+}
+
+/**
+ * 释放相机资源
+ */
+private void releaseCamera() {
+    if (mCamera != null) {
+        mCamera.setPreviewCallback(null);
+        mCamera.stopPreview();
+        mCamera.release();
+        mCamera = null;
+    }
+}
+</code></pre><p>需要注意的是：由于Android机制的缘故，Android相机只能够被一个APP线程所绑定，也就是说如果你正在使用相机进行拍照摄像的时候，另一个程序便不能使用Camera类来启用相机，而且会报出Can not release的错误，因为我们需要使用try语句块进行捕获一下.那么如何判定你是否使用了相机呢，其实只要使用了Camera.open()方法获得了相机的示例，系统就认为你使用了相机，所以当你使用了完了相机一定记得要释放相机的资源，不然别的应用程序用不了呀，我们可以使用 Camera.release()来释放相机资源，Google官方的意见是重写Activity的onPause()方法来Camera.release().<br>另外从API level 9开始，相机框架可以支持多个摄像头的打开操作。如果使用旧的API，在调用open()时不传入参数指定打开哪个摄像头，默认情况下会使用后置摄像头。0是后置摄像头,1是前置摄像头.</p>
+<h5 id="2-创建相机预览界面"><a href="#2-创建相机预览界面" class="headerlink" title="2.创建相机预览界面"></a>2.创建相机预览界面</h5><p>拍照通常需要向用户提供一个预览界面来显示待拍摄的画面内容。我们可以使用SurfaceView来呈现相机采集到的图像画面。SurfaceView这个类是用于绘制相机预览图像的，提供给用户实时的预览图像。普通的view以及派生类都是共享同一个surface的，所有的绘制都必须在UI线程中进行。而surfaceview是一种比较特殊的view，它并不与其他普通view共享surface，而是在内部持有了一个独立的surface,surfaceview负责管理这个surface的格式、尺寸以及显示位置。由于UI线程还要同时处理其他交互逻辑，因此对view的更新速度和帧率无法保证，而surfaceview由于持有一个独立的surface，因而可以在独立的线程中进行绘制，因此可以提供更高的帧率。自定义相机的预览图像由于对更新速度和帧率要求比较高，所以比较适合用surfaceview来显示。</p>
+<p>SurfaceHolder ：surfaceholder是控制surface的一个抽象接口，它能够控制surface的尺寸和格式，修改surface的像素，监视surface的变化等等，surfaceholder的典型应用就是用于surfaceview中。surfaceview通过getHolder()方法获得surfaceholder 实例，通过后者管理监听surface 的状态。</p>
+<p>SurfaceHolder.Callback 接口 ：负责监听surface状态变化的接口，有三个方法：</p>
+<p>surfaceCreated(SurfaceHolder holder)：在surface创建后立即被调用。在开发自定义相机时，可以通过重载这个函数调用camera.open()、camera.setPreviewDisplay()，来实现获取相机资源、连接camera和surface等操作。</p>
+<p>surfaceChanged(SurfaceHolder holder, int format, int width, int height):在surface发生format或size变化时调用。在开发自定义相机时，可以通过重载这个函数调用camera.startPreview来开启相机预览，使得camera预览帧数据可以传递给surface，从而实时显示相机预览图像。</p>
+<p>surfaceDestroyed(SurfaceHolder holder)：在surface销毁之前被调用。在开发自定义相机时，可以通过重载这个函数调用camera.stopPreview()，camera.release()来实现停止相机预览及释放相机资源等操作。</p>
+<p>在这里你可以直接在activity中直接implements SurfaceHolder.Callback 的接口,也可以自定义一个surfaceview然后把camera这个实例传给她来使用.</p>
+<h5 id="3-设置和启动Preview"><a href="#3-设置和启动Preview" class="headerlink" title="3.设置和启动Preview"></a>3.设置和启动Preview</h5><p>一个Camera实例与它相关的Preview必须按照特定的顺序来创建，通常来说Camera对象优先被创建,而Preview对象必须在surfaceChanged()这一回调方法里面重新启用（restart）,写一个方法用来设置相机的参数和执行相机的预览Camera.startPreview()方法.</p>
+<pre><code>/**
+ * 预览相机
+ */
+private void startPreview(Camera camera, SurfaceHolder holder) {
+    try {
+        setupCamera(camera);
+        camera.setPreviewDisplay(holder);
+        CameraUtil.getInstance().setCameraDisplayOrientation(this, mCameraId, camera);
+        camera.startPreview();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre><h5 id="4-修改相机设置"><a href="#4-修改相机设置" class="headerlink" title="4.修改相机设置"></a>4.修改相机设置</h5><p>相机参数的修改可以改变拍照的成像效果，例如缩放大小，曝光补偿值等等。</p>
+<pre><code>/**
+ * 设置
+ */
+private void setupCamera(Camera camera) {
+    Camera.Parameters parameters = camera.getParameters();
+    if (parameters.getSupportedFocusModes().contains(
+            Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+        parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+    }
+
+    //这里第三个参数为最小尺寸 getPropPreviewSize方法会对从最小尺寸开始升序排列 取出所有支持尺寸的最小尺寸
+    Camera.Size previewSize = CameraUtil.getInstance().getPropPreviewSize(parameters.getSupportedPreviewSizes(), 800);
+    parameters.setPreviewSize(previewSize.width, previewSize.height);
+
+    Camera.Size pictureSize = CameraUtil.getInstance().getPropPictureSize(parameters.getSupportedPictureSizes(), 800);
+    parameters.setPictureSize(pictureSize.width, pictureSize.height);
+
+    camera.setParameters(parameters);
+}
+</code></pre><h5 id="5-设置预览方向"><a href="#5-设置预览方向" class="headerlink" title="5.设置预览方向"></a>5.设置预览方向</h5><p>借用官方文档的说明:</p>
+<p>Most camera applications lock the display into landscape mode because that is the natural orientation of the camera sensor. This setting does not prevent you from taking portrait-mode photos, because the orientation of the device is recorded in the EXIF header. The setCameraDisplayOrientation() method lets you change how the preview is displayed without affecting how the image is recorded. However, in Android prior to API level 14, you must stop your preview before changing the orientation and then restart it.</p>
+<p>大多数相机程序会锁定预览方向为横屏状态，因为该方向是相机传感器的自然放置方向。当然这一设定并不妨碍我们去拍竖屏的照片，这个时候设备的方向角度信息会被记录在EXIF文件头中。setCameraDisplayOrientation()方法可以让你在不影响照片拍摄过程的情况下，改变预览的方向。然而，对于Android API level 14及更旧版本的系统，在改变方向之前，我们必须先停止相机预览，设置方向之后，然后再重启预览。</p>
+<h5 id="6-拍摄照片"><a href="#6-拍摄照片" class="headerlink" title="6.拍摄照片"></a>6.拍摄照片</h5><p>一旦预览启动成功之后，可以使用Camera.takePicture()方法拍摄照片。我们可以创建Camera.PictureCallback与Camera.ShutterCallback对象并将他们传递到Camera.takePicture()中。下面的代码创建了一个Camera.PictureCallback.</p>
+<pre><code>Camera.PictureCallback mRectJpegPictureCallback = new Camera.PictureCallback() {
+    public void onPictureTaken(byte[] data, Camera camera) {
+        // TODO Auto-generated method stub
+        Bitmap b = null;
+        if (null != data) {
+            b = BitmapFactory.decodeByteArray(data, 0, data.length);
+            mCamera.stopPreview();
+            isPreviewing = false;
+        }
+        if (null != b) {
+            Bitmap rotaBitmap = ImageUtil.getRotateBitmap(b, 90.0f);
+            int x = rotaBitmap.getWidth() / 2 - DST_RECT_WIDTH / 2;
+            int y = rotaBitmap.getHeight() / 2 - DST_RECT_HEIGHT / 2;
+
+            Bitmap rectBitmap = Bitmap.createBitmap(rotaBitmap, x, y, DST_RECT_WIDTH, DST_RECT_HEIGHT);
+            FileUtil.saveBitmap(rectBitmap);
+            Intent intent = new Intent();
+            intent.putExtra(AppConstant.KEY.IMG_PATH, FileUtil.getImgPath());
+            intent.putExtra(AppConstant.KEY.PIC_WIDTH, rectBitmap.getWidth());
+            intent.putExtra(AppConstant.KEY.PIC_HEIGHT, rectBitmap.getHeight());
+            setResult(AppConstant.RESULT_CODE.RESULT_OK, intent);
+            finish();
+            if (rotaBitmap.isRecycled()) {
+                rotaBitmap.recycle();
+                rotaBitmap = null;
+            }
+            if (rectBitmap.isRecycled()) {
+                rectBitmap.recycle();
+                rectBitmap = null;
+            }
+        }
+        mCamera.startPreview();
+        isPreviewing = true;
+        if (!b.isRecycled()) {
+            b.recycle();
+            b = null;
+        }
+    }
+};
+</code></pre><h5 id="8-停止预览并释放相机"><a href="#8-停止预览并释放相机" class="headerlink" title="8.停止预览并释放相机"></a>8.停止预览并释放相机</h5><p>当应用使用完相机之后，我们有必要进行清理释放资源的操作。尤其是，我们必须释放Camera对象，不然的话可能会引起其他应用程序使用Camera实例的时候发生崩溃，包括我们自己应用也同样会遇到这个问题。</p>
+<p>那么何时应该停止预览并释放相机呢？在预览SurfaceView组件被销毁之后，调用释放相机的方法.<br>     @Override<br>    public void surfaceDestroyed(SurfaceHolder holder) {<br>        releaseCamera();<br>    }</p>
+<h5 id="9-遇到的问题-SurfaceView预览图像拉伸变形，拍摄照片尺寸不对"><a href="#9-遇到的问题-SurfaceView预览图像拉伸变形，拍摄照片尺寸不对" class="headerlink" title="9.遇到的问题 SurfaceView预览图像拉伸变形，拍摄照片尺寸不对"></a>9.遇到的问题 SurfaceView预览图像拉伸变形，拍摄照片尺寸不对</h5><p>说明这个问题之前，同样先说一下几个跟相机有关的尺寸。</p>
+<p>SurfaceView尺寸 ：即自定义相机应用中用于显示相机预览图像的View的尺寸，当它铺满全屏时就是屏幕的大小。这里surfaceview显示的预览图像暂且称作手机预览图像。</p>
+<p>Previewsize ：相机硬件提供的预览帧数据尺寸。预览帧数据传递给SurfaceView，实现预览图像的显示。这里预览帧数据对应的预览图像暂且称作相机预览图像。</p>
+<p>Picturesize ：相机硬件提供的拍摄帧数据尺寸。拍摄帧数据可以生成位图文件，最终保存成.jpg或者.png等格式的图片。这里拍摄帧数据对应的图像称作相机拍摄图像。图4说明了以上几种图像及照片之间的关系。手机预览图像是直接提供给用户看的图像，它由相机预览图像生成，拍摄照片的数据则来自于相机拍摄图像。</p>
+<p>原因是没有正确设置比例 parameter.setPictureSize(width,height)，这个比例不是你决定的，要先通过camera.getParameters().getSupportedPictureSizes()获得手机支持的尺寸。</p>
+<p>自定义相机其实还是比较容易的,按着步骤来都可以一点一点实现.项目中的自定义相机部分首先是写了一个遮罩view,预览的时候是四周暗中间亮,其次就是对相机拍摄出来的照片的处理,在拍摄的时候会选取适合屏幕大小,但是我们想拍摄出中间亮的部分区域的照片,所以我们需要对拍摄出来的照片做一些处理,实现和源码会在下一篇文章中展现.</p>
 
       
 
@@ -274,7 +409,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/02/26/custom_camera/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/02/14/custom_camera/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -427,6 +562,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
               </li>
              
@@ -443,15 +582,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">camera</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">config.gradle</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">依赖库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">camera</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,6 +606,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Fragment Exception</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gradle</a>
               </li>
              
@@ -476,10 +619,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">version error</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Fragment Exception</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,10 +639,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android Tips</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
               </li>
              
               <li class="article-tag-list-item">
