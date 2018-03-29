@@ -6,17 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016/7 | gexiangjie</title>
+  <title>Android 使用Jenkins持续集成打包发包(MAC) | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的个人博客!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="gexiangjie">
-<meta property="og:url" content="http://yoursite.com/archives/2016/07/index.html">
+  <meta name="keywords" content="Jenkins CI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 使用Jenkins持续集成打包发包(MAC)">
+<meta property="og:url" content="http://yoursite.com/2018/03/28/jenkins持续集成打包发包/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:description" content="这是我的个人博客!">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/%E7%82%B8%E5%93%87%E9%85%8D%E7%BD%AE.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/adb.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_run.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_pwd.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_page.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_plugin.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_enviorenment.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkines_environment_android.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_new.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_git.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_build_success.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_source.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_source_log.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_source_log_local.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_poll_scm.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_build_periodically.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_gradle_invoke.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_apk.png">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins_consloe.png">
+<meta property="og:updated_time" content="2018-03-29T06:03:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gexiangjie">
-<meta name="twitter:description" content="这是我的个人博客!">
+<meta name="twitter:title" content="Android 使用Jenkins持续集成打包发包(MAC)">
+<meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/jenkins.png">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -156,64 +176,196 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-jenkins持续集成打包发包" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/14/rv_scroll_to_item/" class="archive-article-date">
-  	<time datetime="2016-07-14T12:48:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/14/rv_scroll_to_item/">RecycleView 中的 item 移动到当前视图的顶部</a>
+    <h1 class="article-title" itemprop="name">
+      Android 使用Jenkins持续集成打包发包(MAC)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/03/28/jenkins持续集成打包发包/" class="archive-article-date">
+  	<time datetime="2018-03-28T08:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins.png" alt=""><br><a id="more"></a></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>每次写完功能就要打包,因为项目原因打包时间较长,所以就需要等待,然后想了想有没什么可以自己悄悄拉取代码,在后台偷偷打包的方式,于是问了下度娘还真有,配置了一下午发现可以成功运行,怕遗忘了所以记录一下.另外只是可以打包了,并没有自定义显示在App上的版本号和自动生成二维码下载,但我会继续完善一下.</p>
+<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><h4 id="1-配置Android-ADB环境"><a href="#1-配置Android-ADB环境" class="headerlink" title="1.配置Android ADB环境"></a>1.配置Android ADB环境</h4><p>关于Android整个开发环境的搭建，SDK的下载安装,这里就不赘述了,配置adb环境也可以去百度一下,一大把,这里查看adb是否配置成功可以在终端输入 </p>
+<pre><code>adb
+</code></pre><p>显示以下信息则证明配置成功.</p>
+<p><img src="http://ovfk1aqnq.bkt.clouddn.com/%E7%82%B8%E5%93%87%E9%85%8D%E7%BD%AE.png" alt=""></p>
+<h4 id="2-配置Gradle环境"><a href="#2-配置Gradle环境" class="headerlink" title="2.配置Gradle环境"></a>2.配置Gradle环境</h4><p>配置gradle环境可以看一下我之前写的这篇文章<a href="http://www.gxj1228.com/2018/03/09/mac%E9%85%8D%E7%BD%AEgradle/" target="_blank" rel="external">Mac 配置gradle环境变量</a>.<br>在终端上执行gradle -version，查看是否配置成功。</p>
+<pre><code>gradle -version
+</code></pre><p>如显示如下表示配置成功.<img src="http://ovfk1aqnq.bkt.clouddn.com/adb.png" alt=""></p>
+<h4 id="3-下载Jenkins"><a href="#3-下载Jenkins" class="headerlink" title="3.下载Jenkins"></a>3.下载Jenkins</h4><p>载最新的版本（一个 WAR 文件,官网下载地址<a href="https://jenkins.io/download/" target="_blank" rel="external">Jenkins</a>.<br>关于Jenkins的环境什么系统都支持,配置的方法也差不多.我选择的直接使用war包的方式,因为网上有的说pkg的有问题,我就没用.选择Weekly的 Generic Java package(.war)这个选项.<br>把这个war包放到某个文件下,通过控制台来到当前的文件夹,在控制台输入</p>
+<pre><code>java -jar jenkins.war
+</code></pre><p>注意：Jenkins 需要运行 Java 5以及以上的版本。执行这个命令之后会有一个安装过程,等一会就好了.显示如下的结果就证明Jenkins已经启动了.<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_run.png" alt="">,以后每次启动都会调用这个命令行,我们可以把它写成一个脚本,点击就可以运行.</p>
+<h4 id="4-配置Jenkins"><a href="#4-配置Jenkins" class="headerlink" title="4.配置Jenkins"></a>4.配置Jenkins</h4><p>#####1.插件安装<br>在浏览器输入localhost:8080 就可以看到上面的那个小老头了,会让你输入密码,此时来到控制台就能找到密码,然后会有一个安装向导,会让选择安装全部插件还是自定义选择安装,这个大家随意.然后就会让你设置admin账户,如果不懂的话可以先跳过,使用默认的admin账户,如果以后再登录忘记admin账户密码的话可以到.jenkins/secrets/目录下的initialAdminPassword文件查看密码.操作见下图<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_pwd.png" alt=""><br>完成设置之后,这是我的Jenkins页面<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_page.png" alt=""><br>其实大多数的插件我们都已经安装完了,点击系统管理&gt;插件管理&gt;,像一些Git Plugin,Gradle Plugin,Android Lint 等插件均可以在已安装插件中找到,如果找不到可以在可选插件中过滤出你想要安装的插件,然后选择安装就可以.<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_plugin.png" alt=""></p>
+<p>#####2.环境变量配置<br>点击系统管理&gt;系统设置&gt;,<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_enviorenment.png" alt=""><br>向下滑,选择环境变量,然后增加一个键值对,如图<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkines_environment_android.png" alt="">,如果需要也可以配置一下Gradle的环境变量.</p>
+<h3 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h3><h4 id="1-构建一个自由风格的软件项目"><a href="#1-构建一个自由风格的软件项目" class="headerlink" title="1.构建一个自由风格的软件项目"></a>1.构建一个自由风格的软件项目</h4><p>点击左侧菜单中的新建任务,然后在新的界面输入项目名字,选择构建一个自由风格的软件项目选项完成创建<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_new.png" alt="">.</p>
+<h4 id="2-配置项目git地址"><a href="#2-配置项目git地址" class="headerlink" title="2.配置项目git地址"></a>2.配置项目git地址</h4><p>完成创建会跳到一个项目配置页面,我们项目是用的gitlab,所以源码管理我选择的是git,在上面输入你的git地址,如果有用SSH就自己add一下,可以选择构建的分支,直接输入你的*/分支名字就好.点击保存,完成git配置.<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_git.png" alt=""></p>
+<p>返回到主页面,点击立即构建,就可以编译你的项目了,一会就会构建成功.<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_build_success.png" alt=""><br>点击那个#1进去会看到一下变更记录,点击工作区可以看到你的源码目录<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_source.png" alt=""><br>那你也肯定想知道构建完成的目录在哪里吧,点击系统管理&gt;系统设置&gt;主目录右侧高级便可以看到构建的目录了<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_source_log.png" alt=""><br>实际路径/Users/Apple/.jenkins/workspace/HSLStock/<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_source_log_local.png" alt=""></p>
+<h4 id="3-配置自动拉取最新代码"><a href="#3-配置自动拉取最新代码" class="headerlink" title="3.配置自动拉取最新代码"></a>3.配置自动拉取最新代码</h4><p>在构建触发器中，有两种自动拉取代码并编译的策略: </p>
+<ol>
+<li>设置Poll SCM，设置定时器，定时检查代码更新，有更新则编译，否则不编译。<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_poll_scm.png" alt=""></li>
+</ol>
+<p>第一个参数代表的是分钟 minute，取值 0~59；</p>
+<p>第二个参数代表的是小时 hour，取值 0~23；</p>
+<p>第三个参数代表的是天 day，取值 1~31；</p>
+<p>第四个参数代表的是月 month，取值 1~12；</p>
+<p>最后一个参数代表的是星期 week，取值 0~7，0 和 7 都是表示星期天。<br>    如H/5 <em> </em> <em> </em> 表示的就是每5分钟检查一次源码变化。</p>
+<p>2.设置Build periodically，周期性的执行编译任务。<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_build_periodically.png" alt=""></p>
+<h4 id="4-编译配置gradle"><a href="#4-编译配置gradle" class="headerlink" title="4.编译配置gradle"></a>4.编译配置gradle</h4><p>上面虽然编译成功了，但是你发现根本没有看到APK文件，所以还需要进行下面的配置：增加构建步骤,打开配置页面,如果安装gradle插件成功的话，应该会出现下图的Invoke Gradle script<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_gradle_invoke.png" alt=""><br>${JENKINS_HOME}/workspace/${ITEM_FULL_NAME} 表示当前.jenkins目录下的workspace目录，主要是存放代码,如果你不知道你的怎么填你可以去系统设置看一下主目录就能看到.一般${JENKINS_HOME}目录位于当前用户目录下，OS X 系统路径一般是/Users/用户名/.jenkins/worksplace/; 再点击立即构建一般就会构建成功，当然当那些第三方库需要重新下载的话，编译可能会很慢。这样，就能自动在project下的app的build/outputs/apk下生成相应的apk. <img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_apk.png" alt=""><br>注意：编译失败？可能要解决以下2个问题：</p>
+<p>1.gradle没配置环境变量。</p>
+<p>2.因为一般来说local.properties不会添加到版本库。 所以需要手动copy到${WORKSPACE}下的Project目录下（可参考自己Android Studio工程结构）。</p>
+<p>如果构建没有成功也可以点#1这个选项,然后点击左侧的控制台输出看一下构建失败的原因,这个控制台的输出是和我们的AS输出一样的.<img src="http://ovfk1aqnq.bkt.clouddn.com/jenkins_consloe.png" alt=""></p>
+<h4 id="5-上传到测试平台"><a href="#5-上传到测试平台" class="headerlink" title="5.上传到测试平台"></a>5.上传到测试平台</h4><p>我这里是选择的上传到蒲公英测试平台,上传方法可参考<a href="https://www.pgyer.com/doc/view/jenkins_plugin" target="_blank" rel="external">使用 Jenkins 插件上传应用到蒲公英</a>.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这样的一个自动拉取代码打包发包的过程就实现了.如有问题可以私信交流.及打包完成之后自动上传测试平台…如有问题可以私信交流.</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>不要怕我骄傲用你的钱砸我吧<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">RecyclerView</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Jenkins CI</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/03/28/jenkins持续集成打包发包/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/03/09/mac配置gradle/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mac 配置gradle环境变量</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -236,8 +388,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
