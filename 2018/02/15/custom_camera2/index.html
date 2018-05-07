@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>自定义相机(二) | gexiangjie</title>
+  <title>Android 自定义相机 识别身份证(下) | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="gradle">
+  <meta name="description" content="上一篇文章Android 自定义相机 识别身份证(上)介绍自定义相机的一些相关技术和步骤,这篇文章主要把代码简单的介绍一下.具体可以去看我源码,已分享到GitHub上去了.">
+<meta name="keywords" content="Camera">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自定义相机(二)">
+<meta property="og:title" content="Android 自定义相机 识别身份证(下)">
 <meta property="og:url" content="http://yoursite.com/2018/02/15/custom_camera2/index.html">
 <meta property="og:site_name" content="gexiangjie">
-<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/gradle.png">
-<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/%E7%82%B8%E5%93%87%E9%85%8D%E7%BD%AE.png">
-<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/gradle%E9%85%8D%E7%BD%AE.png">
-<meta property="og:updated_time" content="2018-05-04T12:54:34.000Z">
+<meta property="og:description" content="上一篇文章Android 自定义相机 识别身份证(上)介绍自定义相机的一些相关技术和步骤,这篇文章主要把代码简单的介绍一下.具体可以去看我源码,已分享到GitHub上去了.">
+<meta property="og:updated_time" content="2018-05-07T03:56:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自定义相机(二)">
-<meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/gradle.png">
+<meta name="twitter:title" content="Android 自定义相机 识别身份证(下)">
+<meta name="twitter:description" content="上一篇文章Android 自定义相机 识别身份证(上)介绍自定义相机的一些相关技术和步骤,这篇文章主要把代码简单的介绍一下.具体可以去看我源码,已分享到GitHub上去了.">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -166,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      自定义相机(二)
+      Android 自定义相机 识别身份证(下)
     </h1>
   
 
@@ -179,24 +178,134 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/gradle.png" alt=""><br><a id="more"></a></p>
-<h4 id="配置Java环境"><a href="#配置Java环境" class="headerlink" title="配置Java环境"></a>配置Java环境</h4><p>配置Gradle之前要确保安装了Java环境,要求在JDK 1.6以上,并且配置了环境变量JAVA_HOME,查看Java版本可以在终端输入 </p>
-<pre><code>java -version
-</code></pre><p>显示以下信息则证明配置成功.</p>
-<p><img src="http://ovfk1aqnq.bkt.clouddn.com/%E7%82%B8%E5%93%87%E9%85%8D%E7%BD%AE.png" alt=""></p>
-<h4 id="下载Gradle"><a href="#下载Gradle" class="headerlink" title="下载Gradle"></a>下载Gradle</h4><p>下载地址：<a href="http://services.gradle.org/distributions/" target="_blank" rel="external">点击下载gradle</a></p>
-<p>下载最新版本:gradle-4.6 (当前最新版2018年3月9日),记得要下载all版本的,里面包含了Gradle SDK 所有相关的内容,包括源代码、文档、示例等.</p>
-<h4 id="配置Gradle环境"><a href="#配置Gradle环境" class="headerlink" title="配置Gradle环境"></a>配置Gradle环境</h4><p>将下载的gradle解压,我的本机Gradle存放路径：/Users/Apple/Desktop/soft/gradle<br>要运行Gradle,必须把GRADLE_HOME/bin 目录添加到环境变量PATH的路径才可以,在终端中输入：</p>
-<pre><code>open -e .bash_profile
-</code></pre><p>打开.bash_profile文件,在.bash_profile文件中输入下面内容</p>
-<pre><code>GRADLE_HOME=/Users/Apple/Desktop/soft/gradle/gradle-4.6 
-export GRADLE_HOME
-export PATH=$PATH:$GRADLE_HOME/bin
-</code></pre><p>注: 将GRADLE_HOME的值替换成你的Gradle的本机路径</p>
-<p>然后保存.bash_profile文件,在终端上执行</p>
-<pre><code>source ~/.bash_profile
-</code></pre><p>更新.bash_profile文件</p>
-<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>在终端上执行gradle -version，查看是否配置成功。如显示如下表示配置成功.<img src="http://ovfk1aqnq.bkt.clouddn.com/gradle%E9%85%8D%E7%BD%AE.png" alt=""></p>
+        <p><img src="" alt=""><br>上一篇文章<a href="https://www.jianshu.com/p/d754ad9fc9b2" target="_blank" rel="external">Android 自定义相机 识别身份证(上)</a>介绍自定义相机的一些相关技术和步骤,这篇文章主要把代码简单的介绍一下.具体可以去看我源码,已分享到GitHub上去了.<br><a id="more"></a></p>
+<h4 id="自定义SurfaceView"><a href="#自定义SurfaceView" class="headerlink" title="自定义SurfaceView"></a>自定义SurfaceView</h4><p>通过自定义SurfaceView来实现预览界面,并实现了SurfaceHolder.Callback这个接口,因此我们可以把相机实例化、预览和释放相机的方法都放在这这个自定义SurfaceView里面,这样在页面中只需要调用一个拍照方法就可以了.<br><br>首先是重写的三个方法:</p>
+<pre><code> public void surfaceCreated(SurfaceHolder holder) {
+    mCamera = CamParaUtil.openCamera();
+    if (mCamera != null) {
+        startPreview(holder);
+    }
+}
+
+public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
+   //不加这句的话相机拍照返回出现卡死的情况
+    mCamera.stopPreview();
+    startPreview(holder);
+}
+
+public void surfaceDestroyed(SurfaceHolder holder) {
+    //回收释放资源
+    release();
+}
+</code></pre><p>在startPreview()中我们需要设置预览角度和获取拍摄的最佳大小,具体原因在上篇文章中都有说明.</p>
+<pre><code>private void startPreview( SurfaceHolder holder) {
+    try {
+        mCamera.setPreviewDisplay(holder);
+        Camera.Parameters parameters = mCamera.getParameters();
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            //竖屏拍照时，需要设置旋转90度，否者看到的相机预览方向和界面方向不相同
+            mCamera.setDisplayOrientation(90);
+            parameters.setRotation(90);
+        } else {
+            mCamera.setDisplayOrientation(0);
+            parameters.setRotation(0);
+        }
+        Camera.Size bestSize = CamParaUtil.getBestSize(parameters.getSupportedPreviewSizes());
+        if (bestSize != null) {
+            parameters.setPreviewSize(bestSize.width, bestSize.height);
+            parameters.setPictureSize(bestSize.width, bestSize.height);
+        } else {
+            parameters.setPreviewSize(1920, 1080);
+            parameters.setPictureSize(1920, 1080);
+        }
+        mCamera.setParameters(parameters);
+        mCamera.startPreview();
+        focus();
+    } catch (Exception e) {
+
+    }
+}
+</code></pre><p>剩下的就是自动聚焦和释放相机资源,因为代码比较简单,这里就不在粘贴.</p>
+<h4 id="拍照返回"><a href="#拍照返回" class="headerlink" title="拍照返回"></a>拍照返回</h4><p>在Activity 调用拍照方法,拍照完成之后,会对照片按比例做裁剪,实现预览多大就拍出多大的照片,把照片存储到本地并把存储路径回传给页面,这样就能显示出拍出的照片.</p>
+<pre><code> private void takePhoto() {
+    optionView.setVisibility(View.GONE);
+    customCameraPreview.setEnabled(false);
+    customCameraPreview.takePhoto(new Camera.PictureCallback() {
+        public void onPictureTaken(final byte[] data, final Camera camera) {
+            //子线程处理图片，防止ANR
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Bitmap bitmap = null;
+                    if (data != null) {
+                        bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                        camera.stopPreview();
+                    }
+                    if (bitmap != null) {
+                        //计算裁剪位置
+                        float left = ((float) containerView.getLeft() - (float) customCameraPreview.getLeft()) / (float) customCameraPreview.getWidth();
+                        float top = (float) cropView.getTop() / (float) customCameraPreview.getHeight();
+                        float right = (float) containerView.getRight() / (float) customCameraPreview.getWidth();
+                        float bottom = (float) cropView.getBottom() / (float) customCameraPreview.getHeight();
+
+                        //裁剪及保存到文件
+                        Bitmap resBitmap = Bitmap.createBitmap(bitmap,
+                                (int) (left * (float) bitmap.getWidth()),
+                                (int) (top * (float) bitmap.getHeight()),
+                                (int) ((right - left) * (float) bitmap.getWidth()),
+                                (int) ((bottom - top) * (float) bitmap.getHeight()));
+
+                        FileUtil.saveBitmap(resBitmap);
+
+                        if (!bitmap.isRecycled()) {
+                            bitmap.recycle();
+                        }
+                        if (!resBitmap.isRecycled()) {
+                            resBitmap.recycle();
+                        }
+
+                        //拍照完成，返回对应图片路径
+                        Intent intent = new Intent();
+                        intent.putExtra(&quot;result&quot;, FileUtil.getImgPath());
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
+
+                    return;
+                }
+            }).start();
+        }
+    });
+}
+</code></pre><h4 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h4><p>剩下的就是保存照片,并返回路径.</p>
+<pre><code> /**
+ * 保存Bitmap到sdcard
+ *
+ * @param b 得到的图片
+ */
+public static void saveBitmap(Bitmap b) {
+    String path = initPath();
+    long dataTake = System.currentTimeMillis();
+    imgPath = path + &quot;/&quot; + dataTake + &quot;.jpg&quot;;
+    try {
+        FileOutputStream fout = new FileOutputStream(imgPath);
+        BufferedOutputStream bos = new BufferedOutputStream(fout);
+        b.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+        bos.flush();
+        bos.close();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+
+/**
+ * @return 保存到sd卡的图片路径
+ */
+public static String getImgPath() {
+    return imgPath;
+}
+</code></pre><p><a href="https://github.com/gexiangjie/CustomCamera" target="_blank" rel="external">源码地址</a></p>
 
       
 
@@ -231,7 +340,7 @@ export PATH=$PATH:$GRADLE_HOME/bin
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gradle</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Camera</a>
         		</li>
       		
 		</ul>
@@ -440,7 +549,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
+                <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,7 +557,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
+                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,6 +582,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">camera</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Camera</a>
               </li>
              
               <li class="article-tag-list-item">
