@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ViewPager 3D轮播效果 | gexiangjie</title>
+  <title>自定义仪表盘 | gexiangjie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前几天项目中用到一个上阵指数大盘指数仪表图效果如下:">
-<meta name="keywords" content="Android控件,viewpager">
+<meta name="keywords" content="Android控件,自定义View">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ViewPager 3D轮播效果">
+<meta property="og:title" content="自定义仪表盘">
 <meta property="og:url" content="http://yoursite.com/2017/04/01/DashboardCustom/index.html">
 <meta property="og:site_name" content="gexiangjie">
 <meta property="og:description" content="前几天项目中用到一个上阵指数大盘指数仪表图效果如下:">
-<meta property="og:image" content="http://img.blog.csdn.net/20170417193948952?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1OTgzNjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-09-18T07:29:33.000Z">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/dashboard.jpeg">
+<meta property="og:updated_time" content="2018-05-29T01:47:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ViewPager 3D轮播效果">
+<meta name="twitter:title" content="自定义仪表盘">
 <meta name="twitter:description" content="前几天项目中用到一个上阵指数大盘指数仪表图效果如下:">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170417193948952?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1OTgzNjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/dashboard.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="gexiangjie" type="application/atom+xml">
   
@@ -167,7 +167,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ViewPager 3D轮播效果
+      自定义仪表盘
     </h1>
   
 
@@ -181,7 +181,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>  前几天项目中用到一个上阵指数大盘指数仪表图效果如下:</p>
-<p>  <img src="http://img.blog.csdn.net/20170417193948952?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1OTgzNjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""><br>  <a id="more"></a><br>一开始觉得用自定义View来写这个界面,而且仪表盘的图片也给好了,本来想这会非常简单,结果因为指针也是一张图片,指针的圆心不好控制,在给数值的时候总是会有略微的偏差看,尤其是在转着转着的时候就看出来,这是因为指针本身有宽度的问题,代码如下:</p>
+<p>  <img src="http://ovfk1aqnq.bkt.clouddn.com/dashboard.jpeg" alt=""><br>  <a id="more"></a><br>一开始觉得用自定义View来写这个界面,而且仪表盘的图片也给好了,本来想这会非常简单,结果因为指针也是一张图片,指针的圆心不好控制,在给数值的时候总是会有略微的偏差看,尤其是在转着转着的时候就看出来,这是因为指针本身有宽度的问题,代码如下:</p>
 <pre><code>public class DashboardCustom extends View {
 private Paint paint;
 private Paint textPaint;
@@ -406,7 +406,7 @@ android:layout_height=&quot;wrap_content&quot;&gt;
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">viewpager</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自定义View</a>
         		</li>
       		
 		</ul>
@@ -476,18 +476,18 @@ android:layout_height=&quot;wrap_content&quot;&gt;
   
 <nav id="article-nav">
   
-    <a href="/2017/04/10/apk_simple/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/01/veiwpager_3d/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          让你的apk减减肥
+          ViewPager 3D轮播效果
         
       </div>
     </a>
   
   
-    <a href="/2017/04/01/veiwpager_3d/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ViewPager 3D轮播效果</div>
+    <a href="/2016/11/18/version_update/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 版本更新解决方案</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -611,19 +611,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android控件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
+                <a href="javascript:void(0)" class="js-tag color5">Android控件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">自定义View</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,7 +627,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,7 +651,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
+                <a href="javascript:void(0)" class="js-tag color2">camera</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,19 +659,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android控件 EditText</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android 控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Fragment Exception</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android控件 EditText</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">camera</a>
+                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Fragment Exception</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -679,10 +683,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">version error</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -691,7 +691,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试求职</a>
+                <a href="javascript:void(0)" class="js-tag color4">version error</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -704,6 +704,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android 控件 drawable shape</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
               </li>
              
               <li class="article-tag-list-item">
