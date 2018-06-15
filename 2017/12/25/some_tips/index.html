@@ -19,7 +19,8 @@
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/apk_not_exist.png">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/aar_import_error.jpg">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/scheme.png">
-<meta property="og:updated_time" content="2018-05-14T12:22:38.000Z">
+<meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/no_filed_type.png">
+<meta property="og:updated_time" content="2018-06-15T06:14:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 开发中一些小tips">
 <meta name="twitter:description" content="今天圣诞节">
@@ -281,7 +282,7 @@ android:noHistory=&quot;true&quot; &gt;
             &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
         &lt;/intent-filter&gt;
     &lt;/activity&gt;
-</code></pre><p>是因为QQ分享和极光分享使用了相同的scheme,所以就会产生这种问题,删除QQ分享中的scheme 就可以了.</p>
+</code></pre><p>是因为QQ分享和极光分享使用了相同的scheme,所以就会产生这种问题,删除QQ分享中的scheme 就可以了.<br>6.java.lang.NoSuchFieldError: No field layout_mi of type I in class Lcom/livermore/security/R$id; or its superclasses (declaration of ‘com.livermore.security.R$id’ appears in /data/app/com.hsl.stock-2/split_lib_slice_1_apk.apk)<br><img src="http://ovfk1aqnq.bkt.clouddn.com/no_filed_type.png" alt=""><br>这是因为工程中有两个相同的布局引起的,加载了第一个布局,而这个布局没有这个空间ID.</p>
 
       
 
@@ -521,10 +522,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android控件</a>
               </li>
              
@@ -533,11 +530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ScrollView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,15 +558,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Camera</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">camera</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Camera</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,15 +582,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Fragment Exception</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gradle</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">api implemention</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">version error</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,11 +602,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">version error</a>
+                <a href="javascript:void(0)" class="js-tag color1">Jenkins CI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Jenkins CI</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android Tips</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,11 +622,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android Tips</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
+                <a href="javascript:void(0)" class="js-tag color4">Fragment Exception</a>
               </li>
             
             <div class="clearfix"></div>
