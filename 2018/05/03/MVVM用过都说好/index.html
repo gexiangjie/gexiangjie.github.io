@@ -14,7 +14,10 @@
 <meta property="og:url" content="http://yoursite.com/2018/05/03/MVVM用过都说好/index.html">
 <meta property="og:site_name" content="gexiangjie">
 <meta property="og:image" content="http://ovfk1aqnq.bkt.clouddn.com/mvvm.jpeg">
-<meta property="og:updated_time" content="2018-06-03T07:18:30.000Z">
+<meta property="og:image" content="http://p5krqprs6.bkt.clouddn.com/mvp_i.png">
+<meta property="og:image" content="http://p5krqprs6.bkt.clouddn.com/mvp_contract.png">
+<meta property="og:image" content="http://p5krqprs6.bkt.clouddn.com/mvp_more.png">
+<meta property="og:updated_time" content="2018-06-30T06:24:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVVM 用过都说好">
 <meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/mvvm.jpeg">
@@ -177,44 +180,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/mvvm.jpeg" alt=""><br><a id="more"></a><br>一接触Android开发,用的就是MVC模式了吧,那时候只是简单的写一些简单的功能,一个activity处理所有工作,显示View,网络请求,但是毕竟功能简单,一个activity也不会超过百行,所以不会考虑什么耦合,性能问题.后来参加工作,看见有的activity或者Fragment的都能又超过3000行代码,简直看起来都不知道从哪开始.后来决定采用MVP的模式来进行解耦合,或许也是现在用的最多的一种开发模式,然后一开始尝试的是把回调接口写到一个单独的接口中,一个activity对应一个iview,像这种<img src="" alt="">但是后来业务逻辑增加处理的功能也变多,iview中的接口增加,每改动一次就需要把实现了这个iview的activity全部都改一遍,可谓是牵一发而动全身,说好的开闭原则呢,说好的单一职责呢?后来痛定思痛,觉得肯定是自己的姿势有问题,参考GitHub上的几个项目,改成用contract来作为盛放IView和Presenter的容器,这样一个activity或者Fragment就对应一个contract,然后xxPresenter实现contract中presenter方法,页面中contract中的view的方法,这样确实做到了view和逻辑的解耦,愉快的开发了一段时间,发现每当我有两个功能相近的页面,而且还要同样的一个请求方法,于是想复用一个contract中的presenter中方法,然后就会造成在某个页面的中会有多余的空方法,而且还不能删除,真是感觉芒刺在背,简直看着难受.<br>架构</p>
-<p>根据维基百科，软件体系结构指的是软件系统的高级结构，创建这样的结构的学科和DAH DAH和BLAH BLAH……我们都知道什么是体系结构！！</p>
-<p>简单地说，决定和实现一个特定的代码体系结构或设计模式都是为了解决我们开发人员时常面对的问题。</p>
-<p>问题</p>
-<p>一些常见的问题，如代码的紧密耦合，即使是代码中的一小部分的更改，也会导致代码的其他部分的更改/错误。减少了可重用性，最终导致代码复制粘贴线。不那么考验友好等。</p>
-<p>解决方案</p>
-<p>Android本身被写为MVC，在那里活动负责或多或少的一切。对于简单的应用来说，这可能是足够的，但是随着复杂性的增加，问题的数量和水平也会上升。</p>
-<p>目前有许多不同的建筑方法，如MVP，磁通，MVI，MVVM等，被证明是卓有成效的解决上述问题。任何人都可以使用任何方法，只要代码是可维护的，我们就能迅速适应变化，一切都运转良好，总之是一个快乐的开发者生活。</p>
-<p>最终目标</p>
-<p>我在这里看到的大图，最终目标是以这样一种分布式的方式构建东西，将Android相关的东西放在一个地方，并分离出不需要Android运行的所有其他实体，然后进一步分割非Android相关的片段，从而实现Akie。提供代码模块化、可扩展性、易维护性、测试友好性等。</p>
-<p>问题~~为什么MVVM…？？</p>
-<p>无限数量的会谈和关于建筑模式的文章，我们可以同意，在上述讨论中最流行和广泛采用的是MVP~模型-X视图-演示者。这里有很多炒作，甚至我都很欣赏。它是一种成熟的模式，在一定程度上实际上解决了这个问题，但总有一个但不是完全的问题。</p>
-<p>我们可以同意，没有什么是完美的，总有一个改进的余地。</p>
-<p>MVP是成熟的，令人惊叹的，但谷歌引入了Android架构组件，其中包括VIEWMODE而不是演示者，因此证明了谷歌支持MVVM。</p>
-<p>MVP一定有什么不对劲！！</p>
-<p>一个简单的无意义的MVP看起来像</p>
-<p>最有价值球员</p>
-<p>简单的MVVM看起来像</p>
-<p>MVVM</p>
-<p>上面显示的是两者的简化表示。你能看出差别吗？？</p>
-<p>让我们开始面对MVP所面临的几个问题，以及如何利用MVVM来克服这些问题。</p>
-<p>紧耦合</p>
-<p>对于每个活动/片段（视图），我们需要一个主持人。这是一个硬束缚的规则。主持人对活动的引用和活动持有主持人的参考。1:1的关系，这就是最大的问题所在。</p>
-<p>随着视图的复杂性的增加，对这种关系的维护和处理也随之增加。</p>
-<p>这最终导致了同样的问题，我们前面所面对的是在设计上的快速变化，我们实际上需要修改整个关系。</p>
-<p>从我们的最终目标“以分布式的方式构建事物”中挑选一条语句，为了实现它并避免这种紧密关系的视图模型被引入。</p>
-<p>VIEW模型是与逻辑/模型层交互并仅公开状态/数据，实际上不知道数据由谁或如何消耗的类。只有视图（activity）保存对ViewModel的引用，反之亦然，这就解决了我们的紧密耦合问题。单一视图可以引用多个ViewModels。</p>
-<p>即使对于复杂的视图，我们实际上可以在相同的层次结构中拥有不同的视图模型。</p>
-<p>可测试性</p>
-<p>由于演示文稿很难绑定到视图，所以编写单元测试变得有点困难，因为视图有依赖关系。</p>
-<p>VIEW模型更为单元测试友好，因为它们只是暴露状态，因此可以独立测试，而不需要测试数据将如何被消耗，总之，不依赖于视图。</p>
-<p>这是两个主要的选择。可能更多，也可能没有。下面的评论正在等待！！</p>
-<p>最终裁决</p>
-<p>这些架构模式是不断发展的，MVVM具有所有的口径或我们可以说潜力变得强大，有用，但令人惊讶的实现。MVP已经发展到一定的水平，但没有任何东西是完美的。</p>
-<p>我也同意有一个轻微的学习曲线与MVVM相关，但最终它帮助我们克服了一些缺点。</p>
-<p>不确定未来，但到目前为止，“一个适合所有解决方案-银子弹”是不存在的，单一的模式可能不足以满足需求。一个人可能喜欢MVVM，也可能不喜欢MVVM，这完全取决于他们的判断。只要我们能达成最终目标，其他事情都无关紧要。</p>
-<p>PS:这是我个人的经验、想法以及我们为什么喜欢MVVM的项目。这里的意图不是比较和找出差异。我所尝试的是分享我的经验与MVP和一些缺点，可以克服的MVVM。</p>
-<p>如果感兴趣的话，我还准备了一个示例项目（样板代码设置，下面的链接），它使用KOTLIN、Android架构组件、RXJava、匕首2实现MVVM。我们将高度赞赏您的反馈意见和建议。</p>
+        <p><img src="http://ovfk1aqnq.bkt.clouddn.com/mvvm.jpeg" alt=""><br><a id="more"></a><br>这篇文章主要是对工作两年来用过的架构发表一下自己感触,如果说的不对请轻喷.</p>
+<h3 id="关于架构"><a href="#关于架构" class="headerlink" title="关于架构"></a>关于架构</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;根据百科中的<a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E6%9E%84%E6%9E%B6/7346287?fr=aladdin&amp;fromid=11190050&amp;fromtitle=software+architecture" target="_blank" rel="external">软件架构</a>,架构描述的对象是直接构成系统的抽象组件，各个组件之间的连接则明确和相对细致地描述组件之间的通讯。在实现阶段，这些抽象组件被细化为实际的组件，比如具体某个类或者对象….Android架构目前有许多不同的模式，如MVP, FLUX, MVI, MVVM等.我们当然知道,还用在这bb!!!<br><br>&nbsp;&nbsp;&nbsp;&nbsp;挖干的说,决定和实现一个特定的代码体系结构或设计模式都是为了解决我们开发人员时常面对的问题。</p>
+<h3 id="Android-架构"><a href="#Android-架构" class="headerlink" title="Android 架构"></a>Android 架构</h3><p>目前有许多不同的模式，如MVP, FLUX, MVI, MVVM等</p>
+<h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;说到问题我可能有很多要吐槽的了,刚爬进Android这个坑,因为Android本身被写为MVC,所以用的就是MVC模式,<br>那时候只是简单的写一些简单的功能,一个activity处理所有工作,显示View,网络请求,但是毕竟功能简单,一个activity也不会超过百行,所以不会考虑什么耦合,性能问题.对于简单的应用来说，这可能是足够的，但是随着复杂性的增加，问题的数量和水平也会上升。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;正式投入Android开发岗位,因为项目前期由一个人完成,所以写的很随意(你懂得),一些业务逻辑稍微复杂的activity或者Fragment超过3000行代码是很正常的,看的时候都不知道从哪开始,每次想要修改点功能都要耗费大量时间看代码逻辑…如果继续这样代码堆砌最后肯定得崩,所以决定采用大家都在口口相传的MVP模式来进行解耦合.当时对于MVP不是很熟,然后一开始的写法是把回调接口写到一个单独的接口中,一个activity对应一个iview,像这种<img src="http://p5krqprs6.bkt.clouddn.com/mvp_i.png" alt="gxj">但是后来业务逻辑增加处理的功能也变多,iview中的接口增加,每改动一次就需要把实现了这个iview的activity全部都改一遍,可谓是牵一发而动全身,说好的开闭原则呢?说好的单一职责呢?后来痛定思痛,觉得肯定是自己的姿势有问题,参考GitHub上的几个项目,改成用contract来作为盛放IView和Presenter的容器,<img src="http://p5krqprs6.bkt.clouddn.com/mvp_contract.png" alt="gxj">这样一个activity或者Fragment就对应一个contract,然后xxPresenter实现contract中presenter方法,</p>
+<pre><code>public class xxPresenter implements xxContract.Presenter {
+</code></pre><p>activity或者Fragment实现contract中的view的方法,</p>
+<pre><code>public class xxFragment implements xxContract.View {
+</code></pre><p>这样确实做到了view和逻辑的解耦.愉快的开发了一段时间后,发现每当我有两个功能相近的页面,而且还要同样的一个请求方法,于是想复用一个contract中的presenter中方法,然后就会造成在某个页面的中会有多余的空方法,而且还不能删除,<img src="http://p5krqprs6.bkt.clouddn.com/mvp_more.png" alt="gxj">真是感觉芒刺在背,简直看着难受.<br>这就是使用的mvp的历程,代码的紧密耦合，即使是代码中的一小部分的更改，也会导致代码的其他部分的更改或者引起错误。减少了可重用性，最终导致代码复制粘贴,冗余严重,就不要再说什么单元测试之类的.</p>
+<h3 id="为什么MVVM…？？"><a href="#为什么MVVM…？？" class="headerlink" title="为什么MVVM…？？"></a>为什么MVVM…？？</h3><p>我们最终的目标是以这样一种分布式的方式构建项目，将Android相关的东西放在一个地方，并分离出不需要Android运行的所有其他实体，然后进一步分割非Android相关的片段，从而实现代码模块化、可扩展性、易维护性、测试友好性等。</p>
+<p>我们会在公众号博客和技术网站上看到无数关于架构模式的文章和架构设计教程的文章,毫无疑问现在最流行和广泛采用的是MVP~Model—View—Presenter.说明MVP是一个成熟的模式，在一定程度上解决了很多方面的问题，但是也会有上面我提出的问题。当然了没有什么是完美的，总有一个改进的余地。但与此同时谷歌引入了Android架构组件，其中包括ViewModel而不是Presenter，因此证明了谷歌支持MVVM。</p>
+<p>可能这些并不能说明MVVM比MVP好,那就让我们看看上述MVP中所面临的几个问题，MVVM是如何来克服的。</p>
+<h4 id="1-代码耦合"><a href="#1-代码耦合" class="headerlink" title="1.代码耦合"></a>1.代码耦合</h4><p>对于每个Activity/Fragment，我们需要一个Presenter,这是一个硬束缚的规则。Presenter持有对Activity的引用和Activity持有Presenter的参考,两者1:1的关系，就是最大的问题所在。随着视图的复杂性的增加，对这种关系的维护和处理也随之增加。而我们的最终目标以分布式的方式构建项目，对项目做分割,为了实现这个目标并避免这种紧密关系的ViewModel被引入。</p>
+<p>ViewModel是负责为activity或Fragment准备和管理数据的类,它还处理activity或Fragment与应用程序的其余部分的通信（例如调用业务逻辑类)。只有View（比如activity）持有对ViewModel的引用，而ViewModel却不持有任何View，这就解决了我们的紧密耦合问题。同时一个View可以引用多个ViewModel。即使对于复杂的视图，我们实际上可以在相同的层次结构中拥有不同的ViewModel。</p>
+<h4 id="2-接口冗余"><a href="#2-接口冗余" class="headerlink" title="2.接口冗余"></a>2.接口冗余</h4><p>使用这种方式不用写很多的接口,因为ViewModel中会提供数据,如果需要使用数据时可以直接从viewmodel中获取到,不像MVP那样通过接口来回调数据,这样就不会写很多的接口,也不会又接口声明没有使用的情况.</p>
+<h4 id="3-可测试性"><a href="#3-可测试性" class="headerlink" title="3.可测试性"></a>3.可测试性</h4><p>由于Presenter很难绑定到View，所以编写单元测试变得有点困难，因为View有很多的依赖关系。<br><br>ViewModel在单元测试会容易一些，因为它们只是暴露状态，因此可以独立测试，而不需要测试数据将如何被消耗，总之，是不依赖于View的。</p>
+<p>这是几个选择MVVM的原因,可能你也有更多原因，期待你的分享！！</p>
+<h3 id="一点感想"><a href="#一点感想" class="headerlink" title="一点感想"></a>一点感想</h3><p>架构模式是不断发展的，MVVM有能力或者说有潜力变成更加强大，有用，令人惊讶的模式。而MVP已经发展到一个相当高的水平，但金无足赤,没有任何东西是完美的。当然学习MVVM有一点轻微的学习曲线，当时也是试验了好久,但最终它帮助我们克服了一些缺点。有人可能喜欢MVVM，也可能不喜欢MVVM，这完全取决于他们的判断。但我是喜欢的那个,同事也是用了都说好的那种,哈哈,只要我们能达成最终目标，其他事情都无关紧要。</p>
+<p>PS:这是我个人的一点经验、想法以及我们为什么用MVVM重构项目。请不要怀疑我的意图,我并不是想比较和找出差异。我所想的是分享我的经验和MVP的一些缺点，以及如何用MVVM克服。如果热闹了您,请轻喷,谢谢</p>
 
       
 
@@ -485,11 +468,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
+                <a href="javascript:void(0)" class="js-tag color2">Camera</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Camera</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,7 +496,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">version error</a>
+                <a href="javascript:void(0)" class="js-tag color4">Fragment Exception</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,11 +508,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Jenkins CI</a>
+                <a href="javascript:void(0)" class="js-tag color4">version error</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android Tips</a>
+                <a href="javascript:void(0)" class="js-tag color1">Jenkins CI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,15 +524,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android Tips</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">viewpager</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android 版本更新</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Fragment Exception</a>
               </li>
             
             <div class="clearfix"></div>
