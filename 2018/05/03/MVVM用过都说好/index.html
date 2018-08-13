@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://p5krqprs6.bkt.clouddn.com/mvp_i.png">
 <meta property="og:image" content="http://p5krqprs6.bkt.clouddn.com/mvp_contract.png">
 <meta property="og:image" content="http://p5krqprs6.bkt.clouddn.com/mvp_more.png">
-<meta property="og:updated_time" content="2018-06-30T06:24:58.000Z">
+<meta property="og:updated_time" content="2018-06-30T06:36:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVVM 用过都说好">
 <meta name="twitter:image" content="http://ovfk1aqnq.bkt.clouddn.com/mvvm.jpeg">
@@ -182,7 +182,6 @@
       
         <p><img src="http://ovfk1aqnq.bkt.clouddn.com/mvvm.jpeg" alt=""><br><a id="more"></a><br>这篇文章主要是对工作两年来用过的架构发表一下自己感触,如果说的不对请轻喷.</p>
 <h3 id="关于架构"><a href="#关于架构" class="headerlink" title="关于架构"></a>关于架构</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;根据百科中的<a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E6%9E%84%E6%9E%B6/7346287?fr=aladdin&amp;fromid=11190050&amp;fromtitle=software+architecture" target="_blank" rel="external">软件架构</a>,架构描述的对象是直接构成系统的抽象组件，各个组件之间的连接则明确和相对细致地描述组件之间的通讯。在实现阶段，这些抽象组件被细化为实际的组件，比如具体某个类或者对象….Android架构目前有许多不同的模式，如MVP, FLUX, MVI, MVVM等.我们当然知道,还用在这bb!!!<br><br>&nbsp;&nbsp;&nbsp;&nbsp;挖干的说,决定和实现一个特定的代码体系结构或设计模式都是为了解决我们开发人员时常面对的问题。</p>
-<h3 id="Android-架构"><a href="#Android-架构" class="headerlink" title="Android 架构"></a>Android 架构</h3><p>目前有许多不同的模式，如MVP, FLUX, MVI, MVVM等</p>
 <h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;说到问题我可能有很多要吐槽的了,刚爬进Android这个坑,因为Android本身被写为MVC,所以用的就是MVC模式,<br>那时候只是简单的写一些简单的功能,一个activity处理所有工作,显示View,网络请求,但是毕竟功能简单,一个activity也不会超过百行,所以不会考虑什么耦合,性能问题.对于简单的应用来说，这可能是足够的，但是随着复杂性的增加，问题的数量和水平也会上升。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;正式投入Android开发岗位,因为项目前期由一个人完成,所以写的很随意(你懂得),一些业务逻辑稍微复杂的activity或者Fragment超过3000行代码是很正常的,看的时候都不知道从哪开始,每次想要修改点功能都要耗费大量时间看代码逻辑…如果继续这样代码堆砌最后肯定得崩,所以决定采用大家都在口口相传的MVP模式来进行解耦合.当时对于MVP不是很熟,然后一开始的写法是把回调接口写到一个单独的接口中,一个activity对应一个iview,像这种<img src="http://p5krqprs6.bkt.clouddn.com/mvp_i.png" alt="gxj">但是后来业务逻辑增加处理的功能也变多,iview中的接口增加,每改动一次就需要把实现了这个iview的activity全部都改一遍,可谓是牵一发而动全身,说好的开闭原则呢?说好的单一职责呢?后来痛定思痛,觉得肯定是自己的姿势有问题,参考GitHub上的几个项目,改成用contract来作为盛放IView和Presenter的容器,<img src="http://p5krqprs6.bkt.clouddn.com/mvp_contract.png" alt="gxj">这样一个activity或者Fragment就对应一个contract,然后xxPresenter实现contract中presenter方法,</p>
 <pre><code>public class xxPresenter implements xxContract.Presenter {
 </code></pre><p>activity或者Fragment实现contract中的view的方法,</p>
@@ -301,6 +300,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/05/03/handler详解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MVVM 用过都说好
+        
+      </div>
+    </a>
   
   
     <a href="/2018/03/28/jenkins持续集成打包发包/" id="article-nav-older" class="article-nav-link-wrap">
@@ -456,11 +464,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">config.gradle</a>
+                <a href="javascript:void(0)" class="js-tag color2">Camera</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">依赖库</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,11 +476,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Camera</a>
+                <a href="javascript:void(0)" class="js-tag color4">config.gradle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
+                <a href="javascript:void(0)" class="js-tag color4">依赖库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,6 +496,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Fragment Exception</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gradle</a>
               </li>
              
@@ -496,7 +508,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Fragment Exception</a>
+                <a href="javascript:void(0)" class="js-tag color4">version error</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Jenkins CI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,11 +524,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">version error</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Jenkins CI</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android PDF</a>
               </li>
              
               <li class="article-tag-list-item">
